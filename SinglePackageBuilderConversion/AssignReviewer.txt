@@ -1,0 +1,131 @@
+1. Setup GitHub Secrets
+
+repository → Settings → Secrets and variables → Actions → New repository secret:
+
+    Secret name: EXCLUDED_REVIEWERS
+
+    Value: a comma-separated list of usernames you want to temporarily skip, e.g.:
+alice,bob
+
+
+
+2. Create a CSV file for tracking last assigned
+
+create a file called reviewer_state.csv with headers:
+
+team_slug,last_assigned
+packagereviewers,dave
+
+
+3. workflow
+
+.github/workflows/assign-reviewer.yml
+
+name: Assign Package Reviewer
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  assign_reviewer:
+    runs-on: ubuntu-latest
+    # Only run if the label added is "Review in Progress"
+    if: contains(github.event.label.name, 'Review in Progress')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Assign reviewer from PackageReviewers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG_NAME: YourOrgName           # Replace with your GitHub org
+          TEAM_SLUG: packagereviewers    # GitHub team slug, always lowercase
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          EXCLUDED_REVIEWERS: ${{ secrets.EXCLUDED_REVIEWERS }}
+          REVIEWER_STATE_PATH: repo/reviewer_state.csv
+        run: |
+          import os, json, requests, csv
+
+          # --- Environment ---
+          token = os.environ["GITHUB_TOKEN"]
+          org = os.environ["ORG_NAME"]
+          team = os.environ["TEAM_SLUG"]
+          repo_full = os.environ["GITHUB_REPOSITORY"]
+          state_file = os.environ["REVIEWER_STATE_PATH"]
+
+          # --- Process excluded reviewers, stripping spaces just in case ---
+          excluded_raw = os.environ.get("EXCLUDED_REVIEWERS", "")
+          excluded = [x.strip() for x in excluded_raw.split(",") if x.strip()]
+
+          with open(os.environ["GITHUB_EVENT_PATH"]) as f:
+              event = json.load(f)
+
+          # Only proceed if the label added is correct
+          label_name = event["label"]["name"]
+          if label_name != "Review in Progress":
+              print(f"Label '{label_name}' is not 'Review in Progress', exiting.")
+              exit(0)
+
+          issue_number = event["issue"]["number"]
+          headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+
+          # --- Get all team members ---
+          r = requests.get(f"https://api.github.com/orgs/{org}/teams/{team}/members", headers=headers)
+          r.raise_for_status()
+          members = [m["login"] for m in r.json() if m["login"] not in excluded]
+
+          if not members:
+              print("No eligible members left to assign.")
+              exit(0)
+
+          # --- Load last assigned reviewer ---
+          last_assigned = None
+          try:
+              with open(state_file) as f:
+                  reader = csv.DictReader(f)
+                  for row in reader:
+                      if row["team_slug"] == team:
+                          last_assigned = row["last_assigned"]
+                          break
+          except FileNotFoundError:
+              pass
+
+          # --- Determine next reviewer (round-robin) ---
+          if last_assigned in members:
+              idx = members.index(last_assigned)
+              next_idx = (idx + 1) % len(members)
+          else:
+              next_idx = 0
+          reviewer = members[next_idx]
+
+          print(f"Assigning reviewer: {reviewer}")
+
+          # --- Assign reviewer to the issue ---
+          assign_url = f"https://api.github.com/repos/{repo_full}/issues/{issue_number}/assignees"
+          r2 = requests.post(assign_url, headers=headers, json={"assignees": [reviewer]})
+          r2.raise_for_status()
+          print(f"Reviewer {reviewer} assigned successfully.")
+
+          # --- Overwrite state CSV with only last assigned ---
+          with open(state_file, "w", newline="") as f:
+              writer = csv.DictWriter(f, fieldnames=["team_slug", "last_assigned"])
+              writer.writeheader()
+              writer.writerow({"team_slug": team, "last_assigned": reviewer})
+
+          # --- Commit & push changes ---
+          os.system('git config user.name "github-actions[bot]"')
+          os.system('git config user.email "github-actions[bot]@users.noreply.github.com"')
+          os.system(f'git add {state_file}')
+          os.system(f'git commit -m "Update last assigned reviewer for {team}: {reviewer}" || echo "No changes to commit"')
+          os.system('git push origin HEAD')
