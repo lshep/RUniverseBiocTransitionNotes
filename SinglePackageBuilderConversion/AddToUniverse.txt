@@ -1,0 +1,195 @@
+.github/workflows/bioc-post-accept.yml
+
+name: Bioconductor Post-Accept Actions
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  clone_and_register:
+    if: contains(github.event.label.name, 'policies-accepted')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout workflow repo
+        uses: actions/checkout@v4
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "Bioconductor Bot"
+          git config --global user.email "bot@bioconductor.org"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Clone Default Branch & Register
+        env:
+          # Token for reading original repo, commenting, labels
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Token with write access to target org
+          TARGET_GITHUB_TOKEN: ${{ secrets.TARGET_GITHUB_TOKEN }}
+          # Organization to push repo into
+          GIT_TARGET_ORG: "new-org-name"          # replace with your org
+          # Runiverse API token
+          RUNIVERSE_API_TOKEN: ${{ secrets.RUNIVERSE_API_TOKEN }}
+          # GitHub Actions event info
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/clone_and_register.py
+
+
+
+scripts/clone_and_register.py
+
+import os
+import json
+import sys
+import subprocess
+import requests
+import re
+
+# ----------------------------
+# Environment / Tokens
+# ----------------------------
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]  # for commenting & labels
+TARGET_GITHUB_TOKEN = os.environ["TARGET_GITHUB_TOKEN"]  # for pushing to target org
+GITHUB_EVENT_PATH = os.environ["GITHUB_EVENT_PATH"]
+GITHUB_REPOSITORY = os.environ["GITHUB_REPOSITORY"]
+GIT_TARGET_ORG = os.environ["GIT_TARGET_ORG"]
+RUNIVERSE_API_TOKEN = os.environ["RUNIVERSE_API_TOKEN"]
+
+HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+
+# ----------------------------
+# GitHub Helpers
+# ----------------------------
+def post_comment(body):
+    with open(GITHUB_EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = GITHUB_REPOSITORY.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/comments"
+    requests.post(url, headers=HEADERS, json={"body": body})
+
+
+def add_label(label):
+    with open(GITHUB_EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = GITHUB_REPOSITORY.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    requests.post(url, headers=HEADERS, json={"labels": [label]})
+
+
+def remove_label(label):
+    """Remove a label from the issue."""
+    with open(GITHUB_EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = GITHUB_REPOSITORY.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/labels/{label}"
+    requests.delete(url, headers=HEADERS)
+
+
+# ----------------------------
+# Clone & Push Default Branch
+# ----------------------------
+def clone_and_push():
+    # Load issue body
+    with open(GITHUB_EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_body = event["issue"]["body"]
+
+    match = re.search(r"https://github\.com/([\w\-]+)/([\w\.\-]+)", issue_body)
+    if not match:
+        post_comment("❌ Could not find a GitHub repository URL in the issue body.")
+        sys.exit(1)
+
+    source_owner = match.group(1)
+    source_repo = match.group(2)
+
+    # Get default branch
+    repo_api_url = f"https://api.github.com/repos/{source_owner}/{source_repo}"
+    r = requests.get(repo_api_url, headers=HEADERS)
+    if r.status_code != 200:
+        post_comment("❌ Failed to get repository info from GitHub API.")
+        sys.exit(1)
+    default_branch = r.json().get("default_branch", "main")
+
+    # Clone and push only default branch
+    try:
+        source_url = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{source_owner}/{source_repo}.git"
+        target_url = f"https://x-access-token:{TARGET_GITHUB_TOKEN}@github.com/{GIT_TARGET_ORG}/{source_repo}.git"
+
+        # Shallow clone default branch only
+        subprocess.run(["git", "clone", "--branch", default_branch, "--depth", "1", source_url], check=True)
+        os.chdir(source_repo)
+
+        # Create new repo if needed in target org
+        subprocess.run(["git", "remote", "remove", "origin"], check=True)
+        subprocess.run(["git", "remote", "add", "origin", target_url], check=True)
+
+        # Push default branch to target org
+        subprocess.run(["git", "push", "-u", "origin", default_branch], check=True)
+
+        os.chdir("..")
+        subprocess.run(["rm", "-rf", source_repo])
+
+        post_comment(f"✅ Repository cloned (default branch only) to **{GIT_TARGET_ORG}/{source_repo}**.")
+
+    except subprocess.CalledProcessError as e:
+        post_comment(f"❌ Git operation failed: {e}")
+        sys.exit(1)
+
+    return f"{GIT_TARGET_ORG}/{source_repo}"
+
+
+# ----------------------------
+# Register in Runiverse
+# ----------------------------
+def register_runiverse(repo_path):
+    url = "https://runiverse.example.com/api/register"  # replace with your real API
+    headers = {
+        "Authorization": f"Bearer {RUNIVERSE_API_TOKEN}",
+        "Content-Type": "application/json",
+    }
+    data = {"repo": repo_path}
+
+    r = requests.post(url, headers=headers, json=data)
+    if r.status_code == 200:
+        post_comment(f"✅ Registered **{repo_path}** in Runiverse.")
+    else:
+        post_comment(f"❌ Failed to register in Runiverse: {r.text}")
+        sys.exit(1)
+
+
+# ----------------------------
+# Main
+# ----------------------------
+if __name__ == "__main__":
+    remove_label("awaiting policy acceptance")
+    add_label("policies-accepted")
+
+    repo_path = clone_and_push()
+    register_runiverse(repo_path)

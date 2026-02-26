@@ -1,0 +1,257 @@
+Repo Structure:
+.github/
+  workflows/
+    bioc-precheck.yml
+scripts/
+  validate.py
+
+
+.github/workflows/bioc-precheck.yml
+
+name: Bioconductor Submission Precheck
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (optional but good practice)
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run validation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/validate.py
+
+
+scripts/validate.py
+
+import os
+import re
+import sys
+import json
+import base64
+import requests
+
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
+EVENT_PATH = os.environ["GITHUB_EVENT_PATH"]
+REPO_FULL = os.environ["GITHUB_REPOSITORY"]
+
+HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
+
+
+# ----------------------------
+# GitHub Helpers
+# ----------------------------
+
+def github_get(url):
+    r = requests.get(url, headers=HEADERS)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
+def github_post(url, payload):
+    return requests.post(url, headers=HEADERS, json=payload)
+
+
+def post_comment(body):
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = REPO_FULL.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/comments"
+    github_post(url, {"body": body})
+
+
+def close_issue():
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = REPO_FULL.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}"
+    requests.patch(url, headers=HEADERS, json={"state": "closed"})
+
+
+# ----------------------------
+# Validation Logic
+# ----------------------------
+
+def main():
+    failures = []
+
+    # Load issue body
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_body = event["issue"]["body"] or ""
+
+    # 1 Extract GitHub repo URL
+    match = re.search(r"https://github\.com/([\w\-]+)/([\w\.\-]+)", issue_body)
+    if not match:
+        failures.append("No valid GitHub repository URL found in issue body.")
+        finalize(failures)
+        return
+
+    owner = match.group(1)
+    repo = match.group(2)
+
+    # 2 Check repo exists
+    repo_url = f"https://api.github.com/repos/{owner}/{repo}"
+    repo_data = github_get(repo_url)
+
+    if not repo_data:
+        failures.append("Repository does not exist or is not accessible.")
+        finalize(failures)
+        return
+
+    if repo_data.get("private"):
+        failures.append("Repository must be public.")
+
+    default_branch = repo_data.get("default_branch")
+
+    # 3 DESCRIPTION exists at root
+    desc_url = f"https://api.github.com/repos/{owner}/{repo}/contents/DESCRIPTION"
+    description_file = github_get(desc_url)
+    if not description_file:
+        failures.append("DESCRIPTION file not found at repository root.")
+
+    # 4 vignettes directory exists
+    vignette_url = f"https://api.github.com/repos/{owner}/{repo}/contents/vignettes"
+    vignette_dir = github_get(vignette_url)
+    if not vignette_dir or vignette_dir.get("type") != "dir":
+        failures.append("vignettes/ directory not found.")
+
+    # 5 Parse DESCRIPTION if it exists
+    if description_file:
+        try:
+            description_text = base64.b64decode(
+                description_file["content"]
+            ).decode("utf-8")
+
+            pkg_match = re.search(r"^Package:\s*(.+)$", description_text, re.MULTILINE)
+            version_match = re.search(r"^Version:\s*(.+)$", description_text, re.MULTILINE)
+
+            if not pkg_match:
+                failures.append("DESCRIPTION missing 'Package:' field.")
+            if not version_match:
+                failures.append("DESCRIPTION missing 'Version:' field.")
+
+            if pkg_match:
+                package_name = pkg_match.group(1).strip()
+                if package_name != repo:
+                    failures.append(
+                        f"Package name '{package_name}' does not match repository name '{repo}'."
+                    )
+
+            if version_match:
+                version = version_match.group(1).strip()
+                parts = version.split(".")
+                if (
+                    len(parts) != 3
+                    or parts[1] != "99"
+                    or not all(p.isdigit() for p in parts)
+                ):
+                    failures.append("Version must be in format x.99.z")
+
+        except Exception:
+            failures.append("Unable to decode or parse DESCRIPTION file.")
+
+    # 6 Check file sizes recursively
+    if default_branch:
+        tree_url = f"https://api.github.com/repos/{owner}/{repo}/git/trees/{default_branch}?recursive=1"
+        tree = github_get(tree_url)
+
+        if tree and "tree" in tree:
+            for item in tree["tree"]:
+                if item.get("type") == "blob" and item.get("size", 0) > MAX_FILE_SIZE:
+                    failures.append(
+                        f"File '{item['path']}' exceeds 5MB limit."
+                    )
+        else:
+            failures.append("Unable to retrieve repository file tree.")
+
+    finalize(failures)
+
+
+# ----------------------------
+# Finalization Logic
+# ----------------------------
+
+
+def finalize(failures):
+    if failures:
+        # Prechecks failed
+        message = "## ❌ Bioconductor Precheck Failed\n\n"
+        message += "The following pre-checks did not pass:\n\n"
+        for f in failures:
+            message += f"- {f}\n"
+        message += "\nPlease address these issues and open a new submission issue."
+
+        post_comment(message)
+        close_issue()
+        sys.exit(1)
+    else:
+        # Prechecks passed → require policy acceptance
+        message = "## ✅ Bioconductor Precheck Passed\n\n"
+        message += (
+            "All automated structural checks passed.\n\n"
+            "**Next Step:** Please accept the Bioconductor submission policies to proceed.\n\n"
+            "To accept, comment exactly:\n\n"
+            "`/accept-policies`\n\n"
+            "Only the submission author may accept. Once accepted, your submission will proceed to build/check."
+        )
+
+        post_comment(message)
+        add_label("precheck-passed")  # Label indicates precheck succeeded
+        add_label("awaiting policy acceptance")  # Label indicates next step
+        # Leave issue open for submitter action
+        sys.exit(0)
+
+
+def add_label(label):
+    """Add a GitHub label to the issue."""
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = REPO_FULL.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    requests.post(url, headers=HEADERS, json={"labels": [label]})
+
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+

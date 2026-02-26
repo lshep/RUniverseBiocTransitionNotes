@@ -1,0 +1,68 @@
+Step 1: Precheck Workflow
+-------------------------
+Trigger: Issue opened
+Workflow: .github/workflows/bioc-precheck.yml
+Actions:
+  - Parse issue body for GitHub repo URL
+  - Validate repo:
+      • Public
+      • DESCRIPTION exists and valid
+      • vignettes/ directory exists
+      • File size limits
+      • Version format x.99.z
+  - Add label: "awaiting policy acceptance" (if passed)
+  - Post comment:
+      • ✅ Passed precheck → instruct submitter to accept policies
+      • ❌ Failed precheck → list errors & close issue
+
+
+Step 2: Policy Acceptance Workflow
+----------------------------------
+Trigger: Issue comment created
+Workflow: .github/workflows/bioc-accept-policies.yml
+Actions:
+  - Check if comment is `/accept-policies` or `accept-policies` (case-insensitive)
+  - Verify commenter is issue author
+  - Remove label: "awaiting policy acceptance"
+  - Add label: "policies-accepted"
+  - Post comment: ✅ Policies accepted → submission will proceed
+
+
+Step 3: Clone & Register Workflow
+---------------------------------
+Trigger: Label added (`policies-accepted`)
+Workflow: .github/workflows/bioc-post-accept.yml
+Actions:
+  - Shallow clone default branch of source repo
+  - Push default branch to new organization (`TARGET_GITHUB_TOKEN`)
+  - Register repo in Runiverse (`RUNIVERSE_API_TOKEN`)
+  - Post comments for success/failure
+
+
+
+Issue Opened
+      |
+      v
+[Precheck Workflow]
+      |
+      |--❌ Precheck fails → Comment + Close Issue
+      |
+      |--✅ Precheck passes → Add "awaiting policy acceptance" label
+                                     |
+                                     v
+                         Submitter comments "/accept-policies"
+                                     |
+                                     v
+                        [Policy Acceptance Workflow]
+                                     |
+                                     |--❌ Wrong user / wrong comment → Comment
+                                     |
+                                     |--✅ Policies accepted → Remove "awaiting policy acceptance"
+                                     |                         Add "policies-accepted"
+                                     v
+                        [Clone & Register Workflow]
+                                     |
+                                     |-- Clone default branch only
+                                     |-- Push to target org
+                                     |-- Register in Runiverse
+                                     |-- Post comments
