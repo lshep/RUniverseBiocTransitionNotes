@@ -1,0 +1,24 @@
+git clone https://github.com/YOUR_ORG/Contributions.git
+cd Contributions
+
+# Create submissions branch
+git checkout --orphan submissions
+git rm -rf .
+
+# Create submissions folder and CSV file
+mkdir submissions
+cat <<EOF > submissions/submitted_packages.csv
+package_name,repo_full,submitter,issue_number
+EOF
+
+# Commit and push
+git add submissions/submitted_packages.csv
+git commit -m "Add empty submissions table"
+git push origin submissions
+
+
+package_name,repo_full,submitter,issue_number
+GenomicsTools,genomics-org/GenomicsTools,jdoe,42
+DataAnalyzer,data-org/DataAnalyzer,asmith,57
+
+

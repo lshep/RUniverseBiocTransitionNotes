@@ -1,0 +1,325 @@
+.github/workflows/bioc-precheck.yml
+
+name: Bioconductor Submission Precheck
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout default branch (main branch where workflow lives)
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+        with:
+          path: repo
+
+      # Checkout submissions branch for reading/updating CSV
+      - name: Checkout submissions branch
+        uses: actions/checkout@v4
+        with:
+          ref: submissions
+          path: submissions_repo
+          token: ${{ secrets.GITHUB_TOKEN }}  # required for git push
+
+      # Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Install Python dependencies
+      - name: Install dependencies
+        run: pip install requests
+
+      # Run validation script
+      - name: Run validation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SUBMISSIONS_PATH: submissions_repo/submissions/submitted_packages.csv
+        run: python repo/scripts/validate.py
+
+
+repo folder: checked-out default branch for validation.
+submissions_repo folder: submissions table branch.
+SUBMISSIONS_PATH environment variable points to CSV.
+
+
+
+scripts/validate.py
+
+import os
+import re
+import sys
+import json
+import base64
+import csv
+import requests
+
+# ----------------------------
+# Environment & Config
+# ----------------------------
+
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
+EVENT_PATH = os.environ["GITHUB_EVENT_PATH"]
+REPO_FULL = os.environ["GITHUB_REPOSITORY"]
+SUBMISSIONS_FILE = os.environ.get("SUBMISSIONS_PATH", "submissions/submitted_packages.csv")
+
+HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
+
+# ----------------------------
+# GitHub Helpers
+# ----------------------------
+
+def github_get(url):
+    r = requests.get(url, headers=HEADERS)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
+def github_post(url, payload):
+    return requests.post(url, headers=HEADERS, json=payload)
+
+
+def post_comment(body):
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = REPO_FULL.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/comments"
+    github_post(url, {"body": body})
+
+
+def close_issue():
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = REPO_FULL.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}"
+    requests.patch(url, headers=HEADERS, json={"state": "closed"})
+
+
+def add_label(label):
+    """Add a GitHub label to the issue."""
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_number = event["issue"]["number"]
+    owner, repo = REPO_FULL.split("/")
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    requests.post(url, headers=HEADERS, json={"labels": [label]})
+
+
+# ----------------------------
+# Submission Table Helpers
+# ----------------------------
+
+def load_submissions():
+    """Load submitted packages from CSV table."""
+    submissions = []
+    try:
+        with open(SUBMISSIONS_FILE, newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                submissions.append(row)
+    except FileNotFoundError:
+        # No submissions yet
+        pass
+    return submissions
+
+
+def check_duplicate(package_name):
+    """Check if a package name has already been submitted."""
+    submissions = load_submissions()
+    for row in submissions:
+        if row["package_name"].strip().lower() == package_name.strip().lower():
+            return (
+                True,
+                f"Package '{package_name}' has already been submitted by "
+                f"{row['submitter']} (repo: {row['repo_full']}, issue #{row['issue_number']})"
+            )
+    return False, ""
+
+
+def record_submission(package_name):
+    """Append successful submission to the CSV file on the submissions branch."""
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+    submitter = event["issue"]["user"]["login"]
+    issue_number = event["issue"]["number"]
+    repo_full = f"{event['repository']['owner']['login']}/{event['repository']['name']}"
+
+    # Append to CSV
+    row = f'{package_name},{repo_full},{submitter},{issue_number}\n'
+    with open(SUBMISSIONS_FILE, "a") as f:
+        f.write(row)
+
+    # Commit and push changes
+    os.chdir(os.path.dirname(SUBMISSIONS_FILE))  # ensure git commands run in repo root
+    actor = os.environ.get("GITHUB_ACTOR", "github-actions[bot]")
+    os.system(f'git config user.name "{actor}"')
+    os.system(f'git config user.email "{actor}@users.noreply.github.com"')
+    os.system(f'git add {SUBMISSIONS_FILE}')
+    os.system(f'git commit -m "Record submission of {package_name} by {submitter} (issue #{issue_number})"')
+    os.system('git push origin submissions')
+
+
+# ----------------------------
+# Validation Logic
+# ----------------------------
+
+def main():
+    failures = []
+
+    # Load issue body
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    issue_body = event["issue"]["body"] or ""
+
+    # 1. Extract GitHub repo URL from issue
+    match = re.search(r"https://github\.com/([\w\-]+)/([\w\.\-]+)", issue_body)
+    if not match:
+        failures.append("No valid GitHub repository URL found in issue body.")
+        finalize(failures)
+        return
+
+    owner = match.group(1)
+    repo = match.group(2)
+
+    # 2. Check repo exists
+    repo_url = f"https://api.github.com/repos/{owner}/{repo}"
+    repo_data = github_get(repo_url)
+
+    if not repo_data:
+        failures.append("Repository does not exist or is not accessible.")
+        finalize(failures)
+        return
+
+    if repo_data.get("private"):
+        failures.append("Repository must be public.")
+
+    default_branch = repo_data.get("default_branch")
+
+    # 3. DESCRIPTION exists at root
+    desc_url = f"https://api.github.com/repos/{owner}/{repo}/contents/DESCRIPTION"
+    description_file = github_get(desc_url)
+    if not description_file:
+        failures.append("DESCRIPTION file not found at repository root.")
+
+    # 4. vignettes directory exists
+    vignette_url = f"https://api.github.com/repos/{owner}/{repo}/contents/vignettes"
+    vignette_dir = github_get(vignette_url)
+    if not vignette_dir or vignette_dir.get("type") != "dir":
+        failures.append("vignettes/ directory not found.")
+
+    # 5. Parse DESCRIPTION if it exists
+    package_name = None
+    if description_file:
+        try:
+            description_text = base64.b64decode(description_file["content"]).decode("utf-8")
+            pkg_match = re.search(r"^Package:\s*(.+)$", description_text, re.MULTILINE)
+            version_match = re.search(r"^Version:\s*(.+)$", description_text, re.MULTILINE)
+
+            if not pkg_match:
+                failures.append("DESCRIPTION missing 'Package:' field.")
+            if not version_match:
+                failures.append("DESCRIPTION missing 'Version:' field.")
+
+            if pkg_match:
+                package_name = pkg_match.group(1).strip()
+                if package_name != repo:
+                    failures.append(f"Package name '{package_name}' does not match repository name '{repo}'.")
+
+            if version_match:
+                version = version_match.group(1).strip()
+                parts = version.split(".")
+                if len(parts) != 3 or parts[1] != "99" or not all(p.isdigit() for p in parts):
+                    failures.append("Version must be in format x.99.z")
+
+        except Exception:
+            failures.append("Unable to decode or parse DESCRIPTION file.")
+
+    # 5b. Check for duplicate submission
+    if package_name:
+        is_dup, dup_msg = check_duplicate(package_name)
+        if is_dup:
+            failures.append(dup_msg)
+            finalize(failures, package_name)
+            return
+
+    # 6. Check file sizes recursively
+    if default_branch:
+        tree_url = f"https://api.github.com/repos/{owner}/{repo}/git/trees/{default_branch}?recursive=1"
+        tree = github_get(tree_url)
+        if tree and "tree" in tree:
+            for item in tree["tree"]:
+                if item.get("type") == "blob" and item.get("size", 0) > MAX_FILE_SIZE:
+                    failures.append(f"File '{item['path']}' exceeds 5MB limit.")
+        else:
+            failures.append("Unable to retrieve repository file tree.")
+
+    finalize(failures, package_name)
+
+
+# ----------------------------
+# Finalization Logic
+# ----------------------------
+
+def finalize(failures, package_name=None):
+    """
+    Finalize the Bioconductor precheck.
+
+    - If failures exist: comment, close the issue, and exit with failure.
+    - If all checks passed: comment, add labels, record submission to CSV, and exit successfully.
+    """
+    if failures:
+        message = "## ❌ Bioconductor Precheck Failed\n\n"
+        message += "The following pre-checks did not pass:\n\n"
+        for f in failures:
+            message += f"- {f}\n"
+        message += "\nPlease address these issues and open a new submission issue."
+        post_comment(message)
+        close_issue()
+        sys.exit(1)
+    else:
+        # Record submission first
+        if package_name:
+            record_submission(package_name)
+
+        message = "## ✅ Bioconductor Precheck Passed\n\n"
+        message += (
+            "All automated structural checks passed.\n\n"
+            "**Next Step:** Please accept the Bioconductor submission policies to proceed.\n\n"
+            "To accept, comment exactly:\n\n"
+            "`/accept-policies`\n\n"
+            "Only the submission author may accept. Once accepted, your submission will proceed to build/check."
+        )
+        post_comment(message)
+        add_label("precheck-passed")
+        add_label("awaiting policy acceptance")
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()
