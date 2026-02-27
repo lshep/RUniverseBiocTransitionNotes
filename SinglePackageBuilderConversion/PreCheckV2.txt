@@ -1,5 +1,6 @@
 .github/workflows/bioc-precheck.yml
 
+
 name: Bioconductor Submission Precheck
 
 on:
@@ -26,7 +27,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: submissions
-          path: submissions_repo
+          path: submissions
           token: ${{ secrets.GITHUB_TOKEN }}  # required for git push
 
       # Setup Python
@@ -45,7 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_EVENT_PATH: ${{ github.event_path }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          SUBMISSIONS_PATH: submissions_repo/submissions/submitted_packages.csv
+          SUBMISSIONS_PATH: BiocContributions/submissions/submitted_packages.csv
         run: python repo/scripts/validate.py
 
 
