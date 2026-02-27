@@ -7,13 +7,19 @@ git rm -rf .
 
 # Create submissions folder and CSV file
 mkdir submissions
-cat <<EOF > submissions/submitted_packages.csv
-package_name,repo_full,submitter,issue_number
-EOF
+#cat <<EOF > submissions/submitted_packages.csv
+#package_name,repo_full,submitter,issue_number
+#EOF
+sqlite3 -header -csv db.sqlite3 \
+"SELECT substr(name, instr(name, '/') + 1) AS package_name,
+        name AS repo_full,
+        login AS submitter,
+        issue_number
+ FROM repos;" > submissions/submitted_packages.csv
 
 # Commit and push
 git add submissions/submitted_packages.csv
-git commit -m "Add empty submissions table"
+git commit -m "Add example submissions table"
 git push origin submissions
 
 
