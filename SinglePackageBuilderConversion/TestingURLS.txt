@@ -1,0 +1,21 @@
+1. Replace Issue Template with Txt and No URL
+
+2. Invalid URL:  https://github.com/lshep/doesnotexist
+
+3. Private URL:  https://github.com/lshep/BiocReports
+
+4. No description or vignette: https://github.com/lshep/BuildReportTriage
+
+5. Version 4.0.0 and ends in .git: https://github.com/lshep/sendplot.git
+
+6. vignette directory not found, repo/description dont match, version not right, includes remotes, and use git instead of https:
+git@github.com:lshep/testNewBranch.git
+
+7. Large Files Present: https://github.com/lshep/LoriTestPkg
+
+8. Large Files Present and Git LFS: https://github.com/lshep/LoriTestPkg3
+
+9. Add label "allow-large-files" to previous issue, and reopen - should still
+fail with Git LFS 
+
+
