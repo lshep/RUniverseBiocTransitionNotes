@@ -18,4 +18,6 @@ git@github.com:lshep/testNewBranch.git
 9. Add label "allow-large-files" to previous issue, and reopen - should still
 fail with Git LFS 
 
+10. Passing: git@github.com:lshep/LoriPkgTest2.git
 
+11. Close as double submission: https://github.com/lshep/LoriPkgTest2
