@@ -1,0 +1,260 @@
+Detecting “real new builds” externally
+
+Workflow runs endpoint:
+GET https://api.github.com/repos/r-universe/tempbioc/actions/workflows/build.yml/runs
+
+Each run has:
+  id (unique per run)
+  head_sha (commit that triggered the run)
+  event (push, workflow_dispatch, etc.)
+  status (completed, queued, in_progress)
+  conclusion (success, failure, cancelled)
+
+head_sha should be different if a new build ran?
+
+
+Version comparison
+GET /repos/r-universe/tempbioc/contents/<package>/DESCRIPTION?ref=<head_sha>
+
+parse the description?
+
+
+
+
+
+
+Architecture for external monitoring
+
+Because you cannot run code inside R-universe:
+
+    Monitoring script runs in your repo (or a CI you control):
+
+        Polls the R-universe build workflow API every few minutes, or is triggered by a webhook if available.
+
+        Checks head_sha vs last recorded SHA.
+
+        Downloads DESCRIPTION at that SHA.
+
+        Compares version to previously recorded version.
+
+        Updates the stored version/commit info.
+
+        Posts notifications if a new build/version is detected.
+
+
+
+##################################
+#
+# Not right!!!  But getting closer
+#
+###################################
+
+track_runiverse_build.yml
+
+name: Track Runiverse Builds
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: "Optional package to check (leave blank for all)"
+        required: false
+      issue_number:
+        description: "Optional issue number for reference"
+        required: false
+  schedule:
+    - cron: "0 * * * *"  # every hour
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  track_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Run Runiverse Build Tracker
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SUBMISSIONS_FILE: submissions/submitted_packages.csv
+          RUNIVERSE_WORKFLOW: "https://github.com/r-universe/tempbioc/actions/workflows/build.yml"
+          PACKAGE_NAME: ${{ github.event.inputs.package_name || "" }}
+          ISSUE_NUMBER: ${{ github.event.inputs.issue_number || "" }}
+        run: python scripts/track_runiverse_build.py
+
+
+
+
+scripts/track_runiverse_build.py
+
+import os
+import csv
+import requests
+import subprocess
+import base64
+from datetime import datetime
+
+# ----------------------------
+# Environment
+# ----------------------------
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
+SUBMISSIONS_FILE = os.environ.get("SUBMISSIONS_FILE", "submissions/submitted_packages.csv")
+RUNIVERSE_WORKFLOW = os.environ["RUNIVERSE_WORKFLOW"]
+PACKAGE_NAME = os.environ.get("PACKAGE_NAME")
+
+HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+LOG_FILE = "logs/runiverse_build_tracker.log"
+
+# ----------------------------
+# Logging
+# ----------------------------
+def log(msg):
+    timestamp = datetime.utcnow().isoformat()
+    print(f"[{timestamp}] {msg}")
+    os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+    with open(LOG_FILE, "a") as f:
+        f.write(f"[{timestamp}] {msg}\n")
+
+# ----------------------------
+# Load submissions
+# ----------------------------
+submissions = []
+if os.path.exists(SUBMISSIONS_FILE):
+    with open(SUBMISSIONS_FILE, newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            row.setdefault("last_sha", "")
+            row.setdefault("last_version", "")
+            submissions.append(row)
+
+# ----------------------------
+# Fetch latest workflow runs
+# ----------------------------
+def get_latest_run(package):
+    """Return the latest push-triggered workflow run for a package."""
+    url = RUNIVERSE_WORKFLOW.replace("workflows/build.yml", "runs?branch=devel&per_page=50")
+    resp = requests.get(url, headers=HEADERS)
+    if resp.status_code != 200:
+        log(f"[ERROR] Failed to fetch workflow runs: {resp.status_code}")
+        return None
+    runs = resp.json().get("workflow_runs", [])
+    for run in runs:
+        if run.get("event") != "push":
+            continue
+        # Optional: filter by commit message containing package_name
+        commit_msg = run.get("head_commit", {}).get("message", "")
+        if package.lower() in commit_msg.lower():
+            return run
+    return None
+
+# ----------------------------
+# Fetch DESCRIPTION file from artifacts
+# ----------------------------
+def get_version_from_artifact(run):
+    """Fetch DESCRIPTION from workflow run artifacts and extract Version."""
+    run_id = run["id"]
+    owner_repo = RUNIVERSE_WORKFLOW.split("/actions")[0].replace("https://github.com/", "")
+    url_artifacts = f"https://api.github.com/repos/{owner_repo}/actions/runs/{run_id}/artifacts"
+    r = requests.get(url_artifacts, headers=HEADERS)
+    if r.status_code != 200:
+        log(f"[ERROR] Failed to fetch artifacts for run {run_id}")
+        return None
+
+    artifacts = r.json().get("artifacts", [])
+    for artifact in artifacts:
+        if "DESCRIPTION" in artifact["name"]:
+            download_url = artifact["archive_download_url"]
+            r_dl = requests.get(download_url, headers=HEADERS, allow_redirects=True)
+            if r_dl.status_code != 200:
+                continue
+            # The artifact is a zip file — extract DESCRIPTION
+            import zipfile
+            import io
+            z = zipfile.ZipFile(io.BytesIO(r_dl.content))
+            for fname in z.namelist():
+                if fname.endswith("DESCRIPTION"):
+                    desc_bytes = z.read(fname)
+                    desc_text = desc_bytes.decode("utf-8")
+                    for line in desc_text.splitlines():
+                        if line.startswith("Version:"):
+                            return line.split("Version:")[1].strip()
+    return None
+
+# ----------------------------
+# Helper to get z component
+# ----------------------------
+def z_component(ver):
+    try:
+        return int(ver.split(".")[2])
+    except Exception:
+        return -1
+
+# ----------------------------
+# Update per package
+# ----------------------------
+for row in submissions:
+    pkg = row["package_name"]
+    if PACKAGE_NAME and pkg != PACKAGE_NAME:
+        continue
+
+    last_sha = row.get("last_sha", "")
+    last_version = row.get("last_version", "")
+
+    run = get_latest_run(pkg)
+    if not run:
+        log(f"[INFO] {pkg}: No recent push-triggered workflow runs found.")
+        continue
+
+    sha = run.get("head_sha")
+    version = get_version_from_artifact(run)
+    if not version:
+        log(f"[INFO] {pkg}: Unable to extract version from DESCRIPTION artifact.")
+        continue
+
+    if sha != last_sha and z_component(version) > z_component(last_version):
+        log(f"[INFO] {pkg}: New build detected {last_version} -> {version}")
+        row["last_sha"] = sha
+        row["last_version"] = version
+
+        # Optional: post back to issue
+        if row.get("issue_number"):
+            owner, repo = row["repo_full"].split("/")
+            url = f"https://api.github.com/repos/{owner}/{repo}/issues/{row['issue_number']}/comments"
+            requests.post(url, headers=HEADERS, json={
+                "body": f"✅ New build detected for {pkg}, version {version}."
+            })
+
+# ----------------------------
+# Save updates
+# ----------------------------
+branch = "submissions"
+subprocess.run(["git", "fetch", "origin", branch])
+subprocess.run(["git", "checkout", "-B", branch, f"origin/{branch}"])
+
+fieldnames = ["package_name","repo_full","submitter","issue_number","last_sha","last_version"]
+with open(SUBMISSIONS_FILE, "w", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(submissions)
+
+subprocess.run(["git", "config", "user.name", "Bioconductor Bot"])
+subprocess.run(["git", "config", "user.email", "bot@bioconductor.org"])
+subprocess.run(["git", "add", SUBMISSIONS_FILE])
+subprocess.run(["git", "commit", "-m", f"Update {PACKAGE_NAME} build info" if PACKAGE_NAME else "Update build info"])
+subprocess.run(["git", "push", "origin", branch])
