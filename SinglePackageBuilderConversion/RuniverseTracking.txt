@@ -9,17 +9,14 @@ Each run has:
   event (push, workflow_dispatch, etc.)
   status (completed, queued, in_progress)
   conclusion (success, failure, cancelled)
-
+  other??
 head_sha should be different if a new build ran?
 
 
 Version comparison
 GET /repos/r-universe/tempbioc/contents/<package>/DESCRIPTION?ref=<head_sha>
 
-parse the description?
-
-
-
+parse the description? or from run name?? 
 
 
 
@@ -43,13 +40,53 @@ Because you cannot run code inside R-universe:
 
 
 
+
+
+
+
+###############################
+## Local Testing ...
+###############################
+
+
+bash:
+export GITHUB_TOKEN=""
+
+python3:
+import os
+import requests
+
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+OWNER = "r-universe"
+REPO = "tempbioc"
+WORKFLOW_FILE = "build.yml"
+
+HEADERS = {
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+url = f"https://api.github.com/repos/{OWNER}/{REPO}/actions/workflows/{WORKFLOW_FILE}/runs"
+response = requests.get(url, headers=HEADERS)
+
+if response.status_code != 200:
+    raise RuntimeError(f"Failed to fetch workflow runs: {response.text}")
+
+runs = response.json()["workflow_runs"]
+
+for run in runs[:20]:
+    print(f"Run ID: {run['name']}, SHA: {run['head_sha']}, EVENT:{run['event']},Status: {run['status']}, Conclusion: {run['conclusion']}, URL: {run['url']}")
+
+
+
+
 ##################################
 #
 # Not right!!!  But getting closer
 #
 ###################################
 
-track_runiverse_build.yml
+# track_runiverse_build.yml
 
 name: Track Runiverse Builds
 
@@ -63,7 +100,7 @@ on:
         description: "Optional issue number for reference"
         required: false
   schedule:
-    - cron: "0 * * * *"  # every hour
+    - cron: "*/10 * * * *"  # every ten minutes
 
 permissions:
   contents: write
@@ -95,16 +132,13 @@ jobs:
         run: python scripts/track_runiverse_build.py
 
 
-
-
-scripts/track_runiverse_build.py
+##  scripts/track_runiverse_build.py
 
 import os
 import csv
 import requests
+from datetime import datetime, timedelta
 import subprocess
-import base64
-from datetime import datetime
 
 # ----------------------------
 # Environment
@@ -113,23 +147,17 @@ GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 SUBMISSIONS_FILE = os.environ.get("SUBMISSIONS_FILE", "submissions/submitted_packages.csv")
 RUNIVERSE_WORKFLOW = os.environ["RUNIVERSE_WORKFLOW"]
 PACKAGE_NAME = os.environ.get("PACKAGE_NAME")
+ISSUE_NUMBER = os.environ.get("ISSUE_NUMBER")
 
 HEADERS = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
     "Accept": "application/vnd.github+json"
 }
 
-LOG_FILE = "logs/runiverse_build_tracker.log"
-
 # ----------------------------
-# Logging
+# 10-minute cutoff
 # ----------------------------
-def log(msg):
-    timestamp = datetime.utcnow().isoformat()
-    print(f"[{timestamp}] {msg}")
-    os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
-    with open(LOG_FILE, "a") as f:
-        f.write(f"[{timestamp}] {msg}\n")
+cutoff_dt = datetime.utcnow() - timedelta(minutes=10)
 
 # ----------------------------
 # Load submissions
@@ -144,117 +172,143 @@ if os.path.exists(SUBMISSIONS_FILE):
             submissions.append(row)
 
 # ----------------------------
+# Version helpers
+# ----------------------------
+def parse_version(ver):
+    try:
+        x, y, z = [int(p) for p in ver.split(".")]
+        return x, y, z
+    except Exception:
+        return None, None, None
+
+def valid_z_bump(old, new):
+    old_x, old_y, old_z = parse_version(old)
+    new_x, new_y, new_z = parse_version(new)
+    if old_x is None or new_x is None:
+        return False
+    return old_x == new_x and old_y == new_y and new_z > old_z
+
+# ----------------------------
 # Fetch latest workflow runs
 # ----------------------------
-def get_latest_run(package):
-    """Return the latest push-triggered workflow run for a package."""
-    url = RUNIVERSE_WORKFLOW.replace("workflows/build.yml", "runs?branch=devel&per_page=50")
+def get_latest_runs(package):
+    """Fetch workflow runs filtered for completed push events and 10-min cutoff."""
+    url = RUNIVERSE_WORKFLOW.replace(
+        "workflows/build.yml", 
+        f"runs?branch=devel&event=push&status=completed&per_page=100"
+    )
     resp = requests.get(url, headers=HEADERS)
     if resp.status_code != 200:
-        log(f"[ERROR] Failed to fetch workflow runs: {resp.status_code}")
-        return None
-    runs = resp.json().get("workflow_runs", [])
-    for run in runs:
-        if run.get("event") != "push":
+        print(f"[WARN] Failed to fetch workflow runs: {resp.text}")
+        return []
+
+    all_runs = resp.json().get("workflow_runs", [])
+    filtered_runs = []
+    seen_shas = set()
+    for run in all_runs:
+        run_time = datetime.strptime(run["created_at"], "%Y-%m-%dT%H:%M:%SZ")
+        if run_time < cutoff_dt:
             continue
-        # Optional: filter by commit message containing package_name
-        commit_msg = run.get("head_commit", {}).get("message", "")
-        if package.lower() in commit_msg.lower():
-            return run
-    return None
+        sha = run.get("head_sha")
+        if sha in seen_shas:
+            continue
+        seen_shas.add(sha)
+
+        # Extract version from commit message: "Version: x.y.z"
+        msg = run.get("head_commit", {}).get("message", "")
+        version = msg.split("Version:")[-1].strip() if "Version:" in msg else None
+        filtered_runs.append({
+            "package": package,
+            "sha": sha,
+            "version": version,
+            "run_url": run["html_url"]
+        })
+    return filtered_runs
 
 # ----------------------------
-# Fetch DESCRIPTION file from artifacts
+# Update submissions
 # ----------------------------
-def get_version_from_artifact(run):
-    """Fetch DESCRIPTION from workflow run artifacts and extract Version."""
-    run_id = run["id"]
-    owner_repo = RUNIVERSE_WORKFLOW.split("/actions")[0].replace("https://github.com/", "")
-    url_artifacts = f"https://api.github.com/repos/{owner_repo}/actions/runs/{run_id}/artifacts"
-    r = requests.get(url_artifacts, headers=HEADERS)
-    if r.status_code != 200:
-        log(f"[ERROR] Failed to fetch artifacts for run {run_id}")
-        return None
+updated_rows = []
+changes_made = False
 
-    artifacts = r.json().get("artifacts", [])
-    for artifact in artifacts:
-        if "DESCRIPTION" in artifact["name"]:
-            download_url = artifact["archive_download_url"]
-            r_dl = requests.get(download_url, headers=HEADERS, allow_redirects=True)
-            if r_dl.status_code != 200:
-                continue
-            # The artifact is a zip file — extract DESCRIPTION
-            import zipfile
-            import io
-            z = zipfile.ZipFile(io.BytesIO(r_dl.content))
-            for fname in z.namelist():
-                if fname.endswith("DESCRIPTION"):
-                    desc_bytes = z.read(fname)
-                    desc_text = desc_bytes.decode("utf-8")
-                    for line in desc_text.splitlines():
-                        if line.startswith("Version:"):
-                            return line.split("Version:")[1].strip()
-    return None
-
-# ----------------------------
-# Helper to get z component
-# ----------------------------
-def z_component(ver):
-    try:
-        return int(ver.split(".")[2])
-    except Exception:
-        return -1
-
-# ----------------------------
-# Update per package
-# ----------------------------
 for row in submissions:
     pkg = row["package_name"]
-    if PACKAGE_NAME and pkg != PACKAGE_NAME:
-        continue
-
     last_sha = row.get("last_sha", "")
     last_version = row.get("last_version", "")
 
-    run = get_latest_run(pkg)
-    if not run:
-        log(f"[INFO] {pkg}: No recent push-triggered workflow runs found.")
+    if PACKAGE_NAME and pkg != PACKAGE_NAME:
+        updated_rows.append(row)
         continue
 
-    sha = run.get("head_sha")
-    version = get_version_from_artifact(run)
-    if not version:
-        log(f"[INFO] {pkg}: Unable to extract version from DESCRIPTION artifact.")
+    runs = get_latest_runs(pkg)
+    if not runs:
+        updated_rows.append(row)
         continue
 
-    if sha != last_sha and z_component(version) > z_component(last_version):
-        log(f"[INFO] {pkg}: New build detected {last_version} -> {version}")
+    # Only consider the latest run
+    run = runs[0]
+    sha = run["sha"]
+    version = run["version"]
+    run_url = run["run_url"]
+
+    if not sha or not version:
+        updated_rows.append(row)
+        continue
+
+    if sha == last_sha and version == last_version:
+        # No change, skip
+        updated_rows.append(row)
+        continue
+
+    if valid_z_bump(last_version, version):
+        print(f"[INFO] {pkg}: New build detected {last_version} -> {version}")
         row["last_sha"] = sha
         row["last_version"] = version
+        changes_made = True
 
-        # Optional: post back to issue
-        if row.get("issue_number"):
+        # Post update to issue
+        issue_num = row.get("issue_number")
+        if issue_num:
             owner, repo = row["repo_full"].split("/")
-            url = f"https://api.github.com/repos/{owner}/{repo}/issues/{row['issue_number']}/comments"
+            url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}/comments"
             requests.post(url, headers=HEADERS, json={
-                "body": f"✅ New build detected for {pkg}, version {version}."
+                "body": f"✅ New build detected for {pkg}, version {version}.\n"
+                        f"🔗 Detailed run: {run_url}\n"
+                        f"📊 Check summary table: https://tempbioc.r-universe.dev/{pkg}$checktable"
             })
+    else:
+        # Invalid version bump
+        print(f"[WARN] {pkg}: Version bump invalid ({last_version} -> {version})")
+        issue_num = row.get("issue_number")
+        if issue_num:
+            owner, repo = row["repo_full"].split("/")
+            url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}/comments"
+            requests.post(url, headers=HEADERS, json={
+                "body": f"⚠️ Build detected for {pkg} with invalid version bump ({last_version} -> {version}). "
+                        f"Only z should increase; please correct version.\n"
+                        f"🔗 Detailed run: {run_url}\n"
+                        f"📊 Check summary table: https://tempbioc.r-universe.dev/{pkg}$checktable"
+            })
+    updated_rows.append(row)
 
 # ----------------------------
-# Save updates
+# Commit updated CSV if needed
 # ----------------------------
-branch = "submissions"
-subprocess.run(["git", "fetch", "origin", branch])
-subprocess.run(["git", "checkout", "-B", branch, f"origin/{branch}"])
+if changes_made:
+    branch = "submissions"
+    subprocess.run(["git", "fetch", "origin", branch])
+    subprocess.run(["git", "checkout", "-B", branch, f"origin/{branch}"])
 
-fieldnames = ["package_name","repo_full","submitter","issue_number","last_sha","last_version"]
-with open(SUBMISSIONS_FILE, "w", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames)
-    writer.writeheader()
-    writer.writerows(submissions)
+    fieldnames = ["package_name","repo_full","submitter","issue_number","last_sha","last_version"]
+    with open(SUBMISSIONS_FILE, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(updated_rows)
 
-subprocess.run(["git", "config", "user.name", "Bioconductor Bot"])
-subprocess.run(["git", "config", "user.email", "bot@bioconductor.org"])
-subprocess.run(["git", "add", SUBMISSIONS_FILE])
-subprocess.run(["git", "commit", "-m", f"Update {PACKAGE_NAME} build info" if PACKAGE_NAME else "Update build info"])
-subprocess.run(["git", "push", "origin", branch])
+    subprocess.run(["git", "config", "user.name", "Bioconductor Bot"])
+    subprocess.run(["git", "config", "user.email", "bot@bioconductor.org"])
+    subprocess.run(["git", "add", SUBMISSIONS_FILE])
+    subprocess.run(["git", "commit", "-m", "Update build SHAs and versions"])
+    subprocess.run(["git", "push", "origin", branch])
+else:
+    print("[INFO] No updates detected; nothing to commit.")
