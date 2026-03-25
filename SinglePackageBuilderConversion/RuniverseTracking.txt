@@ -125,6 +125,7 @@ jobs:
       - name: Run Runiverse Build Tracker
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           SUBMISSIONS_FILE: submissions/submitted_packages.csv
           RUNIVERSE_WORKFLOW: "https://github.com/r-universe/tempbioc/actions/workflows/build.yml"
           PACKAGE_NAME: ${{ github.event.inputs.package_name || "" }}
@@ -133,13 +134,12 @@ jobs:
 
 
 ##  scripts/track_runiverse_build.py
-
-
 import os
 import csv
 import requests
 from datetime import datetime, timedelta
 import subprocess
+import re
 
 # ----------------------------
 # Environment
@@ -159,6 +159,16 @@ HEADERS = {
 # 10-minute cutoff
 # ----------------------------
 cutoff_dt = datetime.utcnow() - timedelta(minutes=10)
+
+# ----------------------------
+# Exact package matching 
+# ----------------------------
+def matches_package(text, pkg):
+    text_lower = text.lower()
+    pkg_lower = pkg.lower()
+
+    pattern = r'(?<![a-z0-9])' + re.escape(pkg_lower) + r'(?![a-z0-9])'
+    return re.search(pattern, text_lower) is not None
 
 # ----------------------------
 # Version helpers
@@ -184,10 +194,13 @@ def valid_z_bump(old, new):
 # ----------------------------
 def get_version_from_description(owner, repo, sha):
     url = f"https://raw.githubusercontent.com/{owner}/{repo}/{sha}/DESCRIPTION"
-    resp = requests.get(url)
-    if resp.status_code != 200:
-        print(f"[WARN] Could not fetch DESCRIPTION for {owner}/{repo}@{sha}")
+    try:
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        print(f"[WARN] Could not fetch DESCRIPTION for {owner}/{repo}@{sha}: {e}")
         return None
+
     for line in resp.text.splitlines():
         if line.startswith("Version:"):
             return line.split("Version:")[1].strip()
@@ -198,12 +211,14 @@ def get_version_from_description(owner, repo, sha):
 # ----------------------------
 def get_recent_workflow_runs():
     url = RUNIVERSE_WORKFLOW.replace(
-        "workflows/build.yml", 
+        "workflows/build.yml",
         "runs?branch=devel&event=push&status=completed&per_page=100"
     )
-    resp = requests.get(url, headers=HEADERS)
-    if resp.status_code != 200:
-        print(f"[WARN] Failed to fetch workflow runs: {resp.text}")
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=10)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        print(f"[WARN] Failed to fetch workflow runs: {e}")
         return []
 
     all_runs = resp.json().get("workflow_runs", [])
@@ -211,8 +226,10 @@ def get_recent_workflow_runs():
 
     for run in all_runs:
         run_time = datetime.strptime(run["created_at"], "%Y-%m-%dT%H:%M:%SZ")
+
         if run_time < cutoff_dt:
-            continue
+            break
+
         recent_runs.append(run)
 
     return recent_runs
@@ -233,27 +250,32 @@ if os.path.exists(SUBMISSIONS_FILE):
 # Map package -> latest run
 # ----------------------------
 recent_runs = get_recent_workflow_runs()
+
 latest_run_per_package = {}
+remaining_pkgs = set(csv_rows.keys())
 
 for run in recent_runs:
     run_name = run.get("name", "") or ""
     display_title = run.get("display_title", "") or ""
-    text = (run_name + " " + display_title).lower()
+    text = run_name + " " + display_title
 
-    # If PACKAGE_NAME input is set, only consider that
-    if PACKAGE_NAME and PACKAGE_NAME.lower() not in text:
+    if PACKAGE_NAME and PACKAGE_NAME.lower() not in text.lower():
         continue
 
     sha = run.get("head_sha")
     if not sha:
         continue
 
-    # Detect package name(s) from run text heuristically
-    # Keep only the first match in text
-    for pkg in csv_rows.keys():
-        if pkg.lower() in text:
-            if pkg not in latest_run_per_package:
-                latest_run_per_package[pkg] = {"sha": sha, "run_url": run["html_url"]}
+    for pkg in list(remaining_pkgs):
+        if matches_package(text, pkg):   # <-- ONLY CHANGE USED HERE
+            latest_run_per_package[pkg] = {
+                "sha": sha,
+                "run_url": run["html_url"]
+            }
+            remaining_pkgs.remove(pkg)
+
+    if not remaining_pkgs:
+        break
 
 # ----------------------------
 # Process only packages that had a run
@@ -261,10 +283,15 @@ for run in recent_runs:
 updated_rows = []
 changes_made = False
 
-for pkg, run_info in latest_run_per_package.items():
-    row = csv_rows.get(pkg)
-    if not row:
-        continue  # package not in CSV, skip
+GITHUB_REPOSITORY = os.environ["GITHUB_REPOSITORY"]
+queue_owner, queue_repo = GITHUB_REPOSITORY.split("/")
+
+for pkg, row in csv_rows.items():
+    run_info = latest_run_per_package.get(pkg)
+
+    if not run_info:
+        updated_rows.append(row)
+        continue
 
     sha = run_info["sha"]
     run_url = run_info["run_url"]
@@ -277,16 +304,17 @@ for pkg, run_info in latest_run_per_package.items():
         updated_rows.append(row)
         continue
 
+    if sha == last_sha:
+        updated_rows.append(row)
+        continue
+
     version = get_version_from_description(owner, repo, sha)
     if not version:
         updated_rows.append(row)
         continue
 
-    if sha == last_sha and version == last_version:
-        updated_rows.append(row)
-        continue
-
     if valid_z_bump(last_version, version):
+
         print(f"[INFO] {pkg}: New build detected {last_version} -> {version}")
         row["last_sha"] = sha
         row["last_version"] = version
@@ -294,21 +322,29 @@ for pkg, run_info in latest_run_per_package.items():
 
         issue_num = row.get("issue_number")
         if issue_num:
-            url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}/comments"
-            requests.post(url, headers=HEADERS, json={
-                "body": f"✅ New build detected for {pkg}, version {version}.\n"
-                        f"🔗 Detailed run: {run_url}\n"
-                        f"📊 Check summary table: https://tempbioc.r-universe.dev/{pkg}$checktable"
-            })
+            url = f"https://api.github.com/repos/{queue_owner}/{queue_repo}/issues/{issue_num}/comments"
+            try:
+                resp = requests.post(url, headers=HEADERS, json={
+                    "body": f"✅ New build detected for {pkg}, version {version}.\n"
+                            f"🔗 Detailed run: {run_url}\n"
+                            f"📊 Check summary table: https://tempbioc.r-universe.dev/{pkg}$checktable"
+                }, timeout=10)
+                resp.raise_for_status()
+            except requests.RequestException as e:
+                print(f"[ERROR] Failed to post success comment for {pkg}: {e}")
     else:
         print(f"[WARN] {pkg}: Version bump invalid ({last_version} -> {version})")
         issue_num = row.get("issue_number")
         if issue_num:
-            url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}/comments"
-            requests.post(url, headers=HEADERS, json={
-                "body": f"⚠️ Build detected for {pkg} with invalid version bump ({last_version} -> {version}). "
-                        f"Only z should increase; please correct version.\n"
-            })
+            url = f"https://api.github.com/repos/{queue_owner}/{queue_repo}/issues/{issue_num}/comments"
+            try:
+                resp = requests.post(url, headers=HEADERS, json={
+                    "body": f"⚠️ Build detected for {pkg} with invalid version bump ({last_version} -> {version}). "
+                            f"Only z should increase; please correct version.\n"
+                }, timeout=10)
+                resp.raise_for_status()
+            except requests.RequestException as e:
+                print(f"[ERROR] Failed to post warning comment for {pkg}: {e}")
 
     updated_rows.append(row)
 
