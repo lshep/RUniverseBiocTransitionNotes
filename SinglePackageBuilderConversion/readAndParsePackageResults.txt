@@ -1,0 +1,18 @@
+https://bioc.r-universe.dev/builds
+
+## In R 
+library(jsonlite)
+
+url <- "https://bioc.r-universe.dev/api/packages/BiocCheck"
+data <- fromJSON(url)
+
+
+## But be cautious of OS, versions, Hard failure during builds, bioccheck
+
+
+??  _failure removed
+
+
+url <- "https://bioc.r-universe.dev/api/packages/SingleMoleculeFootprinting"
+
+url <- "https://bioc.r-universe.dev/api/packages/OmnipathR"
