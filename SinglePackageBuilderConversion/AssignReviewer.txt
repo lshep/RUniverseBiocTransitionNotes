@@ -129,3 +129,58 @@ jobs:
           os.system(f'git add {state_file}')
           os.system(f'git commit -m "Update last assigned reviewer for {team}: {reviewer}" || echo "No changes to commit"')
           os.system('git push origin HEAD')
+
+
+
+
+
+
+# in precheck yml
+
+      - name: Run validation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SUBMISSIONS_PATH: submissions/submitted_packages.csv
+
+# in python
+
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
+EVENT_PATH = os.environ["GITHUB_EVENT_PATH"]
+REPO_FULL = os.environ["GITHUB_REPOSITORY"]
+
+
+    with open(EVENT_PATH) as f:
+        event = json.load(f)
+
+    action = event.get("action")
+    issue_body = event["issue"]["body"] or ""
+
+    org = "Bioconductor"
+    team_slug = "packagereviewers"
+
+    actor = event["sender"]["login"]
+
+    # ----------------------------
+    # Reopen restriction
+    # ----------------------------
+    if action == "reopened":
+        if not is_team_member(org, team_slug, actor):
+            close_issue()
+            post_comment(
+                "⚠️ Only members of the PackageReview team can reopen this issue. Issue closed again."
+            )
+            sys.exit(1)
+
+
+
+def is_team_member(org, team_slug, username):
+    """
+    Temporary override for local development.
+    Always returns True so team restrictions are bypassed.
+    url = f"https://api.github.com/orgs/{org}/teams/{team_slug}/memberships/{username}"
+    r = requests.get(url, headers=HEADERS)
+    return r.status_code == 200
+    """
+    return True
