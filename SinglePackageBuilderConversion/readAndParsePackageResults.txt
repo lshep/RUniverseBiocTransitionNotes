@@ -8,11 +8,114 @@ data <- fromJSON(url)
 
 
 ## But be cautious of OS, versions, Hard failure during builds, bioccheck
+##  _failure 
 
 
-??  _failure removed
-
+#
+# As of 3-30-26 
+#
+# Some hard failures: HilbertVisGUI, nearBynding, SingleMoleculeFootprinting
+#
 
 url <- "https://bioc.r-universe.dev/api/packages/SingleMoleculeFootprinting"
 
+
+#
+# Fails including source  OmnipathR, kissDE
+#
 url <- "https://bioc.r-universe.dev/api/packages/OmnipathR"
+
+
+
+
+
+
+#
+# python function 
+#
+
+import requests
+
+def parse_runiverse_build(pkg):
+    #url = f"https://tempbioc.r-universe.dev/{pkg}/json"
+    url = f"https://bioc.r-universe.dev/{pkg}/json"
+
+    try:
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+    except requests.RequestException as e:
+        print(f"[WARN] Failed to fetch runiverse JSON for {pkg}: {e}")
+        return {
+            "status": "unknown",
+            "message": None
+        }
+
+    # ----------------------------
+    # HARD FAILURE (highest priority)
+    # ----------------------------
+    failure_msg = data.get("_failure")
+    if failure_msg:
+        return {
+            "status": "error",
+            "message": failure_msg
+        }
+
+    # ----------------------------
+    # SUCCESS (no failure present)
+    # ----------------------------
+    return {
+        "status": "ok",
+        "message": None
+    }
+
+
+
+
+
+
+
+def parse_runiverse_build(pkg):
+
+    #url = f"https://tempbioc.r-universe.dev/api/packages/{pkg}"
+    url = f"https://bioc.r-universe.dev/api/packages/{pkg}"
+
+    try:
+        resp = requests.get(url, timeout=10)
+
+        if resp.status_code == 404:
+            return {
+                "status": "error",
+                "message": "Package not available (likely build failure)"
+            }
+
+        resp.raise_for_status()
+        data = resp.json()
+
+    except requests.RequestException as e:
+        print(f"[WARN] API fetch failed for {pkg}: {e}")
+        return {
+            "status": "unknown",
+            "message": None
+        }
+
+
+    # ----------------------------
+    # HARD FAILURE (highest priority)
+    # ----------------------------
+    failure_msg = data.get("_failure")
+        check_res = { "status": "ERROR",
+	              "build_url": failure_msg.get("buildurl")
+	            }	
+    
+    #
+    # 
+    #
+    check_table = data.get("_jobs")
+    build_url = data.get("_buildurl")
+
+    ## check_table[0].get("job")
+    ## {build_url}/job/              ## cat this and above for link
+    ## check_table[0].get("config")  # OS
+    ## check_table[0].get("r")       # R version
+    ## check_table[0].get("check")   # result
