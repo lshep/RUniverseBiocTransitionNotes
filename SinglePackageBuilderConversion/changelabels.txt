@@ -1,0 +1,76 @@
+# ----------------------------
+# GitHub Label Helpers
+# ----------------------------
+
+# Canonical labels
+STATUS_LABELS = {
+    "OK": "Build OK",
+    "WARNING": "Build Warning",
+    "ERROR": "Build Error",
+    "UNKNOWN": "Build Unknown"
+}
+
+def get_queue_owner_repo():
+    """Get queue_owner and queue_repo from GITHUB_REPOSITORY env."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    if "/" in repo:
+        return repo.split("/")
+    return None, None
+
+def update_labels(issue_number, status_list, headers=None):
+    """
+    Update GitHub issue labels based on R-universe status list.
+    
+    Args:
+        issue_number (int): Issue number to update.
+        status_list (list[str]): List of status strings (OK, WARNING, ERROR, UNKNOWN).
+        headers (dict): Optional headers (default uses HEADERS).
+    """
+    if headers is None:
+        headers = HEADERS
+
+    queue_owner, queue_repo = get_queue_owner_repo()
+    if not queue_owner or not queue_repo:
+        print("[WARN] Cannot determine queue_owner/queue_repo from environment")
+        return
+
+    # Map status_list to canonical labels
+    desired_labels = [STATUS_LABELS[s] for s in status_list if s in STATUS_LABELS]
+
+    # 1️⃣ Fetch current labels on the issue
+    url = f"https://api.github.com/repos/{queue_owner}/{queue_repo}/issues/{issue_number}"
+    try:
+        resp = requests.get(url, headers=headers, timeout=10)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        print(f"[ERROR] Failed to fetch issue #{issue_number}: {e}")
+        return
+
+    issue_data = resp.json()
+    current_labels = [lbl["name"] for lbl in issue_data.get("labels", [])]
+
+    # 2️⃣ Determine labels to add/remove
+    to_add = [lbl for lbl in desired_labels if lbl not in current_labels]
+    to_remove = [lbl for lbl in current_labels if lbl in STATUS_LABELS.values() and lbl not in desired_labels]
+
+    # 3️⃣ Add labels if needed
+    if to_add:
+        url_add = f"https://api.github.com/repos/{queue_owner}/{queue_repo}/issues/{issue_number}/labels"
+        try:
+            resp = requests.post(url_add, headers=headers, json={"labels": to_add}, timeout=10)
+            resp.raise_for_status()
+            print(f"[INFO] Added labels {to_add} to issue #{issue_number}")
+        except requests.RequestException as e:
+            print(f"[ERROR] Failed to add labels to issue #{issue_number}: {e}")
+
+    # 4️⃣ Remove labels if needed
+    for lbl in to_remove:
+        url_remove = f"https://api.github.com/repos/{queue_owner}/{queue_repo}/issues/{issue_number}/labels/{lbl}"
+        try:
+            resp = requests.delete(url_remove, headers=headers, timeout=10)
+            if resp.status_code in (200, 204):
+                print(f"[INFO] Removed label {lbl} from issue #{issue_number}")
+            else:
+                print(f"[WARN] Could not remove label {lbl} (status {resp.status_code})")
+        except requests.RequestException as e:
+            print(f"[ERROR] Failed to remove label {lbl} from issue #{issue_number}: {e}")
