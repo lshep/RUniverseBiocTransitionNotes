@@ -312,3 +312,60 @@ if __name__ == "__main__":
 
     repo_path = clone_and_push()
     update_registry(repo_path)
+
+
+
+
+
+
+##################
+# Update Messages
+##################
+
+
+            post_comment(f"ℹ️ Target repository **{GIT_TARGET_ORG}/{source_repo}** already exists and is not empty. Skipping clone/push.")
+        post_comment(f"✅ Cloned **{source_owner}/{source_repo}** → **{GIT_TARGET_ORG}/{source_repo}** (branch: `devel`)")
+
+            post_comment(f"ℹ️ Already registered: **{package_name}**")
+                post_comment(f"✅ Added **{package_name}** to registry.")
+
+## Update with something like:
+
+                f"✅ Cloned **{source_owner}/{source_repo}** → **{GIT_TARGET_ORG}/{source_repo}** (branch: `devel`).\n"
+               "- Your package is cloned to the Bioconductor new submission source repository\n"
+                "     If you want to push command line updates, you need to update your remotes:\n"
+		"       git remotes add tempbioc https://github.com/{GIT_TARGET_ORG}/{source_repo}\n"
+                "       git push tempbioc devel\n"
+                "     Bioconductor uses **devel** as its default branch.\n"
+		"     If you use a different branch (example: main) map branches:\n"
+		"       git push tempbioc main:devel\n"
+
+                f"ℹ️ Target repository **{GIT_TARGET_ORG}/{source_repo}** already exists and is not empty.\n"
+                "- Cloning is skipped to avoid overwriting existing content.\n\n\n"  
+                "- Your package is cloned to the Bioconductor new submission source repository\n"
+                "     If you want to push command line updates, you need to update your remotes:\n"
+		"       git remotes add tempbioc https://github.com/{GIT_TARGET_ORG}/{source_repo}\n"
+                "       git push tempbioc devel\n"
+                "     Bioconductor uses **devel** as its default branch.\n"
+		"     If you use a different branch (example: main) map branches:\n"
+		"       git push tempbioc main:devel\n"
+
+
+                f"✅ Added **{package_name}** to registry.\n\n"
+		" - Your package has been added to the Bioconductor new package submission r-universe.\n"
+                "    You will receive your first build report shortly.\n"
+		"    Please remember to push a valid version bump to tempbioc to receive rebuilds"
+
+                f"ℹ️ Already registered: **{package_name}**.\n\n"
+		" - Your package has been added to the Bioconductor new package submission r-universe.\n"
+                "    You will receive your build report shortly.\n"
+		"    Please remember to push a valid version bump to tempbioc to receive rebuilds"
+
+
+
+## Remove these comment only print for debugging 
+        post_comment(f"⚠️ Failed to add @{username}: {r.text}")
+        post_comment(f"✅ Added @{username} as collaborator with {permission} access")
+
+## All other failure status_code failures change to print rather than posting on
+   issue... 
