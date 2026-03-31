@@ -119,3 +119,343 @@ def parse_runiverse_build(pkg):
     ## check_table[0].get("config")  # OS
     ## check_table[0].get("r")       # R version
     ## check_table[0].get("check")   # result
+
+
+
+
+
+
+import requests
+
+def parse_runiverse_build(pkg):
+    url = f"https://bioc.r-universe.dev/api/packages/{pkg}"
+
+    try:
+        resp = requests.get(url, timeout=10)
+
+        if resp.status_code == 404:
+            return {
+                "status": "error",
+                "message": "Package not available (likely build failure)"
+            }
+
+        resp.raise_for_status()
+        data = resp.json()
+
+    except requests.RequestException as e:
+        print(f"[WARN] API fetch failed for {pkg}: {e}")
+        return {
+            "status": "unknown",
+            "message": None
+        }
+
+    # ----------------------------
+    # HARD FAILURE (highest priority)
+    # ----------------------------
+    failure_msg = data.get("_failure")
+    if failure_msg:
+        return {
+            "status": "ERROR",
+            "message": "Build failed before checks",
+            "build_url": failure_msg.get("buildurl")
+        }
+
+    # ----------------------------
+    # JOB TABLE PARSING
+    # ----------------------------
+    jobs = data.get("_jobs", [])
+    build_url = data.get("_buildurl")
+
+    rows = []
+
+    for job in jobs:
+        if "check" not in job:
+            continue
+
+        check = job.get("check") or {}
+
+        row = {
+            "platform": job.get("config"),
+            "r": job.get("r"),
+            "warnings": check.get("warnings", 0),
+            "errors": check.get("errors", 0),
+            "notes": check.get("notes", 0),
+            "ok": check.get("ok", False),
+            "time": job.get("time"),
+            "job_id": job.get("job") or job.get("id"),
+        }
+
+        rows.append(row)
+
+    if not rows:
+        return {
+            "status": "unknown",
+            "message": "No check jobs found"
+        }
+
+    # ----------------------------
+    # KEEP LATEST PER (platform, R)
+    # ----------------------------
+    latest = {}
+
+    for r in rows:
+        key = (r["platform"], r["r"])
+
+        if key not in latest or (r["time"] and r["time"] > latest[key]["time"]):
+            latest[key] = r
+
+    rows = list(latest.values())
+
+    # ----------------------------
+    # FORMAT STATUS
+    # ----------------------------
+    def format_status(r):
+        if r["errors"] > 0:
+            return "❌ ERROR"
+        elif r["warnings"] > 0:
+            return "⚠️ WARNING"
+        elif r["ok"]:
+            return "✅ OK"
+        else:
+            return "❓ UNKNOWN"
+
+    # ----------------------------
+    # BUILD MARKDOWN TABLE
+    # ----------------------------
+    header = "| Platform | R | Status | W | E | Notes | Logs |\n"
+    header += "|----------|---|--------|---|---|-------|------|\n"
+
+    lines = []
+
+    for r in sorted(rows, key=lambda x: (x["platform"], str(x["r"]))):
+        status = format_status(r)
+
+        job_url = None
+        if build_url and r["job_id"]:
+            job_url = f"{build_url}/job/{r['job_id']}"
+
+        link = f"[run]({job_url})" if job_url else ""
+
+        line = (
+            f"| {r['platform']} | {r['r']} | {status} | "
+            f"{r['warnings']} | {r['errors']} | {r['notes']} | {link} |"
+        )
+
+        lines.append(line)
+
+    table = header + "\n".join(lines)
+
+    return {
+        "status": "ok",
+        "message": table
+    }
+
+
+
+
+##################################3
+#
+# NEW replacement  
+#
+###################################
+
+def parse_runiverse_build(pkg, expected_sha=None):
+    import requests
+
+    url = f"https://bioc.r-universe.dev/api/packages/{pkg}"
+
+    try:
+        resp = requests.get(url, timeout=10)
+
+        if resp.status_code == 404:
+            return {
+                "status": "error",
+                "message": f"❌ Package `{pkg}` not available in R-universe (likely build failure)"
+            }
+
+        resp.raise_for_status()
+        data = resp.json()
+
+    except requests.RequestException as e:
+        print(f"[WARN] API fetch failed for {pkg}: {e}")
+        return {
+            "status": "unknown",
+            "message": f"⚠️ Could not fetch R-universe data for `{pkg}`"
+        }
+
+    build_url = data.get("_buildurl")
+
+    # ----------------------------
+    # HARD FAILURE (no jobs exist)
+    # ----------------------------
+    failure_msg = data.get("_failure")
+    if failure_msg:
+        fail_build_url = failure_msg.get("buildurl") or build_url
+
+        table = (
+            "| Platform | R | Status | Warnings | Errors | Notes | Logs |\n"
+            "|----------|---|--------|---|---|-------|------|\n"
+            f"| ❌ build | — | ❌ BUILD FAILED | — | — | — | "
+            f"{f'[run]({fail_build_url})' if fail_build_url else ''} |"
+        )
+
+        return {
+            "status": "ERROR",
+            "message": f"🚨 R-universe build failed for `{pkg}` (no check results available)\n\n{table}"
+        }
+
+    # ----------------------------
+    # PARSE JOBS
+    # ----------------------------
+    jobs = data.get("_jobs", [])
+    rows = []
+
+    for job in jobs:
+        if "check" not in job:
+            continue
+
+        # Prefer matching commit
+        if expected_sha:
+            if job.get("commit") != expected_sha:
+                continue
+
+        check = job.get("check") or {}
+
+        rows.append({
+            "platform": job.get("config"),
+            "r": job.get("r"),
+            "warnings": check.get("warnings", 0),
+            "errors": check.get("errors", 0),
+            "notes": check.get("notes", 0),
+            "ok": check.get("ok", False),
+            "time": job.get("time"),
+            "job_id": job.get("job") or job.get("id"),
+        })
+
+    # ----------------------------
+    # FALLBACK: no matching commit jobs
+    # ----------------------------
+    if expected_sha and not rows:
+        print(f"[WARN] No jobs found for commit {expected_sha}, falling back to latest per platform")
+
+        for job in jobs:
+            if "check" not in job:
+                continue
+
+            check = job.get("check") or {}
+
+            rows.append({
+                "platform": job.get("config"),
+                "r": job.get("r"),
+                "warnings": check.get("warnings", 0),
+                "errors": check.get("errors", 0),
+                "notes": check.get("notes", 0),
+                "ok": check.get("ok", False),
+                "time": job.get("time"),
+                "job_id": job.get("job") or job.get("id"),
+            })
+
+        # Deduplicate latest per (platform, R)
+        latest = {}
+        for r in rows:
+            key = (r["platform"], r["r"])
+            if key not in latest or (r["time"] and r["time"] > latest[key]["time"]):
+                latest[key] = r
+
+        rows = list(latest.values())
+
+    # ----------------------------
+    # NO JOBS AT ALL
+    # ----------------------------
+    if not rows:
+        table = (
+            "| Platform | R | Status | Warnings | Errors | Notes | URL |\n"
+            "|----------|---|--------|---|---|-------|------|\n"
+            "| ❓ unknown | — | ❓ NO DATA | — | — | — | — |"
+        )
+
+        return {
+            "status": "unknown",
+            "message": f"⚠️ No check results available for `{pkg}`\n\n{table}"
+        }
+
+    # ----------------------------
+    # FORMAT STATUS
+    # ----------------------------
+    def format_status(r):
+        if r["errors"] > 0:
+            return "❌ ERROR"
+        elif r["warnings"] > 0:
+            return "⚠️ WARNING"
+        elif r["ok"]:
+            return "✅ OK"
+        return "❓ UNKNOWN"
+
+    # ----------------------------
+    # BUILD TABLE
+    # ----------------------------
+    header = "| Platform | R | Status | Warnings | Errors | Notes | URL |\n"
+    header += "|----------|---|--------|---|---|-------|------|\n"
+
+    lines = []
+
+    overall_status = "OK"
+
+    for r in sorted(rows, key=lambda x: (str(x["platform"]), str(x["r"]))):
+        status = format_status(r)
+
+        # Track overall status
+        if "ERROR" in status:
+            overall_status = "ERROR"
+        elif "WARNING" in status and overall_status != "ERROR":
+            overall_status = "WARNING"
+
+        job_url = None
+        if build_url and r["job_id"]:
+            job_url = f"{build_url}/job/{r['job_id']}"
+
+        link = f"[run]({job_url})" if job_url else ""
+
+        lines.append(
+            f"| {r['platform']} | {r['r']} | {status} | "
+            f"{r['warnings']} | {r['errors']} | {r['notes']} | {link} |"
+        )
+
+    table = header + "\n".join(lines)
+
+    return {
+        "status": overall_status,
+        "message": f"📊 R-universe check results for `{pkg}`\n\n{table}"
+    }
+
+
+
+
+
+
+
+
+
+
+print(f"[DEBUG] Fetching R-universe results for {pkg} @ {run_info['sha']}")
+ru = parse_runiverse_build(pkg, expected_sha=run_info["sha"])
+
+issue_num = row.get("issue_number")
+if issue_num and ru.get("message"):
+    url = f"https://api.github.com/repos/{queue_owner}/{queue_repo}/issues/{issue_num}/comments"
+    try:
+        requests.post(url, headers=HEADERS, json={
+            "body": ru["message"]
+        }, timeout=10)
+    except requests.RequestException as e:
+        print(f"[ERROR] Failed to post R-universe results for {pkg}: {e}")
+
+
+
+
+### Append to already '
+body = (
+    f"✅ New build detected for {pkg}, version {version}.\n"
+    f"🔗 Detailed run: {run_url}\n\n"
+    f"{ru['message']}"
+)
