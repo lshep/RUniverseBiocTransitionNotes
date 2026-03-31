@@ -130,28 +130,16 @@ def parse_runiverse_build(pkg):
 #
 ###################################
 
-print(f"[DEBUG] Fetching R-universe results for {pkg} @ {run_info['sha']}")
-ru = parse_runiverse_build(pkg, expected_sha=run_info["sha"])
-
-
-### Append to already '
-body = (
-    f"✅ New build detected for {pkg}, version {version}.\n"
-    f"🔗 Detailed run: {run_url}\n\n"
-    f"{ru['message']}"
-)
-
-
-
-
 
 import requests
 
 def parse_runiverse_build(pkg):
     url = f"https://bioc.r-universe.dev/api/packages/{pkg}"
-
+    # f"https://tempbioc.r-universe.dev/api/packages/{pkg}"
+    
     try:
         resp = requests.get(url, timeout=10)
+        #resp = requests.get(url, headers=TEMP_BIOC_HEADERS, timeout=10)
         if resp.status_code == 404:
             return {
                 "status": "error",
