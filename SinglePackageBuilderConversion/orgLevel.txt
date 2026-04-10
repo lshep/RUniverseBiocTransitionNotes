@@ -1,0 +1,120 @@
+## No Devel Deletion, No Force Push
+{
+  "name": "protect-devel-no-force-push-admin-bypass",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/devel"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "bypass_actors": [
+    {
+      "actor_type": "RepositoryRole",
+      "actor_id": "admin"
+    }
+  ]
+}
+
+
+## No Devel Deletion
+{
+  "name": "protect-devel-prevent-deletion-only",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/devel"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    }
+  ]
+}
+
+
+
+
+
+
+Step-by-step in GitHub UI
+1. Go to Rulesets
+
+In your organization:
+
+    Settings → Code security and analysis → Rulesets
+    (or sometimes Settings → Rules → Rulesets depending on UI version)
+
+Click:
+
+👉 New ruleset → New branch ruleset
+2. Set scope
+
+    Target: Branch
+
+    Enforcement status: Active
+
+3. Choose repository scope
+
+Pick ONE of:
+Recommended (org-wide)
+
+    ☑ All repositories
+
+OR (safer for Bioconductor-style orgs):
+
+    ☑ Include repositories matching pattern (e.g. bioc-*)
+
+4. Branch targeting
+
+Set:
+
+    Branch name pattern:
+
+    devel
+
+This ensures:
+✔ only devel is affected
+✔ no impact on main, master, etc.
+5. Add rule: block force pushes
+
+Under “Rules”, enable:
+
+    ☑ Block force pushes
+
+(This corresponds to non_fast_forward in API terms)
+6. Add bypass for admins (important step)
+
+Find:
+
+    Bypass list / Bypass actors
+
+Click:
+
+👉 Add bypass actor
+
+Then choose:
+
+    Role: Repository admin
+
+This matches:
+
+"actor_type": "RepositoryRole",
+"actor_id": "admin"
+
+✔ allows repo admins to bypass force-push restriction
+✔ does NOT affect normal users
+7. Save ruleset
+
+Click:
+
+👉 Create ruleset
