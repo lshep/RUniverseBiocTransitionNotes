@@ -75,8 +75,8 @@ def parse_runiverse_build(pkg):
 def parse_runiverse_build(pkg):
     url = f"https://tempbioc.r-universe.dev/api/packages/{pkg}"
     build_clean = True
-    platforms_ok = ["source", "linux"]
-    platforms_warnings = ["bioccheck"]
+    platforms_ok = ["source"]
+    platforms_warnings = ["bioccheck","linux", "macos", "windows"]
     try:
         resp = requests.get(url, headers=TEMP_BIOC_HEADERS, timeout=10)
         if resp.status_code == 404:
