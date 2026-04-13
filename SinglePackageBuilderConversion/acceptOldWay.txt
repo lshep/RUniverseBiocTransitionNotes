@@ -189,11 +189,12 @@ def main():
 
 
 
-## Tasks to implement
+## Tasks to implement:
+## Helper to get package type based on biocViews
 ## Add to gitolite configuration based on package type
 ## Create BiocCredentials account
 ## Clone to git.bioconductor.org
-## Add to manifest
+## Add to manifest based on package type 
 ## Make DOI
 
 
