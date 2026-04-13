@@ -1,0 +1,13 @@
+Accept
+Label
+Only by package review team
+(Add to gitolite configuration based on package type)
+(Create BiocCredentials account)
+(Clone to git.bioconductor.org)
+Remove from tempbioc repo if cloned instead of transfer
+Remove from tempbioc registry
+Add to Manifest
+Make DOI
+Remove label review in progress
+Post Message
+Close issue
