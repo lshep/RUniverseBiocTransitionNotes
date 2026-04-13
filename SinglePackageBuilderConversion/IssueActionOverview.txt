@@ -8,21 +8,6 @@ Post Message
 Close issue
 
 
-Accept
-Label
-Only by package review team
-Clone/Transfer from tempbioc repo to official (github/git.bioconductor.org)
-Remove from tempbioc repo if cloned instead of transfer
-Remove from tempbioc registry
-Add to official Bioc devel registry
-Add collaborator to Bioc repo (if on github)
-?? Update Bioconductor manifest
-?? Stub for VIEWS
-Remove label review in progress
-Post Message
-Close issue
-
-
 Decline
 Label
 Only by PackageReivew Team
@@ -47,3 +32,29 @@ Post Message
 Reopen
 What happens if a package that made it past precheck and into review is
 reopened?? Do we need some specialized skips??
+
+
+
+Accept
+Label
+Only by package review team
+Clone/Transfer from tempbioc repo to official (github/git.bioconductor.org)
+Remove from tempbioc repo if cloned instead of transfer
+Remove from tempbioc registry
+Add to official Bioc devel registry
+Add collaborator to Bioc repo (if on github)
+?? Update Bioconductor manifest
+?? Stub for VIEWS
+Remove label review in progress
+Post Message
+Close issue
+
+
+
+What is current acceptance flow:
+(Add to gitolite configuration based on package type)
+(Create BiocCredentials account)
+(Clone to git.bioconductor.org)
+Add to Manifest
+Make DOI
+Close Issue
