@@ -72,86 +72,27 @@ def parse_runiverse_build(pkg):
 
 
 
-
-
-
 def parse_runiverse_build(pkg):
-
-    #url = f"https://tempbioc.r-universe.dev/api/packages/{pkg}"
-    url = f"https://bioc.r-universe.dev/api/packages/{pkg}"
-
+    url = f"https://tempbioc.r-universe.dev/api/packages/{pkg}"
+    build_clean = True
+    platforms_ok = ["source", "linux"]
+    platforms_warnings = ["bioccheck"]
     try:
-        resp = requests.get(url, timeout=10)
-
+        resp = requests.get(url, headers=TEMP_BIOC_HEADERS, timeout=10)
         if resp.status_code == 404:
             return {
-                "status": "error",
-                "message": "Package not available (likely build failure)"
-            }
-
-        resp.raise_for_status()
-        data = resp.json()
-
-    except requests.RequestException as e:
-        print(f"[WARN] API fetch failed for {pkg}: {e}")
-        return {
-            "status": "unknown",
-            "message": None
-        }
-
-
-    # ----------------------------
-    # HARD FAILURE (highest priority)
-    # ----------------------------
-    failure_msg = data.get("_failure")
-        check_res = { "status": "ERROR",
-	              "build_url": failure_msg.get("buildurl")
-	            }	
-    
-    #
-    # 
-    #
-    check_table = data.get("_jobs")
-    build_url = data.get("_buildurl")
-
-    ## check_table[0].get("job")
-    ## {build_url}/job/              ## cat this and above for link
-    ## check_table[0].get("config")  # OS
-    ## check_table[0].get("r")       # R version
-    ## check_table[0].get("check")   # result
-
-
-
-
-
-##################################3
-#
-# NEW replacement  
-#
-###################################
-
-
-import requests
-
-def parse_runiverse_build(pkg):
-    url = f"https://bioc.r-universe.dev/api/packages/{pkg}"
-    # f"https://tempbioc.r-universe.dev/api/packages/{pkg}"
-    
-    try:
-        resp = requests.get(url, timeout=10)
-        #resp = requests.get(url, headers=TEMP_BIOC_HEADERS, timeout=10)
-        if resp.status_code == 404:
-            return {
-                "status": "error",
-                "message": f"❌ Package `{pkg}` not available in R-universe (likely build failure)"
+                "status": ["ERROR"],
+                "message": f"❌ Package `{pkg}` not available in R-universe (likely build failure)",
+                "_build_clean": False
             }
         resp.raise_for_status()
         data = resp.json()
     except requests.RequestException as e:
         print(f"[WARN] API fetch failed for {pkg}: {e}")
         return {
-            "status": "unknown",
-            "message": f"⚠️ Could not fetch R-universe data for `{pkg}`"
+            "status": ["UNKNOWN"],
+            "message": f"⚠️ Could not fetch R-universe data for `{pkg}`",
+            "_build_clean": False
         }
 
     build_url = data.get("_buildurl")
@@ -167,16 +108,18 @@ def parse_runiverse_build(pkg):
             f"{f'[run]({fail_build_url})' if fail_build_url else ''} |"
         )
         return {
-            "status": "ERROR",
+            "status": ["ERROR"],
             "message": (
                 f"🚨 R-universe build failed for `{pkg}` "
                 f"(no check results available)\n\n{table}"
-            )
+            ),
+            "_build_clean": False
         }
 
     # PARSE JOBS
     jobs = data.get("_jobs", [])
     rows = []
+    platform_status = {}
 
     for job in jobs:
         if not isinstance(job, dict) or "check" not in job:
@@ -185,6 +128,8 @@ def parse_runiverse_build(pkg):
         status_str = str(job.get("check", "UNKNOWN")).upper()
         if status_str == "OK":
             status = "✅ OK"
+        elif status_str == "NOTE":
+            status = "ℹ️ NOTE"
         elif status_str == "WARNING":
             status = "⚠️ WARNING"
         elif status_str == "ERROR":
@@ -192,12 +137,27 @@ def parse_runiverse_build(pkg):
         else:
             status = "❓ UNKNOWN"
 
+        platform = str(job.get("config"))
+        platform_status[platform] = status_str
+
         rows.append({
-            "platform": job.get("config"),
+            "platform": platform,
             "r": job.get("r"),
             "status": status,
             "job_id": job.get("job") or job.get("artifact"),
         })
+
+    # CHECK BUILD CLEAN AFTER ALL JOBS
+    for plat, stat in platform_status.items():
+        stat_upper = stat.upper()
+        if any(ok in plat for ok in platforms_ok):
+            if stat_upper not in ["OK", "NOTE"]:
+                build_clean = False
+                print(f"[FAIL] Package {pkg} Platform {plat} expected OK or NOTE, got {stat}")
+        elif any(w in plat for w in platforms_warnings):
+            if stat_upper not in ["OK", "NOTE", "WARNING"]:
+                build_clean = False
+                print(f"[FAIL] Package {pkg} Platform {plat} expected OK, NOTE, or WARNING, got {stat}")
 
     # NO JOBS
     if not rows:
@@ -207,35 +167,38 @@ def parse_runiverse_build(pkg):
             "| ❓ unknown | — | ❓ NO DATA | — |"
         )
         return {
-            "status": "unknown",
-            "message": f"⚠️ No check results available for `{pkg}`\n\n{table}"
+            "status": ["UNKNOWN"],
+            "message": f"⚠️ No check results available for `{pkg}`\n\n{table}",
+            "_build_clean": False
         }
 
     # BUILD TABLE
     header = "| Platform | R | Status | URL |\n|----------|---|--------|------|\n"
     lines = []
-    overall_status = "OK"
+    unique_statuses = set()
 
     for r in sorted(rows, key=lambda x: (str(x["platform"]), str(x["r"]))):
         if "❌" in r["status"]:
-            overall_status = "ERROR"
-        elif "⚠️" in r["status"] and overall_status != "ERROR":
-            overall_status = "WARNING"
+            unique_statuses.add("ERROR")
+        elif "⚠️" in r["status"]:
+            unique_statuses.add("WARNING")
+        elif r["status"] == "❓ UNKNOWN":
+            unique_statuses.add("UNKNOWN")
+        elif r["status"] == "ℹ️ NOTE":
+            unique_statuses.add("NOTE")
+        else:
+            unique_statuses.add("OK")
 
         job_url = f"{build_url}/job/{r['job_id']}" if build_url and r["job_id"] else None
         link = f"[run]({job_url})" if job_url else ""
 
-        lines.append(
-            f"| {r['platform']} | {r['r']} | {r['status']} | {link} |"
-        )
+        lines.append(f"| {r['platform']} | {r['r']} | {r['status']} | {link} |")
 
     table = header + "\n".join(lines)
     return {
-        "status": overall_status,
-        "message": f"📊 R-universe check results for `{pkg}`\n\n{table}"
+        "status": sorted(unique_statuses),
+        "message": f"📊 R-universe check results for `{pkg}`\n\n{table}",
+        "_build_clean": build_clean
     }
-
-
-
 
 
