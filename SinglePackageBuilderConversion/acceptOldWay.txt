@@ -623,6 +623,9 @@ def main():
     # package type based on bioctype / biocViews
     # --------------------------------------------
     desc_text = get_description_file(owner, repo)
+    if not desc_text:
+        print("[ERROR] DESCRIPTION file not found — cannot proceed")
+        sys.exit(1)
     sqlite_path = "/tmp/biocViews.sqlite"
     download_biocviews_sqlite(sqlite_path)
     term_to_category = load_biocviews_vocab(sqlite_path)
@@ -646,11 +649,10 @@ def main():
     if warnings:
         print("\n".join(warnings))
 
-    valid_ids = evaluate_ids.get('primary_ids')
+    valid_ids = evaluate_ids.get('primary_ids') or [submitter]
 
 
 
-## gitolite before clone or clone before gitolite???
 
     # --------------------------------------------
     # Add to gitolite configuration with ids
