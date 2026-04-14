@@ -417,6 +417,114 @@ def bioc_credentials_lookup(github_id, maintainer_email, auth):
         "email_id": email_id_results,
         "conflict": conflict
     }
+
+
+
+def create_bioccredentials(username, email, auth):
+
+    url = f"{BIOC_CREDENTIALS_URL}query_users/{email}/{username}"
+    headers = {"Accept": "application/json"}
+    try:
+        print(f"[INFO] Creating BiocCredentials account for {username} ({email})")
+        r = requests.get(url, auth=auth, headers=headers, timeout=10)
+
+        if r.status_code == 200:
+            try:
+                data = r.json()
+                print(f"[INFO] BiocCredentials response: {data}")
+                return data
+            except ValueError:
+                print(f"[WARN] Non-JSON response: {r.text}")
+                return r.text
+        elif r.status_code == 400:
+            print(f"[WARN] Bad request when creating BiocCredentials: {r.text}")
+        elif r.status_code == 403:
+            print(f"[WARN] Unauthorized to create BiocCredentials")
+        else:
+            print(f"[WARN] Unexpected response ({r.status_code}): {r.text}")
+    except requests.RequestException as e:
+        print(f"[ERROR] Failed to create BiocCredentials: {e}")
+    return None
+
+
+def identity_resolution(submitter, res, metadata, auth):
+    github_id = res.get("github_id")
+    email_ids = res.get("email_id") or []
+    valid_email_ids = [x for x in email_ids if x]
+
+    warnings = []
+    primary_ids = set()
+
+    # Single or No Matches on Email
+    if len(valid_email_ids) <= 1:
+        email_id = valid_email_ids[0] if valid_email_ids else None
+
+        # if github_id found and a single email_id found
+        if github_id and email_id:
+
+            if github_id == email_id:
+                primary_ids.add(github_id)
+            else:
+                warnings.append(
+                    f"[WARN] Credential mismatch: github_id={github_id}, email_id={email_id}"
+                )
+                primary_ids.update([github_id, email_id])
+        # if github_id found but no email_id
+        elif github_id and not email_id:
+            primary_ids.add(github_id)
+            warnings.append(
+                f"[WARN] Maintainer email not found but submitter has credentials: github_id={github_id}"
+            )
+        # if email found but no github_id
+        elif email_id and not github_id:
+            primary_ids.add(email_id)
+            warnings.append(
+                f"[WARN] Maintainer email Credentials found with no github id. Consider adding to account or mismatch"
+            )
+            primary_ids.add(submitter)
+        else:
+            primary_ids.add(submitter)
+            warnings.append(
+                "[WARN] No BiocCredentials identity found. Creating BiocCredentials Account"
+            )
+            # Creating BiocCredentials Account
+            maintainer_emails = metadata.get("MaintainerEmail") or []
+            if isinstance(maintainer_emails, str):
+                maintainer_emails = [maintainer_emails]
+            email = maintainer_emails[0] if maintainer_emails else None
+            if email:
+                create_bioccredentials(submitter, email, auth)
+            else:
+                warnings.append(
+                    "[WARN] No Email found cannot create BiocCredential Account"
+                )
+    # Multiple Maintainer Emails Found
+    else:
+        # Add all valid maintainer ids
+        warnings.append(
+            f"[WARN] Multiple maintainers detected: {valid_email_ids}"
+        )
+        primary_ids.update(valid_email_ids)
+
+        # github_id found
+        if github_id:
+            primary_ids.add(github_id)
+            warnings.append(
+                f"[WARN] Id found in BiocCredentials: {github_id}, as well as multiple maintainers: {valid_email_ids}"
+            )
+        else:
+            warnings.append(
+                f"[WARN] Github id not found in BiocCredentials, but valid maintainer emails exist: {valid_email_ids}"
+            )
+            primary_ids.add(submitter)
+
+    return {
+        "primary_ids": sorted(primary_ids),
+        "warnings": warnings,
+    }
+
+
+
 # ----------------------------
 # TEMPBIOC CLEANUP
 # ----------------------------
@@ -532,6 +640,13 @@ def main():
         maintainer_email=metadata.get('MaintainerEmail'),
         auth=auth
     )
+    evaluate_ids = identity_resolution(submitter, res, metadata, auth)
+
+    warnings = evaluate_ids.get("warnings", [])
+    if warnings:
+        print("\n".join(warnings))
+
+    valid_ids = evaluate_ids.get('primary_ids')
 
 
 
