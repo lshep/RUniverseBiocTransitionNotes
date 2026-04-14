@@ -408,7 +408,7 @@ def bioc_credentials_lookup(github_id, maintainer_email, auth):
 
     if conflict:
         print(
-            "[WARN] BiocCredentials mismatch:",
+            "[WARN] BiocCredentials potential mismatch:",
             f"github_id={github_id_result}, email_ids={email_id_results}"
         )
 
@@ -641,4 +641,3 @@ Welcome to Bioconductor.
 
 if __name__ == "__main__":
     main()
-
