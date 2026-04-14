@@ -19,11 +19,15 @@ Close issue
 import os
 import json
 import requests
+from requests.auth import HTTPBasicAuth
 import subprocess
 import re
 import sys
 import base64
 import time
+import sqlite3
+from collections import Counter
+
 
 # --------------------------------------------
 # Environment
@@ -54,8 +58,16 @@ TEMP_BIOC_HEADERS = {
 }
 
 
+def bioc_credentials_auth():
+    return (
+    HTTPBasicAuth(
+        os.environ["BIOC_CREDENTIALS_USER"],
+        os.environ["BIOC_CREDENTIALS_PASSWORD"]
+    ))
+BIOC_CREDENTIALS_URL="https://git.bioconductor.org/BiocCredentials/api/biocusers/"
+
 # --------------------------------------------
-# Helper Functions
+# Helper Functions Issues / Labels / Org
 # --------------------------------------------
 def remove_label(issue_number, label):
     owner, repo = REPO_FULL.split("/")
@@ -88,6 +100,15 @@ def close_issue(issue_number):
     if r.status_code >= 300:
         print(f"[WARN] Failed to close issue: {r.status_code} {r.text}")
 
+def is_team_member(username):
+    url = f"https://api.github.com/orgs/{ORG_NAME}/teams/{TEAM}/memberships/{username}"
+    r = requests.get(url, headers=ORG_HEADERS)
+
+    return r.status_code == 200 and r.json().get("state") == "active"
+
+# --------------------------------------------
+# Helper Functions Parsing and Extracting
+# --------------------------------------------
 def extract_repo(issue_body):
     match = re.search(r"(?:https://github\.com/|git@github\.com:)([\w\-]+)/([\w\.\-]+)", issue_body)
     if not match:
@@ -95,13 +116,307 @@ def extract_repo(issue_body):
     owner, repo = match.group(1), match.group(2)
     return owner, repo
 
-def is_team_member(username):
-    url = f"https://api.github.com/orgs/{ORG_NAME}/teams/{TEAM}/memberships/{username}"
-    r = requests.get(url, headers=ORG_HEADERS)
 
-    return r.status_code == 200 and r.json().get("state") == "active"
+def get_description_file(owner, repo):
+    url = f"https://raw.githubusercontent.com/{owner}/{repo}/devel/DESCRIPTION"
+    try:
+        r = requests.get(url, headers=TEMP_BIOC_HEADERS, timeout=10)
+        r.raise_for_status()
+        return r.text
+    except requests.RequestException as e:
+        print(f"[ERROR] Failed to fetch DESCRIPTION for {repo}@devel: {e}")
+        return None
 
 
+def parse_description(desc_text):
+    # --------------------------------------------
+    # DCF parsing
+    # --------------------------------------------
+    fields = {}
+    current_key = None
+
+    for line in desc_text.splitlines():
+        if not line.strip():
+            continue
+
+        if ":" in line and not line.startswith((" ", "\t")):
+            key, value = line.split(":", 1)
+            current_key = key.strip()
+            fields[current_key] = value.strip()
+        else:
+            if current_key:
+                fields[current_key] += " " + line.strip()
+
+    f = {k.lower(): v for k, v in fields.items()}
+
+    # --------------------------------------------
+    # extract biocViews
+    # --------------------------------------------
+    bioc_views = []
+    if "biocviews" in f:
+        bioc_views = [x.strip() for x in f["biocviews"].split(",") if x.strip()]
+
+    # --------------------------------------------
+    # extract BiocType 
+    # --------------------------------------------
+    bioc_type = f.get("bioctype")
+
+    # --------------------------------------------
+    # Email helpers
+    # --------------------------------------------
+    def extract_all_emails(text):
+        if not text:
+            return []
+        return re.findall(r"[\w\.-]+@[\w\.-]+\.\w+", text)
+
+    emails = set()
+
+    # --------------------------------------------
+    # Maintainer field if present
+    # --------------------------------------------
+    if "maintainer" in f:
+        emails.update(extract_all_emails(f["maintainer"]))
+
+    # --------------------------------------------
+    # Authors@R if present
+    # --------------------------------------------
+    if "authors@r" in f:
+        authors = f["authors@r"]
+
+        # capture ONLY cre emails
+        cre_matches = re.findall(
+            r'person\([^)]*role\s*=\s*["\']cre["\'][^)]*email\s*=\s*"([^"]+)"',
+            authors
+        )
+
+        emails.update(cre_matches)
+
+        # fallback safety (rare malformed cases)
+        if not cre_matches:
+            emails.update(extract_all_emails(authors))
+
+    # --------------------------------------------
+    # All maintainer emails identified
+    # --------------------------------------------
+    maintainer_email = sorted(emails) if emails else None
+
+    return {
+        "biocViews": bioc_views,
+        "BiocType": bioc_type,
+        "MaintainerEmail": maintainer_email
+    }
+
+# --------------------------------------------
+# biocViews Helpers
+# --------------------------------------------
+def download_biocviews_sqlite(dest_path):
+    owner = "Bioconductor"
+    repo = "biocViews"
+    file_path = "inst/extdata/biocViewsVocab.sqlite"
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{file_path}"
+    r = requests.get(url, headers=ORG_HEADERS, timeout=30)
+
+    r.raise_for_status()
+    data = r.json()
+    content = base64.b64decode(data["content"])
+    with open(dest_path, "wb") as f:
+        f.write(content)
+    print(f"[INFO] Downloaded biocViews SQLite → {dest_path}")
+
+
+def load_biocviews_vocab(sqlite_path):
+    conn = sqlite3.connect(sqlite_path)
+    cur = conn.cursor()
+    cur.execute("SELECT edgeFrom, edgeTo FROM biocViews")
+    rows = cur.fetchall()
+    conn.close()
+
+    parent_map = {}
+    for parent, child in rows:
+        if parent and child:
+            parent_map[child] = parent
+    ROOTS = {
+        "Software",
+        "ExperimentData",
+        "AnnotationData",
+        "Workflow",
+        "Book"
+    }
+
+    def resolve_root(term):
+        seen = set()
+        while term and term not in ROOTS:
+            if term in seen:
+                return None
+            seen.add(term)
+            term = parent_map.get(term)
+        return term if term in ROOTS else None
+
+    term_to_category = {}
+    for term in parent_map.keys():
+        root = resolve_root(term)
+        if root:
+            term_to_category[term.lower()] = root
+    print(f"[INFO] Loaded {len(term_to_category)} biocViews mappings")
+    return term_to_category
+
+
+def determine_package_type(metadata, term_to_category):
+    bioc_type = metadata.get("BiocType")
+    bioc_views = metadata.get("biocViews", [])
+
+    # ----------------------------
+    # BiocType override 
+    # ----------------------------
+    if bioc_type:
+        bt = bioc_type.strip().lower()
+        if bt in {"software"}:
+            return "Software"
+        if bt in {"experimentdata", "experiment"}:
+            return "ExperimentData"
+        if bt in {"annotationdata", "annotation"}:
+            return "AnnotationData"
+        if bt in {"workflow"}:
+            return "Workflow"
+        if bt in {"book"}:
+            return "Book"
+        print(f"[WARN] Unknown BiocType '{bioc_type}', falling back to biocViews")
+
+    # ----------------------------
+    # Map biocViews
+    # ----------------------------
+    categories = []
+    for term in bioc_views:
+        if not term:
+            continue
+        cat = term_to_category.get(term.lower())
+        if cat:
+            categories.append(cat)
+        else:
+            print(f"[WARN] Unknown biocViews term: {term}")
+
+    # ----------------------------
+    # Fallback is Software
+    # ----------------------------
+    if not categories:
+        print("[WARN] No valid biocViews terms found → defaulting to Software")
+        return "Software"
+
+    # ----------------------------
+    # Determine from biocViews
+    # ----------------------------
+    counts = Counter(categories)
+    most_common = counts.most_common()
+    top_count = most_common[0][1]
+    top = [c for c, v in most_common if v == top_count]
+    if len(top) > 1:
+        print(f"[WARN] Tie in classification: {top} → defaulting to Software")
+        return "Software"
+    return top[0]
+
+# ----------------------------
+# BiocCredentials Helpers
+# ----------------------------
+def normalize_bioc_response(resp_json):
+    if resp_json is None:
+        return None
+    if isinstance(resp_json, str):
+        return resp_json.strip() or None
+    if isinstance(resp_json, dict):
+        return resp_json.get("github_id") or resp_json.get("id")
+    return None
+
+
+def bioc_credentials_lookup(github_id, maintainer_email, auth):
+    github_id_result = None
+    email_id_results = []
+    headers = {"Accept": "application/json"}
+
+    # --------------------------------------------
+    # GitHub ID lookup
+    # --------------------------------------------
+    if github_id:
+        url = f"{BIOC_CREDENTIALS_URL}query_by_github/{github_id}/"
+        try:
+            r = requests.get(url, auth=auth, headers=headers, timeout=10)
+            if r.ok:
+                try:
+                    data = r.json()
+                    github_id_result = normalize_bioc_response(data)
+                except ValueError:
+                    print(f"[WARN] Invalid JSON from GitHub lookup: {r.text}")
+        except requests.RequestException as e:
+            print(f"[WARN] GitHub credential lookup failed: {e}")
+
+    # --------------------------------------------
+    # Normalize maintainer_email → list
+    # --------------------------------------------
+    if maintainer_email:
+        if isinstance(maintainer_email, str):
+            maintainer_emails = [maintainer_email]
+        else:
+            maintainer_emails = list(maintainer_email)
+    else:
+        maintainer_emails = []
+
+    # --------------------------------------------
+    # Email lookups 
+    # --------------------------------------------
+    for email in maintainer_emails:
+        url = f"{BIOC_CREDENTIALS_URL}query_by_email/{email}/"
+
+        try:
+            r = requests.get(url, auth=auth, headers=headers, timeout=10)
+
+            if not r.ok:
+                print(f"[WARN] Email lookup failed ({email}) HTTP {r.status_code}")
+                email_id_results.append(None)
+                continue
+
+            try:
+                data = r.json()
+                email_id = normalize_bioc_response(data)
+
+                if email_id:
+                    print(f"[INFO] email {email} → {email_id}")
+                    email_id_results.append(email_id)
+                else:
+                    print(f"[INFO] email {email} → NOT FOUND")
+                    email_id_results.append(None)
+
+            except ValueError:
+                print(f"[WARN] Invalid JSON from email lookup ({email}): {r.text}")
+                email_id_results.append(None)
+
+        except requests.RequestException as e:
+            print(f"[WARN] Email credential lookup failed ({email}): {e}")
+            email_id_results.append(None)
+
+    # --------------------------------------------
+    # Conflict logic 
+    # --------------------------------------------
+    conflict = False
+    valid_email_ids = [x for x in email_id_results if x is not None]
+
+    if github_id_result and valid_email_ids:
+        if github_id_result not in valid_email_ids:
+            conflict = True
+
+    if len(valid_email_ids) > 1:
+        if len(set(valid_email_ids)) > 1:
+            conflict = True
+
+    if conflict:
+        print(
+            "[WARN] BiocCredentials mismatch:",
+            f"github_id={github_id_result}, email_ids={email_id_results}"
+        )
+
+    return {
+        "github_id": github_id_result,
+        "email_id": email_id_results,
+        "conflict": conflict
+    }
 # ----------------------------
 # TEMPBIOC CLEANUP
 # ----------------------------
@@ -170,6 +485,7 @@ def main():
     issue_body = issue.get("body") or ""
     label_name = event["label"]["name"]
     actor = event.get("sender", {}).get("login")
+    submitter = issue.get("user", {}).get("login")
 
     # --------------------------------------------
     # Only proceed if the label added is correct
@@ -187,7 +503,7 @@ def main():
         remove_label(issue_number, "package accepted")
         sys.exit(0)
 
-    # --------------------------------------------
+    # --------------- -----------------------------
     # extra repo
     # --------------------------------------------
     owner, repo = extract_repo(issue_body)
@@ -195,19 +511,61 @@ def main():
         repo = repo[:-4]
 
 
-## Tasks to implement:
-## Helper to get package type based on biocViews
-## Add to gitolite configuration based on package type
-## Create BiocCredentials account
-## Clone to git.bioconductor.org
-## Add to manifest based on package type 
-## Make DOI
+    # --------------------------------------------
+    # package type based on bioctype / biocViews
+    # --------------------------------------------
+    desc_text = get_description_file(owner, repo)
+    sqlite_path = "/tmp/biocViews.sqlite"
+    download_biocviews_sqlite(sqlite_path)
+    term_to_category = load_biocviews_vocab(sqlite_path)
+    metadata = parse_description(desc_text)
+    pkg_type = determine_package_type(metadata, term_to_category)
+    print(f"[INFO] Package type: {pkg_type}")    
+
+    # --------------------------------------------
+    # If needed create BiocCredentials account
+    #   Return id(s) to use in gitolite config
+    # --------------------------------------------
+    auth = bioc_credentials_auth()
+    res = bioc_credentials_lookup(
+        github_id=submitter,
+        maintainer_email=metadata.get('MaintainerEmail'),
+        auth=auth
+    )
+
+
+
+## gitolite before clone or clone before gitolite???
+
+    # --------------------------------------------
+    # Add to gitolite configuration with ids
+    #   and correct hook based on package type
+    # --------------------------------------------
+
+    ## TODO
+
+    # --------------------------------------------
+    # Clone to git.bioconductor.org
+    # --------------------------------------------
+
+    ## TODO
+
+    # --------------------------------------------
+    # Add to manifest based on package type
+    # --------------------------------------------
+
+    ## TODO
+
+    # --------------------------------------------
+    # Create DOI
+    # --------------------------------------------
+   
 
 
 ##
 ## Proceed with removing from temp
 ## ONLY if
-## gitlite, credentials, and clone ran without error
+## clone and manifest ran without error
 ##
 
     # --------------------------------------------
@@ -248,7 +606,30 @@ Congratulations! Your packages has been accepted to Bioconductor
 Your package has been removed from the new submission location and registry. 
 It has been added to the official Bioconductor devel system. 
 
-**Add additional information, commands, and comments**
+If you want to push command line updates, you need to update your remotes:
+```
+  git remote remove tempbioc
+  git remote add bioc git@git.bioconductor.org:packages/{repo_path.split('/')[-1]}
+  git push bioc devel
+```
+
+Bioconductor still uses **devel** as its default branch.
+If you use a different branch (example: main) map branches when pushing:
+``` 
+  git push bioc main:devel
+```
+Other useful documentation for pushing to git.bioconductor.org may be found
+[here](http://contributions.bioconductor.org/git-version-control.html#new-package-workflow)
+
+Currently we use ssh-keys for git.bioconductor.org access. To manage your keys
+and future access, activate your [BiocCredentials
+Account](https://git.bioconductor.org/BiocCredentials)
+
+Reminder:
+Packages must remain ERROR free to avoid deprecation and removal. It is your
+responsibility to check for ERRORs and to fix in a timely manner. The maintainer
+email in the DESCRIPTION should remain active for future communications and
+notifications. 
 
 Thank you for participating in the review process.
 Welcome to Bioconductor.
