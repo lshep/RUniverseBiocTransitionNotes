@@ -568,10 +568,22 @@ def clone_gitolite_admin(dest_dir):
         env=_git_env()
     )
 
+
+def build_gitolite_entry(repository, id_str, hook_suffix):
+    return [
+        f"repo packages/{repository}",
+        f"    RW devel = {id_str}",
+        "#    RW RELEASE_3_12 = {id_str}",
+        f"    option hook.pre-receive = pre-receive-hook-{hook_suffix}",
+        ""
+    ]
+
+
 def update_packages_conf(ids, repository, pkg_type, gitolite_dir):
     conf_path = os.path.join(gitolite_dir, "conf", "packages.conf")
     if not os.path.exists(conf_path):
         raise RuntimeError("packages.conf not found")
+
     type_map = {
         "Software": "software",
         "ExperimentData": "data-experiment",
@@ -579,22 +591,24 @@ def update_packages_conf(ids, repository, pkg_type, gitolite_dir):
         "Workflow": "workflows",
         "Book": "books"
     }
+
     type_str = type_map.get(pkg_type, "software")
     hook_suffix = "-software" if type_str == "software" else "-dataexp-workflow"
     id_str = " ".join(ids)
-    entry = f"""
-repo packages/{repository}
-    RW devel = {id_str}
-#    RW RELEASE_3_12 = {id_str}
-    option hook.pre-receive = pre-receive-hook{hook_suffix}
-"""
+
     print(f"[INFO] Adding gitolite entry for {repository}")
 
-    with open(conf_path, "a") as f:
-        f.write(entry)
+    with open(conf_path, "r") as f:
+        lines = f.read().splitlines()
+    while lines and lines[-1].strip() == "":
+        lines.pop()
+    if lines:
+        lines.append("")
+    lines.extend(build_gitolite_entry(repository, id_str, hook_suffix))
+    with open(conf_path, "w") as f:
+        f.write("\n".join(lines) + "\n")
 
     return True
-
 
 def commit_and_push_gitolite(gitolite_dir, repository, dry_run=False):
 
