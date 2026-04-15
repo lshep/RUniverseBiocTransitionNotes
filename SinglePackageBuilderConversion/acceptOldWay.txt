@@ -21,6 +21,8 @@ GITOLITE_ADMIN_REPO: git@git.bioconductor.org:gitolite-admin.git
   with:
     ssh-private-key: ${{ secrets.GITOLITE_SSH_KEY }}
 
+## Need to add github action secret for GITOLITE_SSH_KEY that is private key
+## that matches bioc-ci
 
 
 import os
