@@ -1000,7 +1000,7 @@ We appreicate your patience as we investigate
 ##
 ## Proceed with removing from temp
 ## ONLY if
-## clone and manifest ran without error
+## gitolite and clone ran without error
 ##
 
     # --------------------------------------------
