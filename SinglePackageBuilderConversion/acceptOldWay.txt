@@ -543,8 +543,12 @@ def _git_env():
     return env    
 
 def clone_gitolite_admin(dest_dir):
-    repo_url = os.environ.get["GITOLITE_ADMIN_REPO]
+    repo_url = os.environ.get("GITOLITE_ADMIN_REPO")
+    if not repo_url:
+        raise RuntimeError("GITOLITE_ADMIN_REPO is not set")
     if os.path.exists(dest_dir):
+        if not dest_dir.startswith("/tmp/"):
+            raise RuntimeError(f"Refusing to delete unsafe path: {dest_dir}")
         print(f"[INFO] Removing existing gitolite-admin clone at {dest_dir}")
         shutil.rmtree(dest_dir)
     print("[INFO] Cloning gitolite-admin...")
@@ -553,7 +557,6 @@ def clone_gitolite_admin(dest_dir):
         check=True,
         env=_git_env()
     )
-
 
 def update_packages_conf(ids, repository, pkg_type, gitolite_dir):
     conf_path = os.path.join(gitolite_dir, "conf", "packages.conf")
@@ -576,49 +579,39 @@ repo packages/{repository}
     option hook.pre-receive = pre-receive-hook{hook_suffix}
 """
     print(f"[INFO] Adding gitolite entry for {repository}")
+
     with open(conf_path, "a") as f:
         f.write(entry)
+
     return True
 
 
 def commit_and_push_gitolite(gitolite_dir, repository, dry_run=False):
-    cwd = os.getcwd()
-    os.chdir(gitolite_dir)
-    try:
-        subprocess.run(["git", "checkout", "master"], check=True, env=_git_env())
-        subprocess.run(["git", "pull", "origin", "master"], check=True, env=_git_env())
-        subprocess.run(["git", "config", "user.name", "bioc-ci"], check=True, env=_git_env())
-        subprocess.run(["git", "config", "user.email", "bioconductorcoreteam@gmail.com"], check=True, env=_git_env())
 
-        changed = subprocess.run(
-            ["git", "diff", "--quiet", "conf/packages.conf"],
-            env=_git_env()
-        )
-        if changed.returncode != 0:
-            subprocess.run(
-                ["git", "add", "conf/packages.conf"],
-                check=True,
-                env=_git_env()
-            )
-            subprocess.run(
-                ["git", "commit", "-m", f"Add package {repository}"],
-                check=True,
-                env=_git_env()
-            )
-            if not dry_run:
-                subprocess.run(
-                    ["git", "push", "origin", "master"],
-                    check=True,
-                    env=_git_env()
-                )
-                print("[INFO] Gitolite config pushed")
-            else:
-                print("[DRY RUN] Skipping push")
+    subprocess.run(["git", "checkout", "master"], check=True, cwd=gitolite_dir, env=_git_env())
+    subprocess.run(["git", "pull", "origin", "master"], check=True, cwd=gitolite_dir, env=_git_env())
+    subprocess.run(["git", "config", "user.name", "bioc-ci"], check=True, cwd=gitolite_dir, env=_git_env())
+    subprocess.run(["git", "config", "user.email", "bioconductorcoreteam@gmail.com"], check=True, cwd=gitolite_dir, env=_git_env())
+
+    changed = subprocess.run(
+        ["git", "diff", "--quiet", "conf/packages.conf"],
+        cwd=gitolite_dir,
+        env=_git_env()
+    )
+    
+    has_changes = changed.returncode != 0
+    if has_changes:
+        subprocess.run(["git", "add", "conf/packages.conf"], check=True, cwd=gitolite_dir, env=_git_env())
+        subprocess.run(["git", "commit", "-m", f"Add package {repository}"], check=True, cwd=gitolite_dir, env=_git_env())
+
+        if not dry_run:
+            subprocess.run(["git", "push", "origin", "master"], check=True, cwd=gitolite_dir, env=_git_env())
+            print("[INFO] Gitolite config pushed")
         else:
-            print("[INFO] No gitolite changes detected — skipping commit")
-    finally:
-        os.chdir(cwd)
-
+            print("[DRY RUN] Skipping push")
+    else:
+        print("[INFO] No gitolite changes detected — skipping commit")
+	
 
 def configure_gitolite(ids, repository, pkg_type, dry_run=False):
     gitolite_dir = "/tmp/gitolite-admin"
@@ -626,7 +619,63 @@ def configure_gitolite(ids, repository, pkg_type, dry_run=False):
     update_packages_conf(ids, repository, pkg_type, gitolite_dir)
     commit_and_push_gitolite(gitolite_dir, repository, dry_run)
 
+
+# -----------------------------------------------
+# CLONING TO Git@git.bioconductor.org Helpers
+# -----------------------------------------------
+
+def clone_github_repo(owner, repo, dest):
+    url = f"https://github.com/{owner}/{repo}.git"
+    if os.path.exists(dest):
+        if not dest.startswith("/tmp/"):
+            raise RuntimeError(f"Refusing to delete unsafe path: {dest}")
+        shutil.rmtree(dest)
+    subprocess.run(
+        ["git", "clone", "--single-branch", "--branch", "devel", url, dest],
+        check=True,
+        env=_git_env()
+    )
+
+def set_bioc_remote(repo_dir, repo_name):
+    bioc_url = f"git@git.bioconductor.org:packages/{repo_name}.git"
+    subprocess.run(
+        ["git", "remote", "remove", "origin"],
+        cwd=repo_dir,
+        check=False
+    )
+    subprocess.run(
+        ["git", "remote", "add", "origin", bioc_url],
+        cwd=repo_dir,
+        check=True
+    )
     
+def ensure_devel_branch(repo_dir):
+    subprocess.run(
+        ["git", "checkout", "-B", "devel"],
+        cwd=repo_dir,
+        check=True
+    )
+
+
+def push_to_bioc(repo_dir, dry_run=False):
+    if dry_run:
+        print("[DRY RUN] skipping push")
+        return
+
+    subprocess.run(
+        ["git", "push", "-u", "origin", "devel"],
+        cwd=repo_dir,
+        check=True,
+        env=_git_env()
+    )
+
+def transfer_to_git_bioc(owner, repo, dry_run=False):
+    tmp_clone = f"/tmp/{repo}"
+    clone_github_repo(owner, repo, tmp_clone)
+    ensure_devel_branch(tmp_clone)
+    set_bioc_remote(tmp_clone, repo)
+    push_to_bioc(tmp_clone, dry_run=dry_run)
+
 # ----------------------------
 # TEMPBIOC CLEANUP
 # ----------------------------
@@ -766,12 +815,31 @@ def main():
         print(f"[ERROR] Gitolite configuration failed: {e}")
         pipeline_success = False
 
+    if not pipeline_success:
+        closing_comment="""ERROR:
+There was an ERROR adding the package to the official repository configurations
+We appreicate your patience as we investigate
+"""
+        post_comment(issue_number, closing_comment)
+        sys.exit(1)
+
     # --------------------------------------------
     # Clone to git.bioconductor.org
     # --------------------------------------------
+    try:
+        transfer_to_git_bioc(owner, repo, dry_run=False)
+    except Exception as e:
+        print(f"[ERROR] Cloning to git.bioconductor.org failed: {e}")
+        pipeline_success = False
 
-    ## TODO
-
+    if not pipeline_success:
+        closing_comment="""ERROR:
+There was an ERROR cloning the package to the official repository
+We appreicate your patience as we investigate
+"""
+        post_comment(issue_number, closing_comment)
+        sys.exit(1)
+	
     # --------------------------------------------
     # Add to manifest based on package type
     # --------------------------------------------
@@ -821,9 +889,9 @@ def main():
     # --------------------------------------------
     # Post Comment and Close Issue
     # --------------------------------------------
-    closing_comment = """🏁 Package Accepted!
+    closing_comment = f"""🏁 Package Accepted!
 
-Congratulations! Your packages has been accepted to Bioconductor
+Congratulations! Your package has been accepted to Bioconductor
 
 Your package has been removed from the new submission location and registry. 
 It has been added to the official Bioconductor devel system. 
@@ -831,7 +899,7 @@ It has been added to the official Bioconductor devel system.
 If you want to push command line updates, you need to update your remotes:
 ```
   git remote remove tempbioc
-  git remote add bioc git@git.bioconductor.org:packages/{repo_path.split('/')[-1]}
+  git remote add bioc git@git.bioconductor.org:packages/{repo}
   git push bioc devel
 ```
 
