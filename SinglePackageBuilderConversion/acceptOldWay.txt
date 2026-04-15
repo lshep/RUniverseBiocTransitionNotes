@@ -593,7 +593,7 @@ def update_packages_conf(ids, repository, pkg_type, gitolite_dir):
     }
 
     type_str = type_map.get(pkg_type, "software")
-    hook_suffix = "-software" if type_str == "software" else "-dataexp-workflow"
+    hook_suffix = "software" if type_str == "software" else "dataexp-workflow"
     id_str = " ".join(ids)
 
     print(f"[INFO] Adding gitolite entry for {repository}")
@@ -710,7 +710,7 @@ def transfer_to_git_bioc(owner, repo, dry_run=False):
 
 def clone_manifest_repo(dest):
     repo_url = os.environ.get("MANIFEST_REPO")  # git@git.bioconductor.org:admin/manifest
-    if not MANIFEST_REPO:
+    if not repo_url:
         raise RuntimeError("MANIFEST_REPO is not set")
     manifest_dir = dest
     if os.path.exists(manifest_dir):
@@ -748,18 +748,6 @@ def add_package_to_manifest(manifest_dir, pkg_type, package):
     file_name = manifest_file_for_type(pkg_type)
     path = os.path.join(manifest_dir, file_name)
     os.makedirs(manifest_dir, exist_ok=True)
-    if manifest_has_package(path, package):
-        print(f"[INFO] {package} already in {file_name}")
-        return False
-    with open(path, "a") as f:
-        f.write(f"\nPackage: {package}\n")
-    print(f"[INFO] Added {package} to {file_name}")
-    return True
-
-def add_package_to_manifest(manifest_dir, pkg_type, package):
-    file_name = manifest_file_for_type(pkg_type)
-    path = os.path.join(manifest_dir, file_name)
-    os.makedirs(manifest_dir, exist_ok=True)
     if os.path.exists(path):
         with open(path, "r") as f:
             lines = f.read().splitlines()
@@ -779,7 +767,7 @@ def add_package_to_manifest(manifest_dir, pkg_type, package):
     print(f"[INFO] Added {package} to {file_name}")
     return True
 
-def commit_and_push_manifest(manifest_dir, package, dry_run=False):
+def commit_and_push_manifest(manifest_dir, package, pkg_type, dry_run=False):
     subprocess.run(
         ["git", "config", "user.name", "bioc-ci"],
         cwd=manifest_dir,
@@ -790,7 +778,8 @@ def commit_and_push_manifest(manifest_dir, package, dry_run=False):
         cwd=manifest_dir,
         check=True
     )
-    subprocess.run(["git", "add", "."], cwd=manifest_dir, check=True)
+    file_name = manifest_file_for_type(pkg_type)
+    subprocess.run(["git", "add", file_name], cwd=manifest_dir, check=True)
     diff = subprocess.run(
         ["git", "diff", "--cached", "--quiet"],
         cwd=manifest_dir
@@ -821,7 +810,7 @@ def update_manifest(pkg_type, repo, dry_run=False):
     changed = add_package_to_manifest(manifest_dir, pkg_type, repo)
     if not changed:
         return
-    commit_and_push_manifest(manifest_dir, repo, dry_run=dry_run)
+    commit_and_push_manifest(manifest_dir, repo, pkg_type, dry_run=dry_run)
 
 
 # ----------------------------
