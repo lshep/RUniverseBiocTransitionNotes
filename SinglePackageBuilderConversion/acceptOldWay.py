@@ -1,13 +1,13 @@
 Accept
 Label
 Only by package review team
-(Add to gitolite configuration based on package type)
 (Create BiocCredentials account)
+(Add to gitolite configuration based on package type)
 (Clone to git.bioconductor.org)
-Remove from tempbioc repo if cloned instead of transfer
-Remove from tempbioc registry
 Add to Manifest
 Make DOI
+Remove from tempbioc repo if cloned instead of transfer
+Remove from tempbioc registry
 Remove label review in progress
 Post Message
 Close issue
@@ -16,6 +16,12 @@ Close issue
 YML:
 GITOLITE_ADMIN_REPO: git@git.bioconductor.org:gitolite-admin.git
 MANIFEST_REPO: git@git.bioconductor.org:admin/manifest.git
+DATACITE_USERNAME = os.environ.get("DATACITE_USERNAME")
+DATACITE_PASSWORD = os.environ.get("DATACITE_PASSWORD")
+DATACITE_TESTING_USERNAME = os.environ.get("DATACITE_TESTING_USERNAME")
+DATACITE_TESTING_PASSWORD = os.environ.get("DATACITE_TESTING_PASSWORD")
+
+
 
 - name: Setup SSH
   uses: webfactory/ssh-agent@v0.9.0
@@ -38,6 +44,8 @@ import time
 import sqlite3
 from collections import Counter
 import shutil
+import requests
+from datetime import datetime
 
 
 # --------------------------------------------
@@ -960,7 +968,82 @@ def update_manifest(pkg_type, repo, dry_run=False):
 # DOI Helper
 # ----------------------------
 
+def normalize_authors(authors):
+    if not authors:
+        return []
 
+    if isinstance(authors, list):
+        return [a.strip() for a in authors if a.strip()]
+
+    # split on comma OR semicolon, but not inside parentheses etc.
+    return [a.strip() for a in re.split(r"[;,]", authors) if a.strip()]
+
+def generate_bioc_pkg_doi(pkg, authors, pubyear=None, event="publish", testing=True):
+
+    if event not in {"hide", "register", "publish"}:
+        raise ValueError("event must be 'hide', 'register', or 'publish'")
+
+    if pubyear is None:
+        pubyear = datetime.utcnow().year
+
+    if testing:
+        bioc_prefix = "10.82962"
+        base_url = "https://api.test.datacite.org/dois"
+        DATACITE_USERNAME = os.environ.get("DATACITE_TESTING_USERNAME")
+        DATACITE_PASSWORD = os.environ.get("DATACITE_TESTING_PASSWORD")
+    else:
+        bioc_prefix = "10.18129"
+        base_url = "https://api.datacite.org/dois"
+        DATACITE_USERNAME = os.environ.get("DATACITE_USERNAME")
+        DATACITE_PASSWORD = os.environ.get("DATACITE_PASSWORD")
+
+    bioc_namespace = "B9.bioc"
+    pkg_doi = f"{bioc_prefix}/{bioc_namespace}.{pkg}"
+
+    authors_list = normalize_authors(authors)
+
+    payload = {
+        "data": {
+            "id": f"https://doi.org/{pkg_doi}",
+            "doi": pkg_doi.upper(),
+            "attributes": {
+                "doi": pkg_doi,
+                "event": event,
+                "prefix": bioc_prefix,
+                "suffix": f"{bioc_namespace}.{pkg}",
+                "creators": [{"name": a} for a in authors_list],
+                "titles": [{"title": pkg}],
+                "url": f"https://bioconductor.org/packages/{pkg}",
+                "publisher": "Bioconductor",
+                "publicationYear": pubyear,
+                "types": {
+                    "resourceTypeGeneral": "Software"
+                }
+            }
+        }
+    }
+
+    auth = base64.b64encode(
+        f"{DATACITE_USERNAME}:{DATACITE_PASSWORD}".encode()
+    ).decode()
+
+    headers = {
+        "Authorization": f"Basic {auth}",
+        "Content-Type": "application/vnd.api+json",
+        "Accept": "application/vnd.api+json"
+    }
+
+    r = requests.post(base_url, headers=headers, json=payload, timeout=20)
+
+    if 200 <= r.status_code < 300:
+        return True
+    try:
+        error_body = r.json()
+    except Exception:
+        error_body = r.text
+
+    print(f"DOI creation failed: HTTP {r.status_code}\nResponse: {error_body}")
+    return False
 
 
 # ----------------------------
@@ -1144,21 +1227,31 @@ We appreicate your patience as we investigate
     # --------------------------------------------
     # Create DOI
     # --------------------------------------------
-   
 
+    try:
+        doi = generate_bioc_pkg_doi(
+            pkg=repo,
+            authors=metadata.get("Authors") or [submitter],
+            pubyear=datetime.utcnow().year,
+            testing=True
+        )
+    except Exception as e:
+        print(f"[ERROR] DOI Failure: {e}")
+        doi = False
 
-##
-## Proceed with removing from temp
-## ONLY if
-## gitolite and clone ran without error
-##
+    if doi:
+        print("[INFO] DOI Created")
 
     # --------------------------------------------
     # delete clone and from registry for SPB
     # --------------------------------------------
     if repo:
-        delete_temp_repo(repo)
-        remove_from_registry(repo)
+        if pipeline_success:
+            delete_temp_repo(repo)
+            remove_from_registry(repo)
+        else:
+            print("[WARN] Either gitolite configuration or cloning failed.")
+            print("[Skip] Skipping removal from SPB for debugging.")
     else:
         print(f"[WARN] Could not extract repo from issue body: {issue_number} ")
 
