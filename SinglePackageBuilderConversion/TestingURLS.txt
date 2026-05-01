@@ -6,7 +6,7 @@
 
 4. No description or vignette: https://github.com/lshep/BuildReportTriage
 
-5. Version 4.0.0 and ends in .git: https://github.com/lshep/sendplot.git
+5. Version 4.0.0 and ends in .git and no biocViews : https://github.com/lshep/sendplot.git
 
 6. vignette directory not found, repo/description dont match, version not right, includes remotes, and use git instead of https:
 git@github.com:lshep/testNewBranch.git
@@ -21,3 +21,7 @@ fail with Git LFS
 10. Passing: git@github.com:lshep/LoriPkgTest2.git
 
 11. Close as double submission: https://github.com/lshep/LoriPkgTest2
+
+12. Another passing git@github.com:lshep/LoriTestPkg5.git
+
+13. Another package https://github.com/lshep/LoriTestPkg4.git

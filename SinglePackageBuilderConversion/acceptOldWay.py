@@ -13,25 +13,80 @@ Post Message
 Close issue
 
 
-YML:
-GITOLITE_ADMIN_REPO: git@git.bioconductor.org:gitolite-admin.git
-MANIFEST_REPO: git@git.bioconductor.org:admin/manifest.git
-DATACITE_USERNAME = os.environ.get("DATACITE_USERNAME")
-DATACITE_PASSWORD = os.environ.get("DATACITE_PASSWORD")
-DATACITE_TESTING_USERNAME = os.environ.get("DATACITE_TESTING_USERNAME")
-DATACITE_TESTING_PASSWORD = os.environ.get("DATACITE_TESTING_PASSWORD")
+############
+# YML
+#############
 
+name: Accept Package
 
+on:
+  issues:
+    types: [labeled]
 
-- name: Setup SSH
-  uses: webfactory/ssh-agent@v0.9.0
-  with:
-    ssh-private-key: ${{ secrets.GITOLITE_SSH_KEY }}
+permissions:
+  issues: write
+  contents: write  
+
+jobs:
+  accept_package:
+    runs-on: ubuntu-latest
+
+    # Only run if the label added is "package accepted"
+    if: ${{ github.event.label.name == 'package accepted' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Ensure SQLite is available
+        run: python -c "import sqlite3; print(sqlite3.sqlite_version)"
+
+      - name: Ensure git is installed
+        run: git --version
+  
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.GITOLITE_SSH_KEY }}
+
+      - name: Accept Package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BIOC_ORG_TOKEN: ${{ secrets.BIOC_ORG_TOKEN }}
+          ORG_NAME: Bioconductor
+          TEAM_SLUG: packagereviewers    # GitHub team slug, always lowercase
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          TEMP_BIOC_TOKEN: ${{ secrets.TEMP_BIOC_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GIT_TARGET_ORG: "tempbioc"
+          GITOLITE_ADMIN_REPO: ${{ secrets.GITOLITE_ADMIN_REPO }}
+          MANIFEST_REPO: ${{ secrets.MANIFEST_REPO }}
+          DATACITE_USERNAME: ${{ secrets.DATACITE_USERNAME }}
+          DATACITE_PASSWORD: ${{ secrets.DATACITE_PASSWORD }}
+          DATACITE_TESTING_USERNAME: ${{ secrets.DATACITE_TESTING_USERNAME }}
+          DATACITE_TESTING_PASSWORD: ${{ secrets.DATACITE_TESTING_PASSWORD }}
+          BIOC_CREDENTIALS_USER: ${{ secrets.BIOC_CREDENTIALS_USER }}
+          BIOC_CREDENTIALS_PASSWORD: ${{ secrets.BIOC_CREDENTIALS_PASSWORD }}
+        run: python scripts/accept_package.py
+
 
 ## Need to add github action secret for GITOLITE_SSH_KEY that is private key
 ## that matches bioc-ci
 
-
+######################
+# accept_package.py
+######################
 import os
 import json
 import requests
@@ -44,7 +99,6 @@ import time
 import sqlite3
 from collections import Counter
 import shutil
-import requests
 from datetime import datetime
 
 
@@ -1139,6 +1193,9 @@ def main():
     if repo and repo.endswith(".git"):
         repo = repo[:-4]
 
+    if not owner or not repo:
+        print("[ERROR] Could not extract repository from issue body")
+        sys.exit(1)
 
     # --------------------------------------------
     # package type based on bioctype / biocViews
@@ -1188,7 +1245,7 @@ def main():
     if not pipeline_success:
         closing_comment="""ERROR:
 There was an ERROR adding the package to the official repository configurations
-We appreicate your patience as we investigate
+We appreciate your patience as we investigate
 """
         post_comment(issue_number, closing_comment)
         sys.exit(1)
@@ -1205,7 +1262,7 @@ We appreicate your patience as we investigate
     if not pipeline_success:
         closing_comment="""ERROR:
 There was an ERROR cloning the package to the official repository
-We appreicate your patience as we investigate
+We appreciate your patience as we investigate
 """
         post_comment(issue_number, closing_comment)
         sys.exit(1)
@@ -1220,7 +1277,7 @@ We appreicate your patience as we investigate
         print(f"[ERROR] Adding to Manifest failed: {e}")
         closing_comment="""ERROR:
 There was an ERROR adding the package to the manifest
-We appreicate your patience as we investigate
+We appreciate your patience as we investigate
 """
         post_comment(issue_number, closing_comment)
 
@@ -1241,9 +1298,15 @@ We appreicate your patience as we investigate
 
     if doi:
         print("[INFO] DOI Created")
+    else:
+        print("[WARN] DOI creation failed")
 
     # --------------------------------------------
     # delete clone and from registry for SPB
+    #   only if gitolite and clone successful
+    #   manifest and DOI do not need to be successful
+    #     those can be manually fixed
+    #     while package still building on daily
     # --------------------------------------------
     if repo:
         if pipeline_success:
@@ -1257,6 +1320,10 @@ We appreicate your patience as we investigate
 
     # --------------------------------------------
     # clean up labels
+    #    policies should be accepted so no need to check
+    #      awaiting policy acceptance
+    # keep policies-accepted on accepted packages
+    #    ensures that maintainer new policies when officially accepted
     # --------------------------------------------
     LABELS_TO_REMOVE = {
         "Build Error",
