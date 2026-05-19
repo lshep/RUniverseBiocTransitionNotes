@@ -125,16 +125,26 @@ def get_rulesets(repo_name):
     url = (f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets")
     r = requests.get(url, headers=BIOC_HEADERS)
     print(r.status_code)
-    print(r.text)
-
+    #print(r.text)
+    if r.status_code == 200:
+        return r.json()
+    return None
 
 get_rulesets("spbtest3")
 
 
-def delete_ruleset(repo_name, ruleset_id):
+def delete_ruleset(repo_name):
+    rulesets = get_rulesets(repo_name)
+    if not rulesets:
+        print("No rulesets found")
+        return
+    ruleset_id = rulesets[0]["id"]
     url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets/{ruleset_id}"
     r = requests.delete(url, headers=BIOC_HEADERS)
-    print(r.status_code, r.text)
+    if r.status_code == 204:
+        print(f"Deleted ruleset {ruleset_id}")
+    else:
+        print(f"Failed to delete ruleset: "
+              f"{r.status_code} {r.text}")
 
-
-delete_ruleset("spbtest3", 16451656)
+delete_ruleset("spbtest3")
