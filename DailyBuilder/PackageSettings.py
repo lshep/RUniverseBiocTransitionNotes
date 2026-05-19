@@ -91,9 +91,7 @@ def disallow_release_branch(repo_name):
             }
         },
         "rules": [
-            {"type": "creation"},
-            {"type": "update"},
-            {"type": "deletion"}
+            {"type": "creation"}
         ]
     }
     r = requests.post(url, headers=BIOC_HEADERS, json=data)
@@ -131,3 +129,12 @@ def get_rulesets(repo_name):
 
 
 get_rulesets("spbtest3")
+
+
+def delete_ruleset(repo_name, ruleset_id):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets/{ruleset_id}"
+    r = requests.delete(url, headers=BIOC_HEADERS)
+    print(r.status_code, r.text)
+
+
+delete_ruleset("spbtest3", 16451656)
