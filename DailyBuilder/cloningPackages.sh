@@ -34,7 +34,7 @@ while read pkg; do
         cd /home/lkern/BioconductorPackages/Syncing/ || exit
         git clone --mirror git@git.bioconductor.org:packages/$pkg.git
         cd "/home/lkern/BioconductorPackages/Syncing/$pkg" || continue
-        git remote set-url origin github git@github.com:bioconductor-source/$pkg.git
+        git remote set-url origin git@github.com:bioconductor-source/$pkg.git
         git push --mirror
     else
 	echo "ERROR $pkg already exists"
