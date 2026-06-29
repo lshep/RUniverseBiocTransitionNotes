@@ -141,6 +141,7 @@ rm -f "$tmp"
 ##
 
 
+
 files=(
   "all_software.txt:software"
   "all_data-experiment.txt:data-experiment"
@@ -153,20 +154,24 @@ BASE="/home/lkern/BioconductorPackages/Syncing"
 FAILURE_LOG="$BASE/failures_detected.txt"
 : > "$FAILURE_LOG"
 
-record_failure () {
+record_failure() {
     echo "$1" | tee -a "$FAILURE_LOG"
 }
 
 for entry in "${files[@]}"; do
     file="${entry%%:*}"
     topic="${entry##*:}"
-
-    pushd "$BASE" >/dev/null || exit 1
-
+    echo "===== $file : $topic =====" | tee -a "$FAILURE_LOG"
+    
+    sed 1d "/home/lkern/BioconductorPackages/PkgManagement/manifest/$file" |
+    sed 's/Package: //g' |
+    sed '/^\s*$/d' |
     while read pkg; do
 
+        cd "$BASE" || exit 1
+
         if [ -d "$pkg.git" ]; then
-            record_failure "$pkg: local repo already exists"
+            echo "$pkg: local repo already exists"
             continue
         fi
 
@@ -175,16 +180,16 @@ for entry in "${files[@]}"; do
             continue
         fi
 
-        if ! pushd "$pkg.git" >/dev/null; then
-            record_failure "$pkg: cannot enter repo dir"
+        cd "$pkg.git" || {
+            record_failure "$pkg: cannot enter repo directory"
             rm -rf "$BASE/$pkg.git"
             continue
-        fi
+        }
 
         if ! gh repo view "bioconductor-source/$pkg" >/dev/null 2>&1; then
             if ! gh repo create "bioconductor-source/$pkg" --public; then
                 record_failure "$pkg: repo creation failed"
-                popd >/dev/null
+                cd "$BASE" || exit 1
                 rm -rf "$BASE/$pkg.git"
                 continue
             fi
@@ -194,7 +199,7 @@ for entry in "${files[@]}"; do
 
         if ! git push --mirror; then
             record_failure "$pkg: push failed"
-            popd >/dev/null
+            cd "$BASE" || exit 1
             rm -rf "$BASE/$pkg.git"
             continue
         fi
@@ -205,21 +210,11 @@ for entry in "${files[@]}"; do
         gh repo edit "bioconductor-source/$pkg" --add-topic "bioc-r-package" \
             || record_failure "$pkg: topic add failed (bioc-r-package)"
 
-        popd >/dev/null
+        cd "$BASE" || exit 1
         rm -rf "$BASE/$pkg.git"
 
-    done < <(
-        sed 1d "/home/lkern/BioconductorPackages/PkgManagement/manifest/$file" |
-        sed 's/Package: //g' |
-        sed '/^\s*$/d'
-    )
-
-    popd >/dev/null
-
+    done
 done
-
-
-
 
 
 
