@@ -31,6 +31,12 @@ BIOC_HEADERS = {
 #  ruleset to exclude admins
 # ----------------------------
 
+
+# ----------------------------    
+## branch given:
+## branch cannot be deleted
+## normal pushes are allowed
+# ----------------------------    
 def protect_branch(repo_name, branch="devel"):
     url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches/{branch}/protection"
     data = {
@@ -76,9 +82,8 @@ def freeze_branch(repo_name, branch):
         print(f"✅ Branch '{branch}' is now frozen")
 
 #
-# Will this reliably prevent collaborators from creating a RELEASE_X_Y branch?
-#
-    
+# Blocks creation of new branch matching RELEASE_*
+#    
 def disallow_release_branch(repo_name):
     url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets"
     data = {
@@ -158,6 +163,9 @@ admin_force_push_devel_and_release("spbtest3")
 
 
 
+##
+## displays current branch protection settings 
+##
 def get_branch_protection(repo_name, branch):
     url = (f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches/{branch}/protection")
     r = requests.get(url, headers=BIOC_HEADERS)
@@ -169,6 +177,9 @@ def get_branch_protection(repo_name, branch):
 get_branch_protection("spbtest3", "devel")
 
 
+##
+## displays current rulesets
+##
 def get_rulesets(repo_name):
     url = (f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets")
     r = requests.get(url, headers=BIOC_HEADERS)
@@ -183,7 +194,9 @@ get_rulesets("spbtest3")
 
 
 
-
+##
+## delete all current rulesets
+##
 def delete_all_rulesets(repo_name):
     url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets"
     r = requests.get(url, headers=BIOC_HEADERS)
@@ -211,3 +224,35 @@ def delete_all_rulesets(repo_name):
 
 
 delete_rulesets("spbtest3")
+
+
+
+## ----------------------------
+##
+## Lifecycle of package
+##
+## ----------------------------
+
+# 
+# When a package is first created:
+#     devel is protected
+#     collaborator cannot delete devel
+#     collaborator cannot force push to devel
+#     administrators can force push devel
+#     collaborators cannot create future RELEASE_* branches
+#
+protect_branch(repo, "devel")
+disallow_release_branch(repo)
+admin_force_push_devel_and_release(repo)
+
+#
+# When there is a new release
+#   example: RELEASE_3_26
+#      
+#
+protect_branch(repo, "RELEASE_3_26")
+freeze_branch(repo, "RELEASE_3_26")
+
+##
+## Retro active will need to freeze each available
+##
