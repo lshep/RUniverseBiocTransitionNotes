@@ -141,12 +141,11 @@ rm -f "$tmp"
 ##
 
 
-
 files=(
-  "all_software.txt:software"
-  "all_data-experiment.txt:data-experiment"
-  "all_data-annotation.txt:data-annotation"
-  "all_workflows.txt:workflow"
+  "all_software.txt:bioc-software"
+  "all_data-experiment.txt:bioc-data-experiment"
+  "all_data-annotation.txt:bioc-data-annotation"
+  "all_workflows.txt:bioc-workflow"
 )
 
 BASE="/home/lkern/BioconductorPackages/Syncing"
@@ -216,6 +215,10 @@ for entry in "${files[@]}"; do
     done
 done
 
+## Topics: bioc-software, bioc-data-experiment, bioc-data-annotation,
+## bioc-workflow, bioc-book
+## r, bioconductor, bioc-package
+## https://github.com/topics/$
 
 
 
