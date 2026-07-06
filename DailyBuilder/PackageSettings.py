@@ -103,7 +103,6 @@ def disallow_release_branch(repo_name):
                 "bypass_mode": "always"
             }
         ],
-
         "rules": [
             {"type": "creation"}
         ]
@@ -256,3 +255,291 @@ freeze_branch(repo, "RELEASE_3_26")
 ##
 ## Retro active will need to freeze each available
 ##
+
+
+
+def get_branches(repo_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches?per_page=100"
+    r = requests.get(url, headers=BIOC_HEADERS)
+    if r.status_code == 404:
+        return None
+    if r.status_code != 200:
+        print(f"⚠️ Failed to retrieve branches for {repo_name}: "
+              f"{r.status_code} {r.text}")
+        return None
+    return [b["name"] for b in r.json()]
+
+
+
+
+## Test
+log(f"Repository: {repo}")
+branches = get_branches(repo)
+if branches is None:
+    log("  ✗ Repository not found")
+    log("")
+    continue
+    #
+    # Base protection
+    #
+if protect_branch(repo, "devel"):
+    log("  ✓ Protected: devel")
+else:
+    log("  ✗ FAILED: protect devel")
+if CURRENT_RELEASE in branches:
+    if protect_branch(repo, CURRENT_RELEASE):
+        log(f"  ✓ Protected: {CURRENT_RELEASE}")
+    else:
+        log(f"  ✗ FAILED: protect {CURRENT_RELEASE}")
+else:
+    log(f"  - Current release missing: {CURRENT_RELEASE}")
+if disallow_release_branch(repo):
+    log("  ✓ Applied RELEASE_* creation ruleset")
+else:
+    log("  ✗ FAILED: RELEASE_* creation ruleset")
+if admin_force_push_devel_and_release(repo):
+    log("  ✓ Applied admin-only force-push ruleset")
+else:
+    log("  ✗ FAILED: admin-only force-push ruleset")
+    #
+    # Freeze historical releases
+    #
+frozen = []
+for branch in branches:
+    if branch.startswith("RELEASE_") and branch != CURRENT_RELEASE:
+        if freeze_branch(repo, branch):
+            frozen.append(branch)
+        else:
+            log(f"  ✗ FAILED: freeze {branch}")
+if frozen:
+    for branch in frozen:
+        log(f"  ✓ Frozen: {branch}")
+else:
+    log("  - No historical RELEASE branches found")
+log("")
+
+
+
+###################################################################
+##
+##
+##
+##
+##
+##
+## Script to automate
+##
+##
+##
+##
+##
+###################################################################
+
+
+import requests
+
+def protect_branch(repo_name, branch="devel"):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches/{branch}/protection"
+    data = {
+        "required_status_checks": None,
+        "enforce_admins": True,
+        "required_pull_request_reviews": None,
+        "restrictions": None,
+        "allow_force_pushes": True,
+        "allow_deletions": False
+    }
+    r = requests.put(url, headers=BIOC_HEADERS, json=data)
+    if r.status_code not in [200]:
+        print(f"⚠️ Failed to protect branch: {repo_name} {branch} {r.status_code} {r.text}")
+        return False
+    else:
+        print(f"✅ {branch} protection applied")
+        return True
+
+
+def freeze_branch(repo_name, branch):
+    url = (f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches/{branch}/protection")
+    data = {
+        "required_status_checks": None,
+        "enforce_admins": True,
+        "required_pull_request_reviews": None,
+        "restrictions": None,
+        "required_linear_history": False,
+        "allow_force_pushes": False,
+        "allow_deletions": False,
+        "block_creations": True,
+        "required_conversation_resolution": False,
+        "lock_branch": True,
+        "allow_fork_syncing": False
+    }
+    r = requests.put(url, headers=BIOC_HEADERS, json=data)
+    if r.status_code != 200:
+        print(f"⚠️ Failed to freeze branch '{branch}': {r.status_code} {r.text}")
+        return False
+    else:
+        print(f"✅ Branch '{branch}' is now frozen")
+        return True
+
+
+def disallow_release_branch(repo_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets"
+    data = {
+        "name": "Disallow non-admin RELEASE branches",
+        "target": "branch",
+        "enforcement": "active",
+        "conditions": {
+            "ref_name": {
+                "include": ["refs/heads/RELEASE_*"],
+                "exclude": []
+            }
+        },
+        "bypass_actors": [
+            {
+                "actor_type": "RepositoryRole",
+                "actor_id": 5,
+                "bypass_mode": "always"
+            }
+        ],
+        "rules": [
+            {"type": "creation"}
+        ]
+    }
+    r = requests.post(url, headers=BIOC_HEADERS, json=data)
+    if r.status_code not in [200, 201]:
+        print(f"⚠️ Failed: {repo_name} {r.status_code} {r.text}")
+        return False
+    else:
+        print(f"✅ RELEASE ruleset applied for {repo_name}")
+        return True
+
+
+def admin_force_push_devel_and_release(repo_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/rulesets"
+    data = {
+        "name": "Admin-only force push (devel + RELEASE)",
+        "target": "branch",
+        "enforcement": "active",
+        "conditions": {
+            "ref_name": {
+                "include": [
+                    "refs/heads/devel",
+                    "refs/heads/RELEASE_*"
+                ],
+                "exclude": []
+            }
+        },
+        "bypass_actors": [
+            {
+                "actor_type": "RepositoryRole",
+                "actor_id": 5,   
+                "bypass_mode": "always"
+            }
+        ],
+        "rules": [
+            {
+                "type": "non_fast_forward"
+            }
+        ]
+    }
+    r = requests.post(url, headers=BIOC_HEADERS, json=data)
+    if r.status_code not in [200, 201]:
+        print(f"⚠️ Failed ruleset: {repo_name} {r.status_code} {r.text}")
+        return False
+    else:
+        print(f"✅ Admin-only force push applied (devel + RELEASE_*)")
+        return True
+
+
+    
+def get_branches(repo_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches?per_page=100"
+    r = requests.get(url, headers=BIOC_HEADERS)
+    if r.status_code == 404:
+        return None
+    if r.status_code != 200:
+        print(f"⚠️ Failed to retrieve branches for {repo_name}: "
+              f"{r.status_code} {r.text}")
+        return None
+    return [b["name"] for b in r.json()]
+
+
+    
+BIOC_ORG="bioconductor-source"
+BIOC_TOKEN = os.environ["BIOC_TOKEN"]
+
+BIOC_HEADERS = {
+    "Authorization": f"Bearer {BIOC_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+CURRENT_RELEASE = "RELEASE_3_23"
+
+MANIFEST = "/home/lkern/BioconductorPackages/PkgManagement/manifest/all_workflows.txt"
+LOGFILE = "/home/lkern/BioconductorPackages/Syncing/workflow_protection.txt"
+
+
+def log(msg):
+    with open(LOGFILE, "a") as out:
+        out.write(msg + "\n")
+
+
+with open(LOGFILE, "w") as out:
+    out.write("Workflow branch protection\n")
+    out.write("==========================\n\n")
+
+
+with open(MANIFEST) as f:
+    repos = [line.strip() for line in f if line.strip()]
+
+
+    
+for repo in repos:
+    log(f"Repository: {repo}")
+    branches = get_branches(repo)
+    if branches is None:
+        log("  ✗ Repository not found")
+        log("")
+        continue
+    #
+    # Base protection
+    #
+    if protect_branch(repo, "devel"):
+        log("  ✓ Protected: devel")
+    else:
+        log("  ✗ FAILED: protect devel")
+    if CURRENT_RELEASE in branches:
+        if protect_branch(repo, CURRENT_RELEASE):
+            log(f"  ✓ Protected: {CURRENT_RELEASE}")
+        else:
+            log(f"  ✗ FAILED: protect {CURRENT_RELEASE}")
+    else:
+        log(f"  - Current release missing: {CURRENT_RELEASE}")
+    if disallow_release_branch(repo):
+        log("  ✓ Applied RELEASE_* creation ruleset")
+    else:
+        log("  ✗ FAILED: RELEASE_* creation ruleset")
+    if admin_force_push_devel_and_release(repo):
+        log("  ✓ Applied admin-only force-push ruleset")
+    else:
+        log("  ✗ FAILED: admin-only force-push ruleset")
+    #
+    # Freeze historical releases
+    #
+    frozen = []
+    for branch in branches:
+        if branch.startswith("RELEASE_") and branch != CURRENT_RELEASE:
+            if freeze_branch(repo, branch):
+                frozen.append(branch)
+            else:
+                log(f"  ✗ FAILED: freeze {branch}")
+    if frozen:
+        for branch in frozen:
+            log(f"  ✓ Frozen: {branch}")
+    else:
+        log("  - No historical RELEASE branches found")
+    log("")
+
+
+
+
+    
