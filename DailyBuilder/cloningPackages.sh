@@ -162,7 +162,7 @@ for entry in "${files[@]}"; do
     topic="${entry##*:}"
     echo "===== $file : $topic =====" | tee -a "$FAILURE_LOG"
     
-    sed 1d "/home/lkern/BioconductorPackages/PkgManagement/manifest/$file" |
+    cat "/home/lkern/BioconductorPackages/PkgManagement/manifest/$file" |
     sed 's/Package: //g' |
     sed '/^\s*$/d' |
     while read pkg; do
@@ -206,10 +206,17 @@ for entry in "${files[@]}"; do
         gh repo edit "bioconductor-source/$pkg" --add-topic "$topic" \
             || record_failure "$pkg: topic add failed ($topic)"
 
-        gh repo edit "bioconductor-source/$pkg" --add-topic "bioc-r-package" \
-            || record_failure "$pkg: topic add failed (bioc-r-package)"
+        gh repo edit "bioconductor-source/$pkg" --add-topic "bioc-package" \
+            || record_failure "$pkg: topic add failed (bioc-package)"
 
-        cd "$BASE" || exit 1
+        gh repo edit "bioconductor-source/$pkg" --add-topic "r" \
+            || record_failure "$pkg: topic add failed (r)"
+
+        gh repo edit "bioconductor-source/$pkg" --add-topic "bioconductor" \
+            || record_failure "$pkg: topic add failed (bioconductor)"
+
+
+	cd "$BASE" || exit 1
         rm -rf "$BASE/$pkg.git"
 
     done
@@ -231,7 +238,7 @@ done
 
 #pkg="BiocMaintainerApp"
 pkg="AnnotationHub"
-ttopic="software"
+topic="bioc-software"
 
 BASE="/home/lkern/BioconductorPackages/Syncing"
 
@@ -268,5 +275,7 @@ git push --mirror
 # 5. Add topic
 echo "Adding topic: $topic"
 gh repo edit "bioconductor-source/$pkg" --add-topic "$topic"
-
+gh repo edit "bioconductor-source/$pkg" --add-topic "bioc-package"
+gh repo edit "bioconductor-source/$pkg" --add-topic "r"
+gh repo edit "bioconductor-source/$pkg" --add-topic "bioconductor"
 echo "DONE"
