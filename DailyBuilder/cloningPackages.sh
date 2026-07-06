@@ -140,6 +140,10 @@ rm -f "$tmp"
 ##    first to crete repos that have not been initilized yet
 ##
 
+SAFE_SLEEP=1.2
+safe_sleep() {
+    sleep "$SAFE_SLEEP"
+}
 
 files=(
   "all_software.txt:bioc-software"
@@ -185,7 +189,9 @@ for entry in "${files[@]}"; do
             continue
         }
 
+        safe_sleep
         if ! gh repo view "bioconductor-source/$pkg" >/dev/null 2>&1; then
+            safe_sleep
             if ! gh repo create "bioconductor-source/$pkg" --public; then
                 record_failure "$pkg: repo creation failed"
                 cd "$BASE" || exit 1
@@ -203,15 +209,19 @@ for entry in "${files[@]}"; do
             continue
         fi
 
+        safe_sleep
         gh repo edit "bioconductor-source/$pkg" --add-topic "$topic" \
             || record_failure "$pkg: topic add failed ($topic)"
 
+        safe_sleep
         gh repo edit "bioconductor-source/$pkg" --add-topic "bioc-package" \
             || record_failure "$pkg: topic add failed (bioc-package)"
 
+        safe_sleep
         gh repo edit "bioconductor-source/$pkg" --add-topic "r" \
             || record_failure "$pkg: topic add failed (r)"
 
+        safe_sleep
         gh repo edit "bioconductor-source/$pkg" --add-topic "bioconductor" \
             || record_failure "$pkg: topic add failed (bioconductor)"
 
