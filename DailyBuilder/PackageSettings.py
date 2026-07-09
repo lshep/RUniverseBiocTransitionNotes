@@ -250,7 +250,8 @@ delete_rulesets("spbtest3")
 protect_branch(repo, "devel")
 disallow_release_branch(repo)
 admin_force_push_devel_and_release(repo)
-
+disable_actions(repo)
+ 
 #
 # When there is a new release
 #   example: RELEASE_3_26
@@ -701,6 +702,19 @@ def admin_force_push_devel_and_release(repo_name):
         return True
 
 
+def disable_actions(repo_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/actions/permissions"
+    data = {
+        "enabled": False
+    }
+    r = github_request("PUT", url, json=data)
+    if r.status_code == 204:
+        print(f"✅ Disabled GitHub Actions for {repo_name}")
+        return True
+    else:
+        print(f"⚠️ Failed to disable Actions: {repo_name} {r.status_code} {r.text}")
+        return False
+
     
 def get_branches(repo_name):
     url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/branches?per_page=100"
@@ -774,6 +788,13 @@ for repo in repos:
         log("  ✓ Applied admin-only force-push ruleset")
     else:
         log("  ✗ FAILED: admin-only force-push ruleset")
+    #
+    # Disable Actions
+    #
+    if disable_actions(repo):
+        log("  ✓ Disabled GitHub Actions")
+    else:
+        log("  ✗ FAILED: disable GitHub Actions")
     #
     # Freeze historical releases
     #

@@ -140,6 +140,13 @@ rm -f "$tmp"
 ##    first to crete repos that have not been initilized yet
 ##
 
+
+## unset GITHUB_TOKEN
+## unset GH_TOKEN
+## gh auth logout
+## gh auth login 
+
+
 SAFE_SLEEP=1.2
 safe_sleep() {
     sleep "$SAFE_SLEEP"
