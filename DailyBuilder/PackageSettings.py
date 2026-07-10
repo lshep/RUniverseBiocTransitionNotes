@@ -857,4 +857,56 @@ for repo in repos:
 
 
 
+
+
+
+def set_default_branch_devel(repo_name):
+    branches = get_branches(repo_name)
+    if branches is None:
+        print(f"⚠️ Repository not found: {repo_name}")
+        return False
+    if "devel" not in branches:
+        print(f"⚠️ No devel branch: {repo_name}")
+        return False
+    #
+    # Set default branch
+    #
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}"
+    data = {
+        "default_branch": "devel"
+    }
+    r = github_request("PATCH", url, json=data)
+    if r.status_code != 200:
+        print(f"⚠️ Failed to set default branch for {repo_name}: "
+              f"{r.status_code} {r.text}")
+        return False
+    print(f"✅ Default branch set to devel: {repo_name}")
+    return True
+
+
     
+MANIFEST = "/home/lkern/BioconductorPackages/PkgManagement/manifest/all_workflows.txt"
+LOGFILE = "/home/lkern/BioconductorPackages/Syncing/workflow_protection.txt"
+
+
+def log(msg):
+    with open(LOGFILE, "a") as out:
+        out.write(msg + "\n")
+
+
+with open(LOGFILE, "w") as out:
+    out.write("Workflow branch protection\n")
+    out.write("==========================\n\n")
+
+
+with open(MANIFEST) as f:
+    repos = [line.strip() for line in f if line.strip()]
+
+
+for repo in repos:
+    time.sleep(0.5)
+    log(f"Repository: {repo}")
+    if set_default_branch_devel(repo):
+        log("  ✓ Default branch set to devel")
+    else:
+        log("  ✗ FAILED: set default branch devel")
