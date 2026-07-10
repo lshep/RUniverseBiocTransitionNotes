@@ -728,7 +728,31 @@ def get_branches(repo_name):
     return [b["name"] for b in r.json()]
 
 
-    
+
+def get_workflows(repo_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/actions/workflows"
+    r = github_request("GET", url)
+    if r.status_code == 404:
+        return None
+    if r.status_code != 200:
+        print(f"⚠️ Failed to retrieve workflows for {repo_name}: "
+              f"{r.status_code} {r.text}")
+        return None
+    return r.json()["workflows"]
+
+
+def disable_workflow(repo_name, workflow_id, workflow_name):
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}/actions/workflows/{workflow_id}/disable"
+    r = github_request("PUT", url)
+    if r.status_code == 204:
+        print(f"✅ Disabled workflow '{workflow_name}'")
+        return True
+    print(f"⚠️ Failed to disable workflow '{workflow_name}': "
+          f"{repo_name} {r.status_code} {r.text}")
+    return False
+
+
+
 BIOC_ORG="bioconductor-source"
 BIOC_TOKEN = os.environ["BIOC_TOKEN"]
 
@@ -810,6 +834,24 @@ for repo in repos:
             log(f"  ✓ Frozen: {branch}")
     else:
         log("  - No historical RELEASE branches found")
+    #
+    # Disable all active workflows
+    #
+    workflows = get_workflows(repo)
+    if workflows is None:
+        log("  - Unable to retrieve workflows")
+    elif len(workflows) == 0:
+        log("  - No workflows found")
+    else:
+        for wf in workflows:
+#            if wf["state"] != "disabled_manually":
+            if wf["state"] == "active":
+                 if disable_workflow(repo,
+                                    wf["id"],
+                                    wf["name"]):
+                    log(f"  ✓ Disabled workflow: {wf['name']}")
+                 else:
+                    log(f"  ✗ FAILED: disable workflow {wf['name']}")
     log("")
 
 
