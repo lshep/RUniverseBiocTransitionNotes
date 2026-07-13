@@ -70,6 +70,12 @@ echo "Deprecated package list written to $OUTPUT"
 #     fi
 # done
 
+
+SAFE_SLEEP=1.2
+safe_sleep() {
+    sleep "$SAFE_SLEEP"
+}
+
 topic="bioc-deprecated"
 LOG="/home/lkern/BioconductorPackages/Syncing/deprecated_tagging.log"
 
@@ -77,8 +83,9 @@ LOG="/home/lkern/BioconductorPackages/Syncing/deprecated_tagging.log"
 
 while IFS= read -r pkg; do
     [ -z "$pkg" ] && continue
-
+    safe_sleep
     if gh repo view "bioconductor-source/$pkg" >/dev/null 2>&1; then
+	safe_sleep
         if gh repo edit "bioconductor-source/$pkg" --add-topic "$topic" >/dev/null 2>&1; then
             echo "[OK] Added topic '$topic' to $pkg" >> "$LOG"
         else
