@@ -1,0 +1,1041 @@
+Workflow branch protection
+==========================
+
+Repository: ConnectivityMap
+  ✓ Default branch set to devel
+Repository: nanotubes
+  ✓ Default branch set to devel
+Repository: spqnData
+  ✓ Default branch set to devel
+Repository: scTHI.data
+  ✓ Default branch set to devel
+Repository: pRolocdata
+  ✓ Default branch set to devel
+Repository: HiCDataLymphoblast
+  ✓ Default branch set to devel
+Repository: ObMiTi
+  ✓ Default branch set to devel
+Repository: MethylSeqData
+  ✓ Default branch set to devel
+Repository: hapmap100kxba
+  ✓ Default branch set to devel
+Repository: fission
+  ✓ Default branch set to devel
+Repository: CENTREprecomputed
+  ✓ Default branch set to devel
+Repository: TCGAcrcmiRNA
+  ✓ Default branch set to devel
+Repository: MEEBOdata
+  ✓ Default branch set to devel
+Repository: charmData
+  ✓ Default branch set to devel
+Repository: ARRmData
+  ✓ Default branch set to devel
+Repository: SomatiCAData
+  ✓ Default branch set to devel
+Repository: curatedBreastData
+  ✗ FAILED: set default branch devel
+Repository: CLL
+  ✓ Default branch set to devel
+Repository: BioPlex
+  ✓ Default branch set to devel
+Repository: kidpack
+  ✓ Default branch set to devel
+Repository: pasillaBamSubset
+  ✓ Default branch set to devel
+Repository: prostateCancerCamcap
+  ✓ Default branch set to devel
+Repository: AmpAffyExample
+  ✓ Default branch set to devel
+Repository: XhybCasneuf
+  ✓ Default branch set to devel
+Repository: MetaGxOvarian
+  ✓ Default branch set to devel
+Repository: sesameData
+  ✓ Default branch set to devel
+Repository: muSpaData
+  ✓ Default branch set to devel
+Repository: SomaticCancerAlterations
+  ✓ Default branch set to devel
+Repository: Fletcher2013a
+  ✓ Default branch set to devel
+Repository: IlluminaHumanMethylation450kmanifest
+  ✗ FAILED: set default branch devel
+Repository: yeastNagalakshmi
+  ✓ Default branch set to devel
+Repository: Fletcher2013b
+  ✓ Default branch set to devel
+Repository: antiProfilesData
+  ✓ Default branch set to devel
+Repository: FIs
+  ✓ Default branch set to devel
+Repository: RTCGA.clinical
+  ✓ Default branch set to devel
+Repository: CONFESSdata
+  ✓ Default branch set to devel
+Repository: flowQBData
+  ✓ Default branch set to devel
+Repository: DropletTestFiles
+  ✓ Default branch set to devel
+Repository: VectraPolarisData
+  ✓ Default branch set to devel
+Repository: ccTutorial
+  ✓ Default branch set to devel
+Repository: rcellminerData
+  ✓ Default branch set to devel
+Repository: pumadata
+  ✓ Default branch set to devel
+Repository: curatedMetagenomicData
+  ✓ Default branch set to devel
+Repository: RNAseqData.HeLa.bam.chr14
+  ✗ FAILED: set default branch devel
+Repository: TENxVisiumData
+  ✓ Default branch set to devel
+Repository: RnBeads.hg19
+  ✗ FAILED: set default branch devel
+Repository: derfinderData
+  ✓ Default branch set to devel
+Repository: raerdata
+  ✓ Default branch set to devel
+Repository: DoReMiTra
+  ✓ Default branch set to devel
+Repository: brgedata
+  ✓ Default branch set to devel
+Repository: gaschYHS
+  ✓ Default branch set to devel
+Repository: DvDdata
+  ✓ Default branch set to devel
+Repository: microRNAome
+  ✓ Default branch set to devel
+Repository: DMRcatedata
+  ✓ Default branch set to devel
+Repository: cgdv17
+  ✓ Default branch set to devel
+Repository: RNASeqDataSubset
+  ✗ FAILED: set default branch devel
+Repository: systemPipeRdata
+  ✓ Default branch set to devel
+Repository: geuvStore2
+  ✓ Default branch set to devel
+Repository: PWMEnrich.Hsapiens.background
+  ✓ Default branch set to devel
+Repository: rRDPData
+  ✓ Default branch set to devel
+Repository: scaeData
+  ✓ Default branch set to devel
+Repository: Hiiragi2013
+  ✓ Default branch set to devel
+Repository: HumanAffyData
+  ✓ Default branch set to devel
+Repository: mAPKLData
+  ✓ Default branch set to devel
+Repository: TENxXeniumData
+  ✓ Default branch set to devel
+Repository: AssessORFData
+  ✓ Default branch set to devel
+Repository: zebrafishRNASeq
+  ✓ Default branch set to devel
+Repository: scMultiome
+  ✗ FAILED: set default branch devel
+Repository: ChIPXpressData
+  ✗ FAILED: set default branch devel
+Repository: MSMB
+  ✓ Default branch set to devel
+Repository: TargetSearchData
+  ✓ Default branch set to devel
+Repository: TargetScoreData
+  ✓ Default branch set to devel
+Repository: celarefData
+  ✓ Default branch set to devel
+Repository: curatedOvarianData
+  ✓ Default branch set to devel
+Repository: RTCGA.methylation
+  ✓ Default branch set to devel
+Repository: msqc1
+  ✓ Default branch set to devel
+Repository: dressCheck
+  ✓ Default branch set to devel
+Repository: MMAPPR2data
+  ✓ Default branch set to devel
+Repository: DLBCL
+  ✓ Default branch set to devel
+Repository: DuoClustering2018
+  ✓ Default branch set to devel
+Repository: msigdb
+  ✓ Default branch set to devel
+Repository: ccdata
+  ✗ FAILED: set default branch devel
+Repository: ChimpHumanBrainData
+  ✓ Default branch set to devel
+Repository: MutSeqRData
+  ✓ Default branch set to devel
+Repository: ProData
+  ✓ Default branch set to devel
+Repository: breakpointRdata
+  ✓ Default branch set to devel
+Repository: harbChIP
+  ✓ Default branch set to devel
+Repository: SpikeIn
+  ✓ Default branch set to devel
+Repository: furrowSeg
+  ✗ FAILED: set default branch devel
+Repository: parathyroidSE
+  ✓ Default branch set to devel
+Repository: FlowSorted.CordBlood.450k
+  ✓ Default branch set to devel
+Repository: MetaScope
+  ✓ Default branch set to devel
+Repository: topdownrdata
+  ✓ Default branch set to devel
+Repository: bladderbatch
+  ✓ Default branch set to devel
+Repository: TumourMethData
+  ✓ Default branch set to devel
+Repository: cfToolsData
+  ✓ Default branch set to devel
+Repository: FANTOM3and4CAGE
+  ✓ Default branch set to devel
+Repository: SingleMoleculeFootprintingData
+  ✓ Default branch set to devel
+Repository: curatedTCGAData
+  ✓ Default branch set to devel
+Repository: plasFIA
+  ✓ Default branch set to devel
+Repository: humanHippocampus2024
+  ✓ Default branch set to devel
+Repository: CLAMPData
+  ✓ Default branch set to devel
+Repository: SpatialDatasets
+  ✓ Default branch set to devel
+Repository: leukemiasEset
+  ✓ Default branch set to devel
+Repository: flowFitExampleData
+  ✓ Default branch set to devel
+Repository: RIPSeekerData
+  ✓ Default branch set to devel
+Repository: KEGGdzPathwaysGEO
+  ✓ Default branch set to devel
+Repository: PasillaTranscriptExpr
+  ✓ Default branch set to devel
+Repository: mosaicsExample
+  ✓ Default branch set to devel
+Repository: nmrdata
+  ✓ Default branch set to devel
+Repository: metaMSdata
+  ✓ Default branch set to devel
+Repository: HMP16SData
+  ✓ Default branch set to devel
+Repository: facopy.annot
+  ✓ Default branch set to devel
+Repository: MEDIPSData
+  ✓ Default branch set to devel
+Repository: curatedMetagenomicData
+  ✓ Default branch set to devel
+Repository: prebsdata
+  ✓ Default branch set to devel
+Repository: RnaSeqTutorial
+  ✓ Default branch set to devel
+Repository: biscuiteerData
+  ✓ Default branch set to devel
+Repository: curatedAdipoRNA
+  ✓ Default branch set to devel
+Repository: msd16s
+  ✓ Default branch set to devel
+Repository: GSE159526
+  ✓ Default branch set to devel
+Repository: HD2013SGI
+  ✓ Default branch set to devel
+Repository: vulcandata
+  ✓ Default branch set to devel
+Repository: TBX20BamSubset
+  ✓ Default branch set to devel
+Repository: breastCancerTRANSBIG
+  ✓ Default branch set to devel
+Repository: pwrEWAS.data
+  ✓ Default branch set to devel
+Repository: TENxBUSData
+  ✓ Default branch set to devel
+Repository: scRNAseq
+  ✓ Default branch set to devel
+Repository: SpikeInSubset
+  ✓ Default branch set to devel
+Repository: QDNAseq.mm10
+  ✓ Default branch set to devel
+Repository: bodymapRat
+  ✓ Default branch set to devel
+Repository: CopyNumber450kData
+  ✗ FAILED: set default branch devel
+Repository: gDNAinRNAseqData
+  ✓ Default branch set to devel
+Repository: EatonEtAlChIPseq
+  ✓ Default branch set to devel
+Repository: benchmarkfdrData2019
+  ✓ Default branch set to devel
+Repository: LRcellTypeMarkers
+  ✓ Default branch set to devel
+Repository: cancerdata
+  ✓ Default branch set to devel
+Repository: spatialDmelxsim
+  ✓ Default branch set to devel
+Repository: KEGGandMetacoreDzPathwaysGEO
+  ✓ Default branch set to devel
+Repository: HiBED
+  ✓ Default branch set to devel
+Repository: hgu133abarcodevecs
+  ✓ Default branch set to devel
+Repository: gpaExample
+  ✓ Default branch set to devel
+Repository: dsQTL
+  ✗ FAILED: set default branch devel
+Repository: TENxPBMCData
+  ✓ Default branch set to devel
+Repository: gDRtestData
+  ✓ Default branch set to devel
+Repository: PREDAsampledata
+  ✓ Default branch set to devel
+Repository: LungCancerLines
+  ✓ Default branch set to devel
+Repository: AneuFinderData
+  ✓ Default branch set to devel
+Repository: macrophage
+  ✓ Default branch set to devel
+Repository: tximportData
+  ✓ Default branch set to devel
+Repository: HDCytoData
+  ✓ Default branch set to devel
+Repository: tinesath1cdf
+  ✓ Default branch set to devel
+Repository: EpipwR.data
+  ✓ Default branch set to devel
+Repository: AffymetrixDataTestFiles
+  ✓ Default branch set to devel
+Repository: Affyhgu133A2Expr
+  ✓ Default branch set to devel
+Repository: xcoredata
+  ✓ Default branch set to devel
+Repository: clustifyrdatahub
+  ✓ Default branch set to devel
+Repository: HSMMSingleCell
+  ✓ Default branch set to devel
+Repository: ppiData
+  ✓ Default branch set to devel
+Repository: DMRsegaldata
+  ✓ Default branch set to devel
+Repository: prostateCancerGrasso
+  ✓ Default branch set to devel
+Repository: DonaPLLP2013
+  ✓ Default branch set to devel
+Repository: NGScopyData
+  ✓ Default branch set to devel
+Repository: yri1kgv
+  ✓ Default branch set to devel
+Repository: SFEData
+  ✓ Default branch set to devel
+Repository: CellMapperData
+  ✓ Default branch set to devel
+Repository: emtdata
+  ✓ Default branch set to devel
+Repository: yeastCC
+  ✓ Default branch set to devel
+Repository: WGSmapp
+  ✓ Default branch set to devel
+Repository: curatedAdipoChIP
+  ✓ Default branch set to devel
+Repository: curatedTBData
+  ✓ Default branch set to devel
+Repository: MerfishData
+  ✓ Default branch set to devel
+Repository: encoDnaseI
+  ✗ FAILED: set default branch devel
+Repository: Single.mTEC.Transcriptomes
+  ✗ FAILED: set default branch devel
+Repository: GWASdata
+  ✓ Default branch set to devel
+Repository: mtbls2
+  ✓ Default branch set to devel
+Repository: BeadSorted.Saliva.EPIC
+  ✓ Default branch set to devel
+Repository: RITANdata
+  ✓ Default branch set to devel
+Repository: bcellViper
+  ✓ Default branch set to devel
+Repository: NxtIRFdata
+  ✓ Default branch set to devel
+Repository: dyebiasexamples
+  ✓ Default branch set to devel
+Repository: RTCGA.PANCAN12
+  ✓ Default branch set to devel
+Repository: TENET.ExperimentHub
+  ✓ Default branch set to devel
+Repository: CoSIAdata
+  ✓ Default branch set to devel
+Repository: tweeDEseqCountData
+  ✓ Default branch set to devel
+Repository: msPurityData
+  ✗ FAILED: set default branch devel
+Repository: MouseGastrulationData
+  ✓ Default branch set to devel
+Repository: ChIC.data
+  ✓ Default branch set to devel
+Repository: eoPredData
+  ✓ Default branch set to devel
+Repository: M3DExampleData
+  ✓ Default branch set to devel
+Repository: IlluminaDataTestFiles
+  ✓ Default branch set to devel
+Repository: imcdatasets
+  ✓ Default branch set to devel
+Repository: ind1KG
+  ✗ FAILED: set default branch devel
+Repository: WeberDivechaLCdata
+  ✓ Default branch set to devel
+Repository: FunciSNP.data
+  ✓ Default branch set to devel
+Repository: NetActivityData
+  ✓ Default branch set to devel
+Repository: CardinalWorkflows
+  ✓ Default branch set to devel
+Repository: GSE13015
+  ✓ Default branch set to devel
+Repository: RnaSeqSampleSizeData
+  ✓ Default branch set to devel
+Repository: breastCancerMAINZ
+  ✓ Default branch set to devel
+Repository: BioImageDbs
+  ✓ Default branch set to devel
+Repository: Neve2006
+  ✓ Default branch set to devel
+Repository: HumanRetinaLRSData
+  ✓ Default branch set to devel
+Repository: hgu133plus2barcodevecs
+  ✓ Default branch set to devel
+Repository: restfulSEData
+  ✓ Default branch set to devel
+Repository: GeuvadisTranscriptExpr
+  ✓ Default branch set to devel
+Repository: NCIgraphData
+  ✓ Default branch set to devel
+Repository: CRCL18
+  ✓ Default branch set to devel
+Repository: alpineData
+  ✓ Default branch set to devel
+Repository: MIGSAdata
+  ✓ Default branch set to devel
+Repository: NestLink
+  ✓ Default branch set to devel
+Repository: tcgaWGBSData.hg19
+  ✓ Default branch set to devel
+Repository: NanoporeRNASeq
+  ✓ Default branch set to devel
+Repository: Mulder2012
+  ✓ Default branch set to devel
+Repository: FlowSorted.DLPFC.450k
+  ✓ Default branch set to devel
+Repository: COPDSexualDimorphism.data
+  ✓ Default branch set to devel
+Repository: LiebermanAidenHiC2009
+  ✓ Default branch set to devel
+Repository: breastCancerUNT
+  ✓ Default branch set to devel
+Repository: pcaGoPromoter.Rn.rn4
+  ✓ Default branch set to devel
+Repository: ceu1kg
+  ✓ Default branch set to devel
+Repository: curatedPCaData
+  ✓ Default branch set to devel
+Repository: serumStimulation
+  ✓ Default branch set to devel
+Repository: JASPAR2014
+  ✓ Default branch set to devel
+Repository: RnBeads.mm9
+  ✓ Default branch set to devel
+Repository: JASPAR2016
+  ✓ Default branch set to devel
+Repository: oct4
+  ✓ Default branch set to devel
+Repository: IHWpaper
+  ✓ Default branch set to devel
+Repository: TCGAMethylation450k
+  ✓ Default branch set to devel
+Repository: pathprintGEOData
+  ✓ Default branch set to devel
+Repository: iModMixData
+  ✓ Default branch set to devel
+Repository: ProteinGymR
+  ✓ Default branch set to devel
+Repository: OMICsPCAdata
+  ✓ Default branch set to devel
+Repository: muscData
+  ✓ Default branch set to devel
+Repository: ChIPDBData
+  ✓ Default branch set to devel
+Repository: depmap
+  ✓ Default branch set to devel
+Repository: ChIPexoQualExample
+  ✓ Default branch set to devel
+Repository: MetaGxBreast
+  ✓ Default branch set to devel
+Repository: mvoutData
+  ✓ Default branch set to devel
+Repository: RTCGA.CNV
+  ✓ Default branch set to devel
+Repository: qPLEXdata
+  ✓ Default branch set to devel
+Repository: GSE62944
+  ✓ Default branch set to devel
+Repository: marinerData
+  ✓ Default branch set to devel
+Repository: GIGSEAdata
+  ✓ Default branch set to devel
+Repository: tissueTreg
+  ✓ Default branch set to devel
+Repository: GenomicDistributionsData
+  ✓ Default branch set to devel
+Repository: CCl4
+  ✓ Default branch set to devel
+Repository: biotmleData
+  ✓ Default branch set to devel
+Repository: QUBICdata
+  ✓ Default branch set to devel
+Repository: ITALICSData
+  ✓ Default branch set to devel
+Repository: cMap2data
+  ✓ Default branch set to devel
+Repository: TCGAWorkflowData
+  ✓ Default branch set to devel
+Repository: beadarrayExampleData
+  ✓ Default branch set to devel
+Repository: curatedAdipoArray
+  ✓ Default branch set to devel
+Repository: HarmanData
+  ✓ Default branch set to devel
+Repository: Illumina450ProbeVariants.db
+  ✓ Default branch set to devel
+Repository: fibroEset
+  ✓ Default branch set to devel
+Repository: CopyNeutralIMA
+  ✓ Default branch set to devel
+Repository: MicrobiomeBenchmarkData
+  ✓ Default branch set to devel
+Repository: curatedBladderData
+  ✓ Default branch set to devel
+Repository: breastCancerVDX
+  ✓ Default branch set to devel
+Repository: beta7
+  ✓ Default branch set to devel
+Repository: scpdata
+  ✓ Default branch set to devel
+Repository: SNPhoodData
+  ✓ Default branch set to devel
+Repository: HCATonsilData
+  ✓ Default branch set to devel
+Repository: RGMQLlib
+  ✓ Default branch set to devel
+Repository: shinyMethylData
+  ✓ Default branch set to devel
+Repository: hmyriB36
+  ✓ Default branch set to devel
+Repository: BeadArrayUseCases
+  ✓ Default branch set to devel
+Repository: parathyroid
+  ✗ FAILED: set default branch devel
+Repository: TabulaMurisData
+  ✓ Default branch set to devel
+Repository: healthyFlowData
+  ✓ Default branch set to devel
+Repository: facsDorit
+  ✓ Default branch set to devel
+Repository: affydata
+  ✓ Default branch set to devel
+Repository: HIVcDNAvantWout03
+  ✓ Default branch set to devel
+Repository: gskb
+  ✓ Default branch set to devel
+Repository: HiCDataHumanIMR90
+  ✓ Default branch set to devel
+Repository: PathNetData
+  ✓ Default branch set to devel
+Repository: Iyer517
+  ✓ Default branch set to devel
+Repository: DrugVsDiseasedata
+  ✓ Default branch set to devel
+Repository: gcspikelite
+  ✓ Default branch set to devel
+Repository: estrogen
+  ✓ Default branch set to devel
+Repository: ecoliLeucine
+  ✓ Default branch set to devel
+Repository: ALLMLL
+  ✓ Default branch set to devel
+Repository: DmelSGI
+  ✓ Default branch set to devel
+Repository: airway
+  ✓ Default branch set to devel
+Repository: LegATo
+  ✓ Default branch set to devel
+Repository: MACSdata
+  ✓ Default branch set to devel
+Repository: seqCNA.annot
+  ✓ Default branch set to devel
+Repository: bsseqData
+  ✓ Default branch set to devel
+Repository: davidTiling
+  ✗ FAILED: set default branch devel
+Repository: SNAGEEdata
+  ✓ Default branch set to devel
+Repository: methylclockData
+  ✓ Default branch set to devel
+Repository: yeastGSData
+  ✓ Default branch set to devel
+Repository: RnBeads.hg38
+  ✓ Default branch set to devel
+Repository: RnBeads.rn5
+  ✓ Default branch set to devel
+Repository: MTseekerData
+  ✓ Default branch set to devel
+Repository: breastCancerNKI
+  ✓ Default branch set to devel
+Repository: HMP2Data
+  ✓ Default branch set to devel
+Repository: BloodCancerMultiOmics2017
+  ✓ Default branch set to devel
+Repository: WES.1KG.WUGSC
+  ✓ Default branch set to devel
+Repository: scATAC.Explorer
+  ✓ Default branch set to devel
+Repository: golubEsets
+  ✓ Default branch set to devel
+Repository: h5vcData
+  ✓ Default branch set to devel
+Repository: SBGNview.data
+  ✓ Default branch set to devel
+Repository: ChAMPdata
+  ✓ Default branch set to devel
+Repository: MetaGxPancreas
+  ✓ Default branch set to devel
+Repository: prostateCancerTaylor
+  ✓ Default branch set to devel
+Repository: aracne.networks
+  ✓ Default branch set to devel
+Repository: plotgardenerData
+  ✓ Default branch set to devel
+Repository: MEALData
+  ✗ FAILED: set default branch devel
+Repository: lumiBarnes
+  ✓ Default branch set to devel
+Repository: ABAData
+  ✓ Default branch set to devel
+Repository: pd.atdschip.tiling
+  ✗ FAILED: set default branch devel
+Repository: TimerQuant
+  ✓ Default branch set to devel
+Repository: affycompData
+  ✓ Default branch set to devel
+Repository: muleaData
+  ✓ Default branch set to devel
+Repository: RNAinteractMAPK
+  ✓ Default branch set to devel
+Repository: minfiData
+  ✓ Default branch set to devel
+Repository: FlowSorted.CordBloodNorway.450k
+  ✓ Default branch set to devel
+Repository: MethylAidData
+  ✓ Default branch set to devel
+Repository: epimutacionsData
+  ✓ Default branch set to devel
+Repository: microbiomeDataSets
+  ✓ Default branch set to devel
+Repository: adductData
+  ✓ Default branch set to devel
+Repository: DNAZooData
+  ✓ Default branch set to devel
+Repository: msdata
+  ✗ FAILED: set default branch devel
+Repository: MouseThymusAgeing
+  ✓ Default branch set to devel
+Repository: seq2pathway.data
+  ✓ Default branch set to devel
+Repository: mitoODEdata
+  ✓ Default branch set to devel
+Repository: ceu1kgv
+  ✓ Default branch set to devel
+Repository: orthosData
+  ✓ Default branch set to devel
+Repository: RNAseqData.HNRNPC.bam.chr14
+  ✓ Default branch set to devel
+Repository: genomationData
+  ✓ Default branch set to devel
+Repository: EMTscoreData
+  ✓ Default branch set to devel
+Repository: curatedCRCData
+  ✓ Default branch set to devel
+Repository: lungExpression
+  ✓ Default branch set to devel
+Repository: allenpvc
+  ✓ Default branch set to devel
+Repository: yeastExpData
+  ✓ Default branch set to devel
+Repository: ggtut
+  ✗ FAILED: set default branch devel
+Repository: mouse4302barcodevecs
+  ✓ Default branch set to devel
+Repository: RTCGA.mutations
+  ✓ Default branch set to devel
+Repository: miRcompData
+  ✓ Default branch set to devel
+Repository: JctSeqData
+  ✓ Default branch set to devel
+Repository: hapmap500knsp
+  ✓ Default branch set to devel
+Repository: diffloopdata
+  ✓ Default branch set to devel
+Repository: SCATEData
+  ✗ FAILED: set default branch devel
+Repository: SubcellularSpatialData
+  ✓ Default branch set to devel
+Repository: lydata
+  ✓ Default branch set to devel
+Repository: stjudem
+  ✓ Default branch set to devel
+Repository: colonCA
+  ✓ Default branch set to devel
+Repository: tartare
+  ✓ Default branch set to devel
+Repository: DeSousa2013
+  ✓ Default branch set to devel
+Repository: brainImageRdata
+  ✓ Default branch set to devel
+Repository: SCLCBam
+  ✓ Default branch set to devel
+Repository: tuberculosis
+  ✓ Default branch set to devel
+Repository: RforProteomics
+  ✗ FAILED: set default branch devel
+Repository: octad.db
+  ✓ Default branch set to devel
+Repository: DREAM4
+  ✓ Default branch set to devel
+Repository: MSBdata
+  ✓ Default branch set to devel
+Repository: RnBeads.mm10
+  ✓ Default branch set to devel
+Repository: miRNATarget
+  ✓ Default branch set to devel
+Repository: prostateCancerStockholm
+  ✓ Default branch set to devel
+Repository: cnvGSAdata
+  ✓ Default branch set to devel
+Repository: HiContactsData
+  ✓ Default branch set to devel
+Repository: HighlyReplicatedRNASeq
+  ✓ Default branch set to devel
+Repository: gageData
+  ✓ Default branch set to devel
+Repository: cheung2010
+  ✓ Default branch set to devel
+Repository: rheumaticConditionWOLLBOLD
+  ✓ Default branch set to devel
+Repository: MouseAgingData
+  ✓ Default branch set to devel
+Repository: MUGAExampleData
+  ✓ Default branch set to devel
+Repository: GGdata
+  ✓ Default branch set to devel
+Repository: prostateCancerVarambally
+  ✓ Default branch set to devel
+Repository: ReactomeGSA.data
+  ✓ Default branch set to devel
+Repository: bladderbatch
+  ✓ Default branch set to devel
+Repository: preciseTADhub
+  ✓ Default branch set to devel
+Repository: tofsimsData
+  ✓ Default branch set to devel
+Repository: geuvStore
+  ✗ FAILED: set default branch devel
+Repository: easierData
+  ✓ Default branch set to devel
+Repository: bugphyzz
+  ✓ Default branch set to devel
+Repository: pepDat
+  ✓ Default branch set to devel
+Repository: MOFAdata
+  ✓ Default branch set to devel
+Repository: SingleCellMultiModal
+  ✓ Default branch set to devel
+Repository: optimalFlowData
+  ✓ Default branch set to devel
+Repository: QDNAseq.hg19
+  ✓ Default branch set to devel
+Repository: EpiMix.data
+  ✓ Default branch set to devel
+Repository: MAQCsubsetAFX
+  ✓ Default branch set to devel
+Repository: nullrangesData
+  ✓ Default branch set to devel
+Repository: frmaExampleData
+  ✓ Default branch set to devel
+Repository: KOdata
+  ✓ Default branch set to devel
+Repository: RRBSdata
+  ✓ Default branch set to devel
+Repository: FlowSorted.CordBloodCombined.450k
+  ✓ Default branch set to devel
+Repository: seventyGeneData
+  ✓ Default branch set to devel
+Repository: mammaPrintData
+  ✓ Default branch set to devel
+Repository: mCSEAdata
+  ✓ Default branch set to devel
+Repository: diggitdata
+  ✓ Default branch set to devel
+Repository: RcisTarget.hg19.motifDBs.cisbpOnly.500bp
+  ✓ Default branch set to devel
+Repository: MAQCsubset
+  ✓ Default branch set to devel
+Repository: smokingMouse
+  ✓ Default branch set to devel
+Repository: ptairData
+  ✓ Default branch set to devel
+Repository: geneLenDataBase
+  ✓ Default branch set to devel
+Repository: RTCGA.miRNASeq
+  ✓ Default branch set to devel
+Repository: minfiDataEPIC
+  ✓ Default branch set to devel
+Repository: hapmapsnp5
+  ✓ Default branch set to devel
+Repository: TMExplorer
+  ✓ Default branch set to devel
+Repository: hapmapsnp6
+  ✗ FAILED: set default branch devel
+Repository: timecoursedata
+  ✓ Default branch set to devel
+Repository: Affymoe4302Expr
+  ✗ FAILED: set default branch devel
+Repository: HarmonizedTCGAData
+  ✓ Default branch set to devel
+Repository: PhyloProfileData
+  ✓ Default branch set to devel
+Repository: methyvimData
+  ✓ Default branch set to devel
+Repository: simpIntLists
+  ✓ Default branch set to devel
+Repository: RNAmodR.Data
+  ✓ Default branch set to devel
+Repository: leeBamViews
+  ✓ Default branch set to devel
+Repository: GSVAdata
+  ✓ Default branch set to devel
+Repository: signatureSearchData
+  ✓ Default branch set to devel
+Repository: minionSummaryData
+  ✓ Default branch set to devel
+Repository: ffpeExampleData
+  ✓ Default branch set to devel
+Repository: humanStemCell
+  ✓ Default branch set to devel
+Repository: gatingMLData
+  ✓ Default branch set to devel
+Repository: hgu133plus2CellScore
+  ✓ Default branch set to devel
+Repository: CLLmethylation
+  ✓ Default branch set to devel
+Repository: RegParallel
+  ✓ Default branch set to devel
+Repository: fabiaData
+  ✓ Default branch set to devel
+Repository: HelloRangesData
+  ✓ Default branch set to devel
+Repository: hapmap500ksty
+  ✓ Default branch set to devel
+Repository: celldex
+  ✓ Default branch set to devel
+Repository: SimBenchData
+  ✓ Default branch set to devel
+Repository: SVM2CRMdata
+  ✗ FAILED: set default branch devel
+Repository: RLHub
+  ✓ Default branch set to devel
+Repository: COHCAPanno
+  ✓ Default branch set to devel
+Repository: TabulaMurisSenisData
+  ✓ Default branch set to devel
+Repository: yeastRNASeq
+  ✓ Default branch set to devel
+Repository: RTCGA.mRNA
+  ✓ Default branch set to devel
+Repository: CopyhelpeR
+  ✓ Default branch set to devel
+Repository: hgu2beta7
+  ✓ Default branch set to devel
+Repository: geuvPack
+  ✓ Default branch set to devel
+Repository: FlowSorted.Blood.450k
+  ✓ Default branch set to devel
+Repository: MMDiffBamSubset
+  ✗ FAILED: set default branch devel
+Repository: CluMSIDdata
+  ✓ Default branch set to devel
+Repository: TransOmicsData
+  ✓ Default branch set to devel
+Repository: JohnsonKinaseData
+  ✓ Default branch set to devel
+Repository: PtH2O2lipids
+  ✓ Default branch set to devel
+Repository: OnassisJavaLibs
+  ✓ Default branch set to devel
+Repository: ALL
+  ✓ Default branch set to devel
+Repository: flowPloidyData
+  ✓ Default branch set to devel
+Repository: sampleClassifierData
+  ✓ Default branch set to devel
+Repository: pcxnData
+  ✓ Default branch set to devel
+Repository: ewceData
+  ✓ Default branch set to devel
+Repository: STexampleData
+  ✓ Default branch set to devel
+Repository: ceuhm3
+  ✓ Default branch set to devel
+Repository: chromstaRData
+  ✓ Default branch set to devel
+Repository: PCHiCdata
+  ✓ Default branch set to devel
+Repository: GSE103322
+  ✓ Default branch set to devel
+Repository: LungCancerACvsSCCGEO
+  ✓ Default branch set to devel
+Repository: scanMiRData
+  ✓ Default branch set to devel
+Repository: ListerEtAlBSseq
+  ✗ FAILED: set default branch devel
+Repository: waveTilingData
+  ✗ FAILED: set default branch devel
+Repository: RTCGA.RPPA
+  ✓ Default branch set to devel
+Repository: seqc
+  ✓ Default branch set to devel
+Repository: stemHypoxia
+  ✓ Default branch set to devel
+Repository: etec16s
+  ✓ Default branch set to devel
+Repository: maqcExpression4plex
+  ✓ Default branch set to devel
+Repository: MAQCsubsetILM
+  ✓ Default branch set to devel
+Repository: FlowSorted.Blood.EPIC
+  ✓ Default branch set to devel
+Repository: SNAData
+  ✓ Default branch set to devel
+Repository: HCAData
+  ✓ Default branch set to devel
+Repository: chipseqDBData
+  ✓ Default branch set to devel
+Repository: yriMulti
+  ✗ FAILED: set default branch devel
+Repository: GSBenchMark
+  ✓ Default branch set to devel
+Repository: FieldEffectCrc
+  ✓ Default branch set to devel
+Repository: dominatRData
+  ✓ Default branch set to devel
+Repository: spatialLIBD
+  ✓ Default branch set to devel
+Repository: RNASeqRData
+  ✓ Default branch set to devel
+Repository: breastCancerUPP
+  ✓ Default branch set to devel
+Repository: pcaGoPromoter.Hs.hg19
+  ✓ Default branch set to devel
+Repository: TCGAcrcmRNA
+  ✓ Default branch set to devel
+Repository: tinesath1probe
+  ✓ Default branch set to devel
+Repository: TENxBrainData
+  ✓ Default branch set to devel
+Repository: EGSEAdata
+  ✓ Default branch set to devel
+Repository: mcsurvdata
+  ✓ Default branch set to devel
+Repository: flowWorkspaceData
+  ✓ Default branch set to devel
+Repository: pcaGoPromoter.Mm.mm9
+  ✓ Default branch set to devel
+Repository: homosapienDEE2CellScore
+  ✓ Default branch set to devel
+Repository: ASICSdata
+  ✓ Default branch set to devel
+Repository: RMassBankData
+  ✓ Default branch set to devel
+Repository: dorothea
+  ✓ Default branch set to devel
+Repository: RUVnormalizeData
+  ✓ Default branch set to devel
+Repository: synapterdata
+  ✓ Default branch set to devel
+Repository: bronchialIL13
+  ✓ Default branch set to devel
+Repository: pasilla
+  ✓ Default branch set to devel
+Repository: blimaTestingData
+  ✓ Default branch set to devel
+Repository: AWAggregatorData
+  ✓ Default branch set to devel
+Repository: Affyhgu133Plus2Expr
+  ✓ Default branch set to devel
+Repository: HEEBOdata
+  ✓ Default branch set to devel
+Repository: DExMAdata
+  ✓ Default branch set to devel
+Repository: chipenrich.data
+  ✓ Default branch set to devel
+Repository: iontreeData
+  ✓ Default branch set to devel
+Repository: multiWGCNAdata
+  ✓ Default branch set to devel
+Repository: MSstatsBioData
+  ✓ Default branch set to devel
+Repository: healthyControlsPresenceChecker
+  ✓ Default branch set to devel
+Repository: TCGAbiolinksGUI.data
+  ✓ Default branch set to devel
+Repository: COSMIC.67
+  ✓ Default branch set to devel
+Repository: PepsNMRData
+  ✓ Default branch set to devel
+Repository: VariantToolsData
+  ✓ Default branch set to devel
+Repository: CytoMethIC
+  ✓ Default branch set to devel
+Repository: ELMER.data
+  ✗ FAILED: set default branch devel
+Repository: RTCGA.rnaseq
+  ✓ Default branch set to devel
+Repository: faahKO
+  ✓ Default branch set to devel
+Repository: PGPC
+  ✓ Default branch set to devel
+Repository: PWMEnrich.Mmusculus.background
+  ✓ Default branch set to devel
+Repository: Affyhgu133aExpr
+  ✓ Default branch set to devel
+Repository: fourDNData
+  ✓ Default branch set to devel
+Repository: grndata
+  ✓ Default branch set to devel
+Repository: AshkenazimSonChr21
+  ✓ Default branch set to devel
+Repository: DAPARdata
+  ✓ Default branch set to devel
+Repository: hapmap100khind
+  ✓ Default branch set to devel
+Repository: PWMEnrich.Dmelanogaster.background
+  ✓ Default branch set to devel
+Repository: crisprScoreData
+  ✓ Default branch set to devel
+Repository: minfiData
+  ✓ Default branch set to devel
+Repository: GSE62944
+  ✓ Default branch set to devel

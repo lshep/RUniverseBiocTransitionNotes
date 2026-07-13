@@ -1,0 +1,639 @@
+Annotation branch protection
+==========================
+
+Repository: org.Mxanthus.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: rat2302frmavecs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: CTCF
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: SomaScan.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: synaptome.data
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: org.Hbacteriophora.eg.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_22
+
+Repository: UCSCRepeatMasker
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHMeSHDbs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: MPO.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHCytoBands
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHEnsDbs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AlphaMissense.v2023.hg19
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: HPO.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AlphaMissense.v2023.hg38
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: ENCODExplorerData
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: CENTREannotation
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHWikipathwaysDbs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: gwascatData
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHPathbankDbs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHPubMedDbs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: PANTHER.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: alternativeSplicingEvents.hg19
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: EPICv2manifest
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: cadd.v1.6.hg19
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: JASPAR2020
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: rGenomeTracksData
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: JASPAR2022
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: alternativeSplicingEvents.hg38
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: GeneSummary
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: metaboliteIDmapping
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: synaptome.db
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: JASPAR2024
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: cadd.v1.6.hg38
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: scAnnotatR.models
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: EuPathDB
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: AHLRBaseDbs
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: GenomicState
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: UniProtKeywords
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: EpiTxDb.Hs.hg38
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: chromhmmData
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: TENET.AnnotationHub
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: phastCons30way.UCSC.hg38
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: hpAnnot
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: EpiTxDb.Mm.mm10
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: geneplast.data
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: BioMartGOGeneSets
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: ontoProcData
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: excluderanges
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: EpiTxDb.Sc.sacCer3
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+

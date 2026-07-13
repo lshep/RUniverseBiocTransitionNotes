@@ -1,0 +1,103 @@
+Workflow branch protection
+==========================
+
+Repository: org.Mxanthus.db
+Repository: org.Mxanthus.db
+Repository: org.Mxanthus.db
+  ✓ Default branch set to devel
+Repository: rat2302frmavecs
+  ✓ Default branch set to devel
+Repository: CTCF
+  ✓ Default branch set to devel
+Repository: SomaScan.db
+  ✓ Default branch set to devel
+Repository: synaptome.data
+  ✓ Default branch set to devel
+Repository: org.Hbacteriophora.eg.db
+  ✓ Default branch set to devel
+Repository: UCSCRepeatMasker
+  ✓ Default branch set to devel
+Repository: AHMeSHDbs
+  ✓ Default branch set to devel
+Repository: MPO.db
+  ✓ Default branch set to devel
+Repository: AHCytoBands
+  ✓ Default branch set to devel
+Repository: AHEnsDbs
+  ✓ Default branch set to devel
+Repository: AlphaMissense.v2023.hg19
+  ✓ Default branch set to devel
+Repository: HPO.db
+  ✓ Default branch set to devel
+Repository: AlphaMissense.v2023.hg38
+  ✓ Default branch set to devel
+Repository: ENCODExplorerData
+  ✓ Default branch set to devel
+Repository: CENTREannotation
+  ✓ Default branch set to devel
+Repository: AHWikipathwaysDbs
+  ✓ Default branch set to devel
+Repository: gwascatData
+  ✓ Default branch set to devel
+Repository: AHPathbankDbs
+  ✓ Default branch set to devel
+Repository: AHPubMedDbs
+  ✓ Default branch set to devel
+Repository: PANTHER.db
+  ✓ Default branch set to devel
+Repository: alternativeSplicingEvents.hg19
+  ✓ Default branch set to devel
+Repository: EPICv2manifest
+  ✓ Default branch set to devel
+Repository: cadd.v1.6.hg19
+  ✓ Default branch set to devel
+Repository: JASPAR2020
+  ✓ Default branch set to devel
+Repository: rGenomeTracksData
+  ✓ Default branch set to devel
+Repository: JASPAR2022
+  ✓ Default branch set to devel
+Repository: alternativeSplicingEvents.hg38
+  ✓ Default branch set to devel
+Repository: GeneSummary
+  ✓ Default branch set to devel
+Repository: metaboliteIDmapping
+  ✓ Default branch set to devel
+Repository: synaptome.db
+  ✓ Default branch set to devel
+Repository: JASPAR2024
+  ✓ Default branch set to devel
+Repository: cadd.v1.6.hg38
+  ✓ Default branch set to devel
+Repository: scAnnotatR.models
+  ✓ Default branch set to devel
+Repository: EuPathDB
+  ✓ Default branch set to devel
+Repository: AHLRBaseDbs
+  ✓ Default branch set to devel
+Repository: GenomicState
+  ✓ Default branch set to devel
+Repository: UniProtKeywords
+  ✓ Default branch set to devel
+Repository: EpiTxDb.Hs.hg38
+  ✓ Default branch set to devel
+Repository: chromhmmData
+  ✓ Default branch set to devel
+Repository: TENET.AnnotationHub
+  ✓ Default branch set to devel
+Repository: phastCons30way.UCSC.hg38
+  ✓ Default branch set to devel
+Repository: hpAnnot
+  ✓ Default branch set to devel
+Repository: EpiTxDb.Mm.mm10
+  ✓ Default branch set to devel
+Repository: geneplast.data
+  ✓ Default branch set to devel
+Repository: BioMartGOGeneSets
+  ✓ Default branch set to devel
+Repository: ontoProcData
+  ✓ Default branch set to devel
+Repository: excluderanges
+  ✓ Default branch set to devel
+Repository: EpiTxDb.Sc.sacCer3
+  ✓ Default branch set to devel

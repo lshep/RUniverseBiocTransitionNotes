@@ -1,0 +1,714 @@
+Workflow branch protection
+==========================
+
+Repository: RnaSeqGeneEdgeRQL
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: maEndToEnd
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: fluentGenomics
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: methylationArrayAnalysis
+  ✗ FAILED: protect devel
+  - Current release missing: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  - No historical RELEASE branches found
+
+Repository: generegulation
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_12
+  ✓ Frozen: RELEASE_2_13
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: liftOver
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: SingscoreAMLMutations
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: GeoMxWorkflows
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: ExpHunterSuite
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: cytofWorkflow
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: highthroughputassays
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_12
+  ✓ Frozen: RELEASE_2_13
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: ExpressionNormalizationWorkflow
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: csawUsersGuide
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: chipseqDB
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: BiocMetaWorkflow
+  ✓ Protected: devel
+  - Current release missing: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+
+Repository: TCGAWorkflow
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: spicyWorkflow
+  ✓ Protected: devel
+  - Current release missing: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: rnaseqGene
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: proteomics
+  ✗ FAILED: protect devel
+  - Current release missing: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  - No historical RELEASE branches found
+
+Repository: eQTL
+  ✓ Protected: devel
+  - Current release missing: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+
+Repository: variants
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_12
+  ✓ Frozen: RELEASE_2_13
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: EGSEA123
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: annotation
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_12
+  ✓ Frozen: RELEASE_2_13
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: recountWorkflow
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: CAGEWorkflow
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: sequencing
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_12
+  ✓ Frozen: RELEASE_2_13
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: rnaseqDTU
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: simpleSingleCell
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: RNAseq123
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: arrays
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_2_12
+  ✓ Frozen: RELEASE_2_13
+  ✓ Frozen: RELEASE_2_14
+  ✓ Frozen: RELEASE_3_0
+  ✓ Frozen: RELEASE_3_1
+  ✓ Frozen: RELEASE_3_2
+  ✓ Frozen: RELEASE_3_3
+  ✓ Frozen: RELEASE_3_4
+  ✓ Frozen: RELEASE_3_5
+  ✓ Frozen: RELEASE_3_6
+  ✓ Frozen: RELEASE_3_7
+  ✓ Frozen: RELEASE_3_8
+  ✓ Frozen: RELEASE_3_9
+  ✓ Frozen: RELEASE_3_10
+  ✓ Frozen: RELEASE_3_11
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+
+Repository: BP4RNAseq
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+

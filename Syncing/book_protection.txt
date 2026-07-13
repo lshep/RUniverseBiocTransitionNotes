@@ -1,0 +1,240 @@
+Workflow branch protection
+==========================
+
+Repository: OSCA.intro
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+
+Repository: scrapbook
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  - No historical RELEASE branches found
+  - No workflows found
+  ✓ Default branch set to devel
+
+
+Repository: OSCA.advanced
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+
+Repository: SingleRBook
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+  ✓ Disabled workflow: transplantation
+
+Repository: OMA
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  - No historical RELEASE branches found
+  ✓ Disabled workflow: biocbook
+  ✓ Disabled workflow: Extract Packages
+  ✓ Disabled workflow: rworkflows
+  ✓ Default branch set to devel
+
+
+Repository: OHCA
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: biocbook
+  ✓ Disabled workflow: rworkflows
+
+Repository: csawBook
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+
+Repository: OSCA
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_12
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+  ✓ Disabled workflow: transplantation
+
+Repository: OSCA.basic
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+
+Repository: OSCA.multisample
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+
+Repository: OSTA
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: biocbook
+  ✓ Disabled workflow: dependencies
+  ✓ Default branch set to devel
+
+
+Repository: BiocBookDemo
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: biocbook
+  ✓ Disabled workflow: rworkflows
+
+Repository: OSCA.workflows
+  ✓ Protected: devel
+  ✓ Protected: RELEASE_3_23
+  ✓ Applied RELEASE_* creation ruleset
+  ✓ Applied admin-only force-push ruleset
+  ✓ Disabled GitHub Actions
+  ✓ Frozen: RELEASE_3_13
+  ✓ Frozen: RELEASE_3_14
+  ✓ Frozen: RELEASE_3_15
+  ✓ Frozen: RELEASE_3_16
+  ✓ Frozen: RELEASE_3_17
+  ✓ Frozen: RELEASE_3_18
+  ✓ Frozen: RELEASE_3_19
+  ✓ Frozen: RELEASE_3_20
+  ✓ Frozen: RELEASE_3_21
+  ✓ Frozen: RELEASE_3_22
+  ✓ Disabled workflow: rebuild
+
+Repository: OSCA.intro
+  ✓ Default branch set to devel
+Repository: scrapbook
+  ✓ Default branch set to devel
+Repository: OSCA.advanced
+  ✓ Default branch set to devel
+Repository: SingleRBook
+  ✓ Default branch set to devel
+Repository: OMA
+  ✓ Default branch set to devel
+Repository: OHCA
+  ✓ Default branch set to devel
+Repository: csawBook
+  ✓ Default branch set to devel
+Repository: OSCA
+  ✓ Default branch set to devel
+Repository: OSCA.basic
+  ✓ Default branch set to devel
+Repository: OSCA.multisample
+  ✓ Default branch set to devel
+Repository: OSTA
+  ✓ Default branch set to devel
+Repository: BiocBookDemo
+  ✓ Default branch set to devel
+Repository: OSCA.workflows
+  ✓ Default branch set to devel

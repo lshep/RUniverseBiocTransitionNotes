@@ -1,0 +1,150 @@
+Annotation branch protection
+==========================
+
+Repository: org.Mxanthus.db
+  - No workflows found
+
+Repository: rat2302frmavecs
+  - No workflows found
+
+Repository: CTCF
+  - No workflows found
+
+Repository: SomaScan.db
+  - No workflows found
+
+Repository: synaptome.data
+  - No workflows found
+
+Repository: org.Hbacteriophora.eg.db
+  - No workflows found
+
+Repository: UCSCRepeatMasker
+  - No workflows found
+
+Repository: AHMeSHDbs
+  - No workflows found
+
+Repository: MPO.db
+  - No workflows found
+
+Repository: AHCytoBands
+  - No workflows found
+
+Repository: AHEnsDbs
+  - No workflows found
+
+Repository: AlphaMissense.v2023.hg19
+  - No workflows found
+
+Repository: HPO.db
+  - No workflows found
+
+Repository: AlphaMissense.v2023.hg38
+  - No workflows found
+
+Repository: ENCODExplorerData
+  - No workflows found
+
+Repository: CENTREannotation
+  - No workflows found
+
+Repository: AHWikipathwaysDbs
+  - No workflows found
+
+Repository: gwascatData
+  - No workflows found
+
+Repository: AHPathbankDbs
+  - No workflows found
+
+Repository: AHPubMedDbs
+  - No workflows found
+
+Repository: PANTHER.db
+  - No workflows found
+
+Repository: alternativeSplicingEvents.hg19
+  - No workflows found
+
+Repository: EPICv2manifest
+  - No workflows found
+
+Repository: cadd.v1.6.hg19
+  - No workflows found
+
+Repository: JASPAR2020
+  - No workflows found
+
+Repository: rGenomeTracksData
+  - No workflows found
+
+Repository: JASPAR2022
+  - No workflows found
+
+Repository: alternativeSplicingEvents.hg38
+  - No workflows found
+
+Repository: GeneSummary
+  - No workflows found
+
+Repository: metaboliteIDmapping
+  - No workflows found
+
+Repository: synaptome.db
+  - No workflows found
+
+Repository: JASPAR2024
+  - No workflows found
+
+Repository: cadd.v1.6.hg38
+  - No workflows found
+
+Repository: scAnnotatR.models
+  - No workflows found
+
+Repository: EuPathDB
+  - No workflows found
+
+Repository: AHLRBaseDbs
+  - No workflows found
+
+Repository: GenomicState
+  - No workflows found
+
+Repository: UniProtKeywords
+  - No workflows found
+
+Repository: EpiTxDb.Hs.hg38
+  - No workflows found
+
+Repository: chromhmmData
+  - No workflows found
+
+Repository: TENET.AnnotationHub
+  - No workflows found
+
+Repository: phastCons30way.UCSC.hg38
+  - No workflows found
+
+Repository: hpAnnot
+  - No workflows found
+
+Repository: EpiTxDb.Mm.mm10
+  - No workflows found
+
+Repository: geneplast.data
+  - No workflows found
+
+Repository: BioMartGOGeneSets
+  - No workflows found
+
+Repository: ontoProcData
+  - No workflows found
+
+Repository: excluderanges
+  - No workflows found
+
+Repository: EpiTxDb.Sc.sacCer3
+  - No workflows found
+

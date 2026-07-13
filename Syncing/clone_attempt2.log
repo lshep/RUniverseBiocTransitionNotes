@@ -1,0 +1,990 @@
+===== Cloning IlluminaHumanMethylation450kmanifest =====
+Cloning into bare repository 'IlluminaHumanMethylation450kmanifest.git'...
+FATAL: R any packages/IlluminaHumanMethylation450kmanifest l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+IlluminaHumanMethylation450kmanifest: clone FAILED
+===== Cloning RNAseqData.HeLa.bam.chr14 =====
+Cloning into bare repository 'RNAseqData.HeLa.bam.chr14.git'...
+FATAL: R any packages/RNAseqData.HeLa.bam.chr14 l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RNAseqData.HeLa.bam.chr14: clone FAILED
+===== Cloning RNASeqDataSubset =====
+Cloning into bare repository 'RNASeqDataSubset.git'...
+FATAL: R any packages/RNASeqDataSubset l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RNASeqDataSubset: clone FAILED
+===== Cloning CopyNumber450kData =====
+Cloning into bare repository 'CopyNumber450kData.git'...
+FATAL: R any packages/CopyNumber450kData l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+CopyNumber450kData: clone FAILED
+===== Cloning encoDnaseI =====
+Cloning into bare repository 'encoDnaseI.git'...
+FATAL: R any packages/encoDnaseI l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+encoDnaseI: clone FAILED
+===== Cloning ind1KG =====
+Cloning into bare repository 'ind1KG.git'...
+FATAL: R any packages/ind1KG l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ind1KG: clone FAILED
+===== Cloning parathyroid =====
+Cloning into bare repository 'parathyroid.git'...
+FATAL: R any packages/parathyroid l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+parathyroid: clone FAILED
+===== Cloning ggtut =====
+Cloning into bare repository 'ggtut.git'...
+FATAL: R any packages/ggtut l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ggtut: clone FAILED
+===== Cloning geuvStore =====
+Cloning into bare repository 'geuvStore.git'...
+FATAL: R any packages/geuvStore l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+geuvStore: clone FAILED
+===== Cloning DASiR =====
+Cloning into bare repository 'DASiR.git'...
+FATAL: R any packages/DASiR l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+DASiR: clone FAILED
+===== Cloning spade =====
+Cloning into bare repository 'spade.git'...
+FATAL: R any packages/spade l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+spade: clone FAILED
+===== Cloning goCluster =====
+Cloning into bare repository 'goCluster.git'...
+FATAL: R any packages/goCluster l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+goCluster: clone FAILED
+===== Cloning KEGGSOAP =====
+Cloning into bare repository 'KEGGSOAP.git'...
+FATAL: R any packages/KEGGSOAP l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+KEGGSOAP: clone FAILED
+===== Cloning Ruuid =====
+Cloning into bare repository 'Ruuid.git'...
+FATAL: R any packages/Ruuid l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Ruuid: clone FAILED
+===== Cloning gff3Plotter =====
+Cloning into bare repository 'gff3Plotter.git'...
+FATAL: R any packages/gff3Plotter l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+gff3Plotter: clone FAILED
+===== Cloning mscalib =====
+Cloning into bare repository 'mscalib.git'...
+FATAL: R any packages/mscalib l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+mscalib: clone FAILED
+===== Cloning iSNetwork =====
+Cloning into bare repository 'iSNetwork.git'...
+FATAL: R any packages/iSNetwork l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+iSNetwork: clone FAILED
+===== Cloning AnnBuilder =====
+Cloning into bare repository 'AnnBuilder.git'...
+FATAL: R any packages/AnnBuilder l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+AnnBuilder: clone FAILED
+===== Cloning cosmo =====
+Cloning into bare repository 'cosmo.git'...
+FATAL: R any packages/cosmo l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+cosmo: clone FAILED
+===== Cloning gene2pathway =====
+Cloning into bare repository 'gene2pathway.git'...
+FATAL: R any packages/gene2pathway l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+gene2pathway: clone FAILED
+===== Cloning Resourcerer =====
+Cloning into bare repository 'Resourcerer.git'...
+FATAL: R any packages/Resourcerer l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Resourcerer: clone FAILED
+===== Cloning GeneGroupAnalysis =====
+Cloning into bare repository 'GeneGroupAnalysis.git'...
+FATAL: R any packages/GeneGroupAnalysis l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneGroupAnalysis: clone FAILED
+===== Cloning inSilicoDb =====
+Cloning into bare repository 'inSilicoDb.git'...
+FATAL: R any packages/inSilicoDb l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+inSilicoDb: clone FAILED
+===== Cloning cellHTS =====
+Cloning into bare repository 'cellHTS.git'...
+FATAL: R any packages/cellHTS l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+cellHTS: clone FAILED
+===== Cloning SomatiCA =====
+Cloning into bare repository 'SomatiCA.git'...
+FATAL: R any packages/SomatiCA l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+SomatiCA: clone FAILED
+===== Cloning mmnet =====
+Cloning into bare repository 'mmnet.git'...
+FATAL: R any packages/mmnet l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+mmnet: clone FAILED
+===== Cloning simulatorAPMS =====
+Cloning into bare repository 'simulatorAPMS.git'...
+FATAL: R any packages/simulatorAPMS l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+simulatorAPMS: clone FAILED
+===== Cloning jmosaics =====
+Cloning into bare repository 'jmosaics.git'...
+FATAL: R any packages/jmosaics l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+jmosaics: clone FAILED
+===== Cloning mmgmos =====
+Cloning into bare repository 'mmgmos.git'...
+FATAL: R any packages/mmgmos l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+mmgmos: clone FAILED
+===== Cloning stam =====
+Cloning into bare repository 'stam.git'...
+FATAL: R any packages/stam l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+stam: clone FAILED
+===== Cloning rflowcyt =====
+Cloning into bare repository 'rflowcyt.git'...
+FATAL: R any packages/rflowcyt l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+rflowcyt: clone FAILED
+===== Cloning iFlow =====
+Cloning into bare repository 'iFlow.git'...
+FATAL: R any packages/iFlow l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+iFlow: clone FAILED
+===== Cloning GenomeBase =====
+Cloning into bare repository 'GenomeBase.git'...
+FATAL: R any packages/GenomeBase l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GenomeBase: clone FAILED
+===== Cloning MMDiff =====
+Cloning into bare repository 'MMDiff.git'...
+FATAL: R any packages/MMDiff l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MMDiff: clone FAILED
+===== Cloning matchprobes =====
+Cloning into bare repository 'matchprobes.git'...
+FATAL: R any packages/matchprobes l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+matchprobes: clone FAILED
+===== Cloning inSilicoMerging =====
+Cloning into bare repository 'inSilicoMerging.git'...
+FATAL: R any packages/inSilicoMerging l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+inSilicoMerging: clone FAILED
+===== Cloning fbat =====
+Cloning into bare repository 'fbat.git'...
+FATAL: R any packages/fbat l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+fbat: clone FAILED
+===== Cloning ChromoViz =====
+Cloning into bare repository 'ChromoViz.git'...
+FATAL: R any packages/ChromoViz l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ChromoViz: clone FAILED
+===== Cloning DAVIDQuery =====
+Cloning into bare repository 'DAVIDQuery.git'...
+FATAL: R any packages/DAVIDQuery l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+DAVIDQuery: clone FAILED
+===== Cloning applera =====
+Cloning into bare repository 'applera.git'...
+FATAL: R any packages/applera l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+applera: clone FAILED
+===== Cloning keggorth =====
+Cloning into bare repository 'keggorth.git'...
+FATAL: R any packages/keggorth l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+keggorth: clone FAILED
+===== Cloning vasp =====
+Cloning into bare repository 'vasp.git'...
+FATAL: R any packages/vasp l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+vasp: clone FAILED
+===== Cloning edd =====
+Cloning into bare repository 'edd.git'...
+FATAL: R any packages/edd l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+edd: clone FAILED
+===== Cloning SAGElyzer =====
+Cloning into bare repository 'SAGElyzer.git'...
+FATAL: R any packages/SAGElyzer l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+SAGElyzer: clone FAILED
+===== Cloning pamr =====
+Cloning into bare repository 'pamr.git'...
+FATAL: R any packages/pamr l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+pamr: clone FAILED
+===== Cloning Rredland =====
+Cloning into bare repository 'Rredland.git'...
+FATAL: R any packages/Rredland l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Rredland: clone FAILED
+===== Cloning SJava =====
+Cloning into bare repository 'SJava.git'...
+FATAL: R any packages/SJava l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+SJava: clone FAILED
+===== Cloning sbgr =====
+Cloning into bare repository 'sbgr.git'...
+FATAL: R any packages/sbgr l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+sbgr: clone FAILED
+===== Cloning GENE.E =====
+Cloning into bare repository 'GENE.E.git'...
+FATAL: R any packages/GENE.E l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GENE.E: clone FAILED
+===== Cloning RTools4TB =====
+Cloning into bare repository 'RTools4TB.git'...
+FATAL: R any packages/RTools4TB l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RTools4TB: clone FAILED
+===== Cloning Rolexa =====
+Cloning into bare repository 'Rolexa.git'...
+FATAL: R any packages/Rolexa l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Rolexa: clone FAILED
+===== Cloning Rdbi =====
+Cloning into bare repository 'Rdbi.git'...
+FATAL: R any packages/Rdbi l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Rdbi: clone FAILED
+===== Cloning RSNPper =====
+Cloning into bare repository 'RSNPper.git'...
+FATAL: R any packages/RSNPper l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RSNPper: clone FAILED
+===== Cloning RdbiPgSQL =====
+Cloning into bare repository 'RdbiPgSQL.git'...
+FATAL: R any packages/RdbiPgSQL l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RdbiPgSQL: clone FAILED
+===== Cloning spade =====
+Cloning into bare repository 'spade.git'...
+FATAL: R any packages/spade l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+spade: clone FAILED
+===== Cloning AffyTiling =====
+Cloning into bare repository 'AffyTiling.git'...
+FATAL: R any packages/AffyTiling l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+AffyTiling: clone FAILED
+===== Cloning GeneTS =====
+Cloning into bare repository 'GeneTS.git'...
+FATAL: R any packages/GeneTS l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneTS: clone FAILED
+===== Cloning externalVector =====
+Cloning into bare repository 'externalVector.git'...
+FATAL: R any packages/externalVector l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+externalVector: clone FAILED
+===== Cloning maDB =====
+Cloning into bare repository 'maDB.git'...
+FATAL: R any packages/maDB l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+maDB: clone FAILED
+===== Cloning BeadExplorer =====
+Cloning into bare repository 'BeadExplorer.git'...
+FATAL: R any packages/BeadExplorer l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+BeadExplorer: clone FAILED
+===== Cloning COPDSexualDimorphism =====
+Cloning into bare repository 'COPDSexualDimorphism.git'...
+FATAL: R any packages/COPDSexualDimorphism l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+COPDSexualDimorphism: clone FAILED
+===== Cloning DNaseR =====
+Cloning into bare repository 'DNaseR.git'...
+FATAL: R any packages/DNaseR l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+DNaseR: clone FAILED
+===== Cloning GeneRfold =====
+Cloning into bare repository 'GeneRfold.git'...
+FATAL: R any packages/GeneRfold l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneRfold: clone FAILED
+===== Cloning bim =====
+Cloning into bare repository 'bim.git'...
+FATAL: R any packages/bim l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+bim: clone FAILED
+===== Cloning PatientGeneSets =====
+Cloning into bare repository 'PatientGeneSets.git'...
+FATAL: R any packages/PatientGeneSets l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PatientGeneSets: clone FAILED
+===== Cloning GEOsearch =====
+Cloning into bare repository 'GEOsearch.git'...
+FATAL: R any packages/GEOsearch l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GEOsearch: clone FAILED
+===== Cloning y2hStat =====
+Cloning into bare repository 'y2hStat.git'...
+FATAL: R any packages/y2hStat l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+y2hStat: clone FAILED
+===== Cloning SemSim =====
+Cloning into bare repository 'SemSim.git'...
+FATAL: R any packages/SemSim l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+SemSim: clone FAILED
+===== Cloning metaX =====
+Cloning into bare repository 'metaX.git'...
+FATAL: R any packages/metaX l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+metaX: clone FAILED
+===== Cloning rfcdmin =====
+Cloning into bare repository 'rfcdmin.git'...
+FATAL: R any packages/rfcdmin l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+rfcdmin: clone FAILED
+===== Cloning hexbin =====
+Cloning into bare repository 'hexbin.git'...
+FATAL: R any packages/hexbin l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+hexbin: clone FAILED
+===== Cloning betr =====
+Cloning into bare repository 'betr.git'...
+FATAL: R any packages/betr l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+betr: clone FAILED
+===== Cloning AtlasRDF =====
+Cloning into bare repository 'AtlasRDF.git'...
+FATAL: R any packages/AtlasRDF l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+AtlasRDF: clone FAILED
+===== Cloning ideogram =====
+Cloning into bare repository 'ideogram.git'...
+FATAL: R any packages/ideogram l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ideogram: clone FAILED
+===== Cloning CopyNumber450k =====
+Cloning into bare repository 'CopyNumber450k.git'...
+FATAL: R any packages/CopyNumber450k l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+CopyNumber450k: clone FAILED
+===== Cloning widgetInvoke =====
+Cloning into bare repository 'widgetInvoke.git'...
+FATAL: R any packages/widgetInvoke l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+widgetInvoke: clone FAILED
+===== Cloning GeneTraffic =====
+Cloning into bare repository 'GeneTraffic.git'...
+FATAL: R any packages/GeneTraffic l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneTraffic: clone FAILED
+===== Cloning RWebServices =====
+Cloning into bare repository 'RWebServices.git'...
+FATAL: R any packages/RWebServices l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RWebServices: clone FAILED
+===== Cloning arrayQCplot =====
+Cloning into bare repository 'arrayQCplot.git'...
+FATAL: R any packages/arrayQCplot l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+arrayQCplot: clone FAILED
+===== Cloning virtualArray =====
+Cloning into bare repository 'virtualArray.git'...
+FATAL: R any packages/virtualArray l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+virtualArray: clone FAILED
+===== Cloning xmapcore =====
+Cloning into bare repository 'xmapcore.git'...
+FATAL: R any packages/xmapcore l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+xmapcore: clone FAILED
+===== Cloning coRNAi =====
+Cloning into bare repository 'coRNAi.git'...
+FATAL: R any packages/coRNAi l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+coRNAi: clone FAILED
+===== Cloning pdmclass =====
+Cloning into bare repository 'pdmclass.git'...
+FATAL: R any packages/pdmclass l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+pdmclass: clone FAILED
+===== Cloning saps =====
+Cloning into bare repository 'saps.git'...
+FATAL: R any packages/saps l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+saps: clone FAILED
+===== Cloning exprExternal =====
+Cloning into bare repository 'exprExternal.git'...
+FATAL: R any packages/exprExternal l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+exprExternal: clone FAILED
+===== Cloning RMAGEML =====
+Cloning into bare repository 'RMAGEML.git'...
+FATAL: R any packages/RMAGEML l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RMAGEML: clone FAILED
+===== Cloning MeSHSim =====
+Cloning into bare repository 'MeSHSim.git'...
+FATAL: R any packages/MeSHSim l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MeSHSim: clone FAILED
+===== Cloning RMAPPER =====
+Cloning into bare repository 'RMAPPER.git'...
+FATAL: R any packages/RMAPPER l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+RMAPPER: clone FAILED
+===== Cloning GeneSpring =====
+Cloning into bare repository 'GeneSpring.git'...
+FATAL: R any packages/GeneSpring l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneSpring: clone FAILED
+===== Cloning GeneR =====
+Cloning into bare repository 'GeneR.git'...
+FATAL: R any packages/GeneR l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneR: clone FAILED
+===== Cloning msbase =====
+Cloning into bare repository 'msbase.git'...
+FATAL: R any packages/msbase l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+msbase: clone FAILED
+===== Cloning biocDatasets =====
+Cloning into bare repository 'biocDatasets.git'...
+FATAL: R any packages/biocDatasets l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+biocDatasets: clone FAILED
+===== Cloning GeneticsBase =====
+Cloning into bare repository 'GeneticsBase.git'...
+FATAL: R any packages/GeneticsBase l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GeneticsBase: clone FAILED
+===== Cloning GenoView =====
+Cloning into bare repository 'GenoView.git'...
+FATAL: R any packages/GenoView l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+GenoView: clone FAILED
+===== Cloning flowPhyto =====
+Cloning into bare repository 'flowPhyto.git'...
+FATAL: R any packages/flowPhyto l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+flowPhyto: clone FAILED
+===== Cloning makePlatformDesign =====
+Cloning into bare repository 'makePlatformDesign.git'...
+FATAL: R any packages/makePlatformDesign l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+makePlatformDesign: clone FAILED
+===== Cloning Agi4x44PreProcess =====
+Cloning into bare repository 'Agi4x44PreProcess.git'...
+FATAL: R any packages/Agi4x44PreProcess l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Agi4x44PreProcess: clone FAILED
+===== Cloning asmn =====
+Cloning into bare repository 'asmn.git'...
+FATAL: R any packages/asmn l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+asmn: clone FAILED
+===== Cloning arrayMagic =====
+Cloning into bare repository 'arrayMagic.git'...
+FATAL: R any packages/arrayMagic l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+arrayMagic: clone FAILED
+===== Cloning pgUtils =====
+Cloning into bare repository 'pgUtils.git'...
+FATAL: R any packages/pgUtils l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+pgUtils: clone FAILED
+===== Cloning neaGUI =====
+Cloning into bare repository 'neaGUI.git'...
+FATAL: R any packages/neaGUI l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+neaGUI: clone FAILED
+===== Cloning cosmoGUI =====
+Cloning into bare repository 'cosmoGUI.git'...
+FATAL: R any packages/cosmoGUI l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+cosmoGUI: clone FAILED
+===== Cloning flowFlowJo =====
+Cloning into bare repository 'flowFlowJo.git'...
+FATAL: R any packages/flowFlowJo l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+flowFlowJo: clone FAILED
+===== Cloning pairseqsim =====
+Cloning into bare repository 'pairseqsim.git'...
+FATAL: R any packages/pairseqsim l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+pairseqsim: clone FAILED
+===== Cloning exonmap =====
+Cloning into bare repository 'exonmap.git'...
+FATAL: R any packages/exonmap l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+exonmap: clone FAILED
+===== Cloning snpMatrix =====
+Cloning into bare repository 'snpMatrix.git'...
+FATAL: R any packages/snpMatrix l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+snpMatrix: clone FAILED
+===== Cloning iSPlot =====
+Cloning into bare repository 'iSPlot.git'...
+FATAL: R any packages/iSPlot l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+iSPlot: clone FAILED
+===== Cloning ontoTools =====
+Cloning into bare repository 'ontoTools.git'...
+FATAL: R any packages/ontoTools l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ontoTools: clone FAILED
+===== Cloning reposTools =====
+Cloning into bare repository 'reposTools.git'...
+FATAL: R any packages/reposTools l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+reposTools: clone FAILED
+===== Cloning Rintact =====
+Cloning into bare repository 'Rintact.git'...
+FATAL: R any packages/Rintact l.shepherd DENIED by fallthru
+(or you mis-spelled the reponame)
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Rintact: clone FAILED

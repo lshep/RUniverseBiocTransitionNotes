@@ -1,0 +1,99 @@
+Workflow branch protection
+==========================
+
+Repository: seqpac
+  - No workflows found
+
+Repository: RnaSeqGeneEdgeRQL
+  - No workflows found
+
+Repository: maEndToEnd
+  - No workflows found
+
+Repository: fluentGenomics
+  ✓ Disabled workflow: R-CMD-check-bioc
+
+Repository: methylationArrayAnalysis
+  - No workflows found
+
+Repository: generegulation
+  - No workflows found
+
+Repository: liftOver
+  - No workflows found
+
+Repository: SingscoreAMLMutations
+  ✓ Disabled workflow: R-CMD-check-bioc
+
+Repository: GeoMxWorkflows
+  ✓ Disabled workflow: .github/workflows/main.yml
+
+Repository: ExpHunterSuite
+  - No workflows found
+
+Repository: cytofWorkflow
+  - No workflows found
+
+Repository: highthroughputassays
+  - No workflows found
+
+Repository: ExpressionNormalizationWorkflow
+  - No workflows found
+
+Repository: csawUsersGuide
+  - No workflows found
+
+Repository: chipseqDB
+  - No workflows found
+
+Repository: BiocMetaWorkflow
+  - No workflows found
+
+Repository: TCGAWorkflow
+  - No workflows found
+
+Repository: spicyWorkflow
+  - No workflows found
+
+Repository: rnaseqGene
+  - No workflows found
+
+Repository: proteomics
+  - No workflows found
+
+Repository: eQTL
+  - No workflows found
+
+Repository: variants
+  - No workflows found
+
+Repository: EGSEA123
+  - No workflows found
+
+Repository: annotation
+  - No workflows found
+
+Repository: recountWorkflow
+  ✓ Disabled workflow: R-CMD-check-bioc
+
+Repository: CAGEWorkflow
+  - No workflows found
+
+Repository: sequencing
+  - No workflows found
+
+Repository: rnaseqDTU
+  - No workflows found
+
+Repository: simpleSingleCell
+  - No workflows found
+
+Repository: RNAseq123
+  - No workflows found
+
+Repository: arrays
+  - No workflows found
+
+Repository: BP4RNAseq
+  - No workflows found
+

@@ -753,6 +753,32 @@ def disable_workflow(repo_name, workflow_id, workflow_name):
 
 
 
+
+def set_default_branch_devel(repo_name):
+    branches = get_branches(repo_name)
+    if branches is None:
+        print(f"⚠️ Repository not found: {repo_name}")
+        return False
+    if "devel" not in branches:
+        print(f"⚠️ No devel branch: {repo_name}")
+        return False
+    #
+    # Set default branch
+    #
+    url = f"https://api.github.com/repos/{BIOC_ORG}/{repo_name}"
+    data = {
+        "default_branch": "devel"
+    }
+    r = github_request("PATCH", url, json=data)
+    if r.status_code != 200:
+        print(f"⚠️ Failed to set default branch for {repo_name}: "
+              f"{r.status_code} {r.text}")
+        return False
+    print(f"✅ Default branch set to devel: {repo_name}")
+    return True
+
+
+
 BIOC_ORG="bioconductor-source"
 BIOC_TOKEN = os.environ["BIOC_TOKEN"]
 
@@ -852,6 +878,13 @@ for repo in repos:
                     log(f"  ✓ Disabled workflow: {wf['name']}")
                  else:
                     log(f"  ✗ FAILED: disable workflow {wf['name']}")
+    #
+    # Ensure devel default branch
+    #
+    if set_default_branch_devel(repo):
+        log("  ✓ Default branch set to devel")
+    else:
+        log("  ✗ FAILED: set default branch devel")
     log("")
 
 

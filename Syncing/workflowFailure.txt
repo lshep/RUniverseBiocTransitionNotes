@@ -1,0 +1,89 @@
+Cloning into bare repository 'methylationArrayAnalysis.git'...
+remote: Enumerating objects: 328, done.
+remote: Counting objects: 100% (328/328), done.
+remote: Compressing objects: 100% (324/324), done.
+remote: Total 328 (delta 166), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (328/328), 283.02 MiB | 3.68 MiB/s, done.
+Resolving deltas: 100% (166/166), done.
+Enumerating objects: 328, done.
+Counting objects: 100% (328/328), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (158/158), done.
+Writing objects: 100% (328/328), 283.02 MiB | 21.87 MiB/s, done.
+Total 328 (delta 166), reused 328 (delta 166), pack-reused 0
+remote: Resolving deltas: 100% (166/166), done.
+remote: error: Trace: e3c97b88d0f9e83e3978c4eb0a836e17e0c40a222c065e430891fbd468ff72c9
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File inst/extdata/ageData.RData is 107.95 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File inst/extdata/ageData.RData is 208.95 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To github.com:bioconductor-source/methylationArrayAnalysis.git
+ ! [remote rejected] RELEASE_3_10 -> RELEASE_3_10 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_11 -> RELEASE_3_11 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_12 -> RELEASE_3_12 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_13 -> RELEASE_3_13 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_14 -> RELEASE_3_14 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_15 -> RELEASE_3_15 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_16 -> RELEASE_3_16 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_17 -> RELEASE_3_17 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_18 -> RELEASE_3_18 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_19 -> RELEASE_3_19 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_20 -> RELEASE_3_20 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_21 -> RELEASE_3_21 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_22 -> RELEASE_3_22 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_23 -> RELEASE_3_23 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_4 -> RELEASE_3_4 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_5 -> RELEASE_3_5 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_6 -> RELEASE_3_6 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_7 -> RELEASE_3_7 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_8 -> RELEASE_3_8 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_9 -> RELEASE_3_9 (pre-receive hook declined)
+ ! [remote rejected] devel -> devel (pre-receive hook declined)
+error: failed to push some refs to 'github.com:bioconductor-source/methylationArrayAnalysis.git'
+methylationArrayAnalysis: push failed
+
+
+
+
+Cloning into bare repository 'proteomics.git'...
+remote: Enumerating objects: 216, done.
+remote: Counting objects: 100% (216/216), done.
+remote: Compressing objects: 100% (179/179), done.
+remote: Total 216 (delta 79), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (216/216), 337.86 MiB | 7.85 MiB/s, done.
+Resolving deltas: 100% (79/79), done.
+Enumerating objects: 216, done.
+Counting objects: 100% (216/216), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (100/100), done.
+Writing objects: 100% (216/216), 337.86 MiB | 24.67 MiB/s, done.
+Total 216 (delta 79), reused 216 (delta 79), pack-reused 0
+remote: Resolving deltas: 100% (79/79), done.
+remote: error: Trace: 052e9dc9f3929293087d3a8ec27bbb1130bafa3bd34b6c36a9de55c6c9309b80
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File TMT_Erwinia_1uLSike_Top10HCD_isol2_45stepped_60min_01-20141210.mzXML is 450.61 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To github.com:bioconductor-source/proteomics.git
+ ! [remote rejected] RELEASE_2_12 -> RELEASE_2_12 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_2_13 -> RELEASE_2_13 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_2_14 -> RELEASE_2_14 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_0 -> RELEASE_3_0 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_1 -> RELEASE_3_1 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_10 -> RELEASE_3_10 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_11 -> RELEASE_3_11 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_12 -> RELEASE_3_12 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_13 -> RELEASE_3_13 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_14 -> RELEASE_3_14 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_15 -> RELEASE_3_15 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_2 -> RELEASE_3_2 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_3 -> RELEASE_3_3 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_4 -> RELEASE_3_4 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_5 -> RELEASE_3_5 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_6 -> RELEASE_3_6 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_7 -> RELEASE_3_7 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_8 -> RELEASE_3_8 (pre-receive hook declined)
+ ! [remote rejected] RELEASE_3_9 -> RELEASE_3_9 (pre-receive hook declined)
+ ! [remote rejected] devel -> devel (pre-receive hook declined)
+error: failed to push some refs to 'github.com:bioconductor-source/proteomics.git'
+proteomics: push failed
+
