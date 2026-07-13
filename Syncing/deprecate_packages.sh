@@ -59,8 +59,34 @@ echo "Deprecated package list written to $OUTPUT"
 
 
 
+# topic="bioc-deprecated"
+# cat "/home/lkern/BioconductorPackages/Syncing/packages_deprecated.txt" |
+# while read pkg; do
+#    if gh repo view "bioconductor-source/$pkg" >/dev/null 2>&1; then
+#         echo "Adding topic to $pkg"
+#         gh repo edit "bioconductor-source/$pkg" --add-topic "$topic"
+#     else
+#         echo "Repository not found: $pkg"
+#     fi
+# done
+
 topic="bioc-deprecated"
-cat "/home/lkern/BioconductorPackages/Syncing/packages_deprecated.txt" |
-while read pkg; do
-	gh repo edit "bioconductor-source/$pkg" --add-topic "$topic"
-done
+LOG="/home/lkern/BioconductorPackages/Syncing/deprecated_tagging.log"
+
+: > "$LOG"    # Clear/create the log file
+
+while IFS= read -r pkg; do
+    [ -z "$pkg" ] && continue
+
+    if gh repo view "bioconductor-source/$pkg" >/dev/null 2>&1; then
+        if gh repo edit "bioconductor-source/$pkg" --add-topic "$topic" >/dev/null 2>&1; then
+            echo "[OK] Added topic '$topic' to $pkg" >> "$LOG"
+        else
+            echo "[ERROR] Failed to add topic '$topic' to $pkg" >> "$LOG"
+        fi
+    else
+        echo "[NOT FOUND] Repository bioconductor-source/$pkg" >> "$LOG"
+    fi
+done < "/home/lkern/BioconductorPackages/Syncing/packages_deprecated.txt"
+
+echo "Log written to $LOG"
