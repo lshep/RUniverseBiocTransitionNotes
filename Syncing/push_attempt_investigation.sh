@@ -1,4 +1,5 @@
-
+# cat *detected* | grep "push" | sed 's/: push failed//' > push_failed.txt
+############################################################
 
 ## unset GITHUB_TOKEN
 ## unset GH_TOKEN

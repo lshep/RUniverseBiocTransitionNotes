@@ -1,3 +1,6 @@
+# cat *detected* | grep "clone" | sed 's/: clone failed//' > clone_failed.txt
+#########################################################
+
 LOGFILE="clone_attempt2.log"
 
 cat "/home/lkern/BioconductorPackages/Syncing/clone_failed.txt" |
