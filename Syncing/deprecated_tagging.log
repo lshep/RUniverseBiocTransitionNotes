@@ -1,0 +1,731 @@
+[OK] Added topic 'bioc-deprecated' to ABAData
+[OK] Added topic 'bioc-deprecated' to ABAEnrichment
+[OK] Added topic 'bioc-deprecated' to adaptest
+[OK] Added topic 'bioc-deprecated' to AffyCompatible
+[OK] Added topic 'bioc-deprecated' to AffyExpress
+[OK] Added topic 'bioc-deprecated' to affyPara
+[OK] Added topic 'bioc-deprecated' to affypdnn
+[OK] Added topic 'bioc-deprecated' to affyQCReport
+[NOT FOUND] Repository bioconductor-source/AffyTiling
+[NOT FOUND] Repository bioconductor-source/Agi4x44PreProcess
+[OK] Added topic 'bioc-deprecated' to allenpvc
+[OK] Added topic 'bioc-deprecated' to alpine
+[OK] Added topic 'bioc-deprecated' to alpineData
+[OK] Added topic 'bioc-deprecated' to ALPS
+[OK] Added topic 'bioc-deprecated' to alsace
+[OK] Added topic 'bioc-deprecated' to ampliQueso
+[OK] Added topic 'bioc-deprecated' to AnalysisPageServer
+[OK] Added topic 'bioc-deprecated' to anamiR
+[OK] Added topic 'bioc-deprecated' to AneuFinder
+[OK] Added topic 'bioc-deprecated' to AneuFinderData
+[NOT FOUND] Repository bioconductor-source/AnnBuilder
+[OK] Added topic 'bioc-deprecated' to AnnotationFuncs
+[NOT FOUND] Repository bioconductor-source/applera
+[OK] Added topic 'bioc-deprecated' to ArrayExpressHTS
+[NOT FOUND] Repository bioconductor-source/arrayMagic
+[NOT FOUND] Repository bioconductor-source/arrayQCplot
+[OK] Added topic 'bioc-deprecated' to ArrayTools
+[OK] Added topic 'bioc-deprecated' to ArrayTV
+[NOT FOUND] Repository bioconductor-source/asmn
+[OK] Added topic 'bioc-deprecated' to ASpediaFI
+[OK] Added topic 'bioc-deprecated' to ATACCoGAPS
+[OK] Added topic 'bioc-deprecated' to AtlasRDF
+[OK] Added topic 'bioc-deprecated' to Autotuner
+[OK] Added topic 'bioc-deprecated' to BAC
+[OK] Added topic 'bioc-deprecated' to BayesPeak
+[OK] Added topic 'bioc-deprecated' to BDMMAcorrect
+[OK] Added topic 'bioc-deprecated' to beadarraySNP
+[NOT FOUND] Repository bioconductor-source/BeadExplorer
+[OK] Added topic 'bioc-deprecated' to BEARscc
+[OK] Added topic 'bioc-deprecated' to benchmarkfdrData2019
+[NOT FOUND] Repository bioconductor-source/betr
+[OK] Added topic 'bioc-deprecated' to bgafun
+[OK] Added topic 'bioc-deprecated' to BGmix
+[OK] Added topic 'bioc-deprecated' to bgx
+[OK] Added topic 'bioc-deprecated' to BHC
+[OK] Added topic 'bioc-deprecated' to BiGGR
+[OK] Added topic 'bioc-deprecated' to bigmemoryExtras
+[OK] Added topic 'bioc-deprecated' to bigPint
+[NOT FOUND] Repository bioconductor-source/bim
+[OK] Added topic 'bioc-deprecated' to BiocCaseStudies
+[NOT FOUND] Repository bioconductor-source/biocDatasets
+[OK] Added topic 'bioc-deprecated' to BiocDockerManager
+[OK] Added topic 'bioc-deprecated' to BiocInstaller
+[OK] Added topic 'bioc-deprecated' to BiocMetaWorkflow
+[OK] Added topic 'bioc-deprecated' to BiocOncoTK
+[OK] Added topic 'bioc-deprecated' to biodbExpasy
+[OK] Added topic 'bioc-deprecated' to biodbHmdb
+[OK] Added topic 'bioc-deprecated' to biodbKegg
+[OK] Added topic 'bioc-deprecated' to biodbLipidmaps
+[OK] Added topic 'bioc-deprecated' to biodbMirbase
+[OK] Added topic 'bioc-deprecated' to biodbNcbi
+[OK] Added topic 'bioc-deprecated' to biodbNci
+[OK] Added topic 'bioc-deprecated' to biodbUniprot
+[OK] Added topic 'bioc-deprecated' to BioMedR
+[OK] Added topic 'bioc-deprecated' to BioMM
+[OK] Added topic 'bioc-deprecated' to BioNetStat
+[OK] Added topic 'bioc-deprecated' to BioSeqClass
+[OK] Added topic 'bioc-deprecated' to biosvd
+[OK] Added topic 'bioc-deprecated' to biosvd
+[OK] Added topic 'bioc-deprecated' to birta
+[OK] Added topic 'bioc-deprecated' to birte
+[OK] Added topic 'bioc-deprecated' to BitSeq
+[OK] Added topic 'bioc-deprecated' to brainflowprobes
+[OK] Added topic 'bioc-deprecated' to brainImageR
+[OK] Added topic 'bioc-deprecated' to brainImageRdata
+[OK] Added topic 'bioc-deprecated' to BrainSABER
+[OK] Added topic 'bioc-deprecated' to BrainStars
+[OK] Added topic 'bioc-deprecated' to BRGenomics
+[OK] Added topic 'bioc-deprecated' to bridge
+[OK] Added topic 'bioc-deprecated' to BrowserVizDemo
+[OK] Added topic 'bioc-deprecated' to BrowserVizDemo
+[OK] Added topic 'bioc-deprecated' to CALIB
+[OK] Added topic 'bioc-deprecated' to CAMTHC
+[OK] Added topic 'bioc-deprecated' to CancerInSilico
+[OK] Added topic 'bioc-deprecated' to CancerMutationAnalysis
+[OK] Added topic 'bioc-deprecated' to CancerSubtypes
+[OK] Added topic 'bioc-deprecated' to CAnD
+[OK] Added topic 'bioc-deprecated' to caOmicsV
+[OK] Added topic 'bioc-deprecated' to CBEA
+[OK] Added topic 'bioc-deprecated' to ccmap
+[OK] Added topic 'bioc-deprecated' to ccTutorial
+[OK] Added topic 'bioc-deprecated' to CellaRepertorium
+[OK] Added topic 'bioc-deprecated' to cellGrowth
+[NOT FOUND] Repository bioconductor-source/cellHTS
+[OK] Added topic 'bioc-deprecated' to cellHTS2
+[OK] Added topic 'bioc-deprecated' to CellScore
+[OK] Added topic 'bioc-deprecated' to cellTree
+[OK] Added topic 'bioc-deprecated' to ceu1kg
+[OK] Added topic 'bioc-deprecated' to ceu1kgv
+[OK] Added topic 'bioc-deprecated' to ceuhm3
+[OK] Added topic 'bioc-deprecated' to cgdv17
+[OK] Added topic 'bioc-deprecated' to CHARGE
+[OK] Added topic 'bioc-deprecated' to charm
+[OK] Added topic 'bioc-deprecated' to charmData
+[OK] Added topic 'bioc-deprecated' to cheung2010
+[OK] Added topic 'bioc-deprecated' to ChIC
+[OK] Added topic 'bioc-deprecated' to ChIC.data
+[OK] Added topic 'bioc-deprecated' to chimera
+[OK] Added topic 'bioc-deprecated' to ChIPSeqSpike
+[OK] Added topic 'bioc-deprecated' to chroGPS
+[NOT FOUND] Repository bioconductor-source/ChromoViz
+[OK] Added topic 'bioc-deprecated' to chromstaR
+[OK] Added topic 'bioc-deprecated' to chromstaRData
+[OK] Added topic 'bioc-deprecated' to chromswitch
+[OK] Added topic 'bioc-deprecated' to CINdex
+[OK] Added topic 'bioc-deprecated' to cisPath
+[OK] Added topic 'bioc-deprecated' to Clonality
+[OK] Added topic 'bioc-deprecated' to clonotypeR
+[OK] Added topic 'bioc-deprecated' to CNPBayes
+[OK] Added topic 'bioc-deprecated' to CNVgears
+[OK] Added topic 'bioc-deprecated' to CNVtools
+[OK] Added topic 'bioc-deprecated' to cobindR
+[OK] Added topic 'bioc-deprecated' to coexnet
+[OK] Added topic 'bioc-deprecated' to COHCAP
+[OK] Added topic 'bioc-deprecated' to coMET
+[OK] Added topic 'bioc-deprecated' to compartmap
+[OK] Added topic 'bioc-deprecated' to CompGO
+[OK] Added topic 'bioc-deprecated' to conclus
+[OK] Added topic 'bioc-deprecated' to condcomp
+[OK] Added topic 'bioc-deprecated' to contiBAIT
+[NOT FOUND] Repository bioconductor-source/COPDSexualDimorphism
+[OK] Added topic 'bioc-deprecated' to copynumber
+[OK] Added topic 'bioc-deprecated' to CopyNumber450k
+[OK] Added topic 'bioc-deprecated' to CopyNumber450kData
+[OK] Added topic 'bioc-deprecated' to CopywriteR
+[OK] Added topic 'bioc-deprecated' to CoRegFlux
+[OK] Added topic 'bioc-deprecated' to CoRegNet
+[OK] Added topic 'bioc-deprecated' to CorMut
+[OK] Added topic 'bioc-deprecated' to coRNAi
+[OK] Added topic 'bioc-deprecated' to CORREP
+[NOT FOUND] Repository bioconductor-source/cosmo
+[NOT FOUND] Repository bioconductor-source/cosmoGUI
+[OK] Added topic 'bioc-deprecated' to CountClust
+[OK] Added topic 'bioc-deprecated' to crisprseekplus
+[OK] Added topic 'bioc-deprecated' to CrossICC
+[OK] Added topic 'bioc-deprecated' to crossmeta
+[OK] Added topic 'bioc-deprecated' to CSSP
+[OK] Added topic 'bioc-deprecated' to ctgGEM
+[OK] Added topic 'bioc-deprecated' to CVE
+[OK] Added topic 'bioc-deprecated' to cytofast
+[OK] Added topic 'bioc-deprecated' to cytofkit
+[OK] Added topic 'bioc-deprecated' to CytoTree
+[OK] Added topic 'bioc-deprecated' to DASC
+[NOT FOUND] Repository bioconductor-source/DASiR
+[OK] Added topic 'bioc-deprecated' to dasper
+[NOT FOUND] Repository bioconductor-source/DAVIDQuery
+[OK] Added topic 'bioc-deprecated' to DBChIP
+[OK] Added topic 'bioc-deprecated' to dce
+[OK] Added topic 'bioc-deprecated' to DChIPRep
+[OK] Added topic 'bioc-deprecated' to ddgraph
+[OK] Added topic 'bioc-deprecated' to deco
+[OK] Added topic 'bioc-deprecated' to DEComplexDisease
+[OK] Added topic 'bioc-deprecated' to DEDS
+[OK] Added topic 'bioc-deprecated' to DeepBlueR
+[OK] Added topic 'bioc-deprecated' to DEP
+[OK] Added topic 'bioc-deprecated' to DeProViR
+[OK] Added topic 'bioc-deprecated' to DESeq
+[OK] Added topic 'bioc-deprecated' to dexus
+[OK] Added topic 'bioc-deprecated' to DIAlignR
+[OK] Added topic 'bioc-deprecated' to diffloop
+[OK] Added topic 'bioc-deprecated' to Director
+[OK] Added topic 'bioc-deprecated' to DmelSGI
+[OK] Added topic 'bioc-deprecated' to DMRforPairs
+[NOT FOUND] Repository bioconductor-source/DNaseR
+[OK] Added topic 'bioc-deprecated' to domainsignatures
+[OK] Added topic 'bioc-deprecated' to DOQTL
+[OK] Added topic 'bioc-deprecated' to dpeak
+[OK] Added topic 'bioc-deprecated' to DREAM4
+[OK] Added topic 'bioc-deprecated' to dSimer
+[OK] Added topic 'bioc-deprecated' to dsQTL
+[OK] Added topic 'bioc-deprecated' to dualKS
+[OK] Added topic 'bioc-deprecated' to DupChecker
+[OK] Added topic 'bioc-deprecated' to EasyqpcR
+[OK] Added topic 'bioc-deprecated' to EBSeqHMM
+[NOT FOUND] Repository bioconductor-source/edd
+[OK] Added topic 'bioc-deprecated' to EDDA
+[OK] Added topic 'bioc-deprecated' to eegc
+[OK] Added topic 'bioc-deprecated' to eisa
+[OK] Added topic 'bioc-deprecated' to ELBOW
+[OK] Added topic 'bioc-deprecated' to ELBOW
+[OK] Added topic 'bioc-deprecated' to ENCODExplorer
+[NOT FOUND] Repository bioconductor-source/encoDnaseI
+[OK] Added topic 'bioc-deprecated' to enrichTF
+[OK] Added topic 'bioc-deprecated' to ensemblVEP
+[OK] Added topic 'bioc-deprecated' to ENVISIONQuery
+[OK] Added topic 'bioc-deprecated' to epihet
+[OK] Added topic 'bioc-deprecated' to eQTL
+[OK] Added topic 'bioc-deprecated' to erma
+[OK] Added topic 'bioc-deprecated' to exomeCopy
+[OK] Added topic 'bioc-deprecated' to exomePeak
+[OK] Added topic 'bioc-deprecated' to exomePeak2
+[NOT FOUND] Repository bioconductor-source/exonmap
+[OK] Added topic 'bioc-deprecated' to explorase
+[OK] Added topic 'bioc-deprecated' to ExpressionView
+[NOT FOUND] Repository bioconductor-source/exprExternal
+[NOT FOUND] Repository bioconductor-source/externalVector
+[OK] Added topic 'bioc-deprecated' to facopy
+[OK] Added topic 'bioc-deprecated' to facopy.annot
+[OK] Added topic 'bioc-deprecated' to facsDorit
+[OK] Added topic 'bioc-deprecated' to farms
+[NOT FOUND] Repository bioconductor-source/fbat
+[OK] Added topic 'bioc-deprecated' to FCBF
+[OK] Added topic 'bioc-deprecated' to fcoex
+[OK] Added topic 'bioc-deprecated' to FEM
+[OK] Added topic 'bioc-deprecated' to FindMyFriends
+[OK] Added topic 'bioc-deprecated' to flipflop
+[OK] Added topic 'bioc-deprecated' to flowCL
+[OK] Added topic 'bioc-deprecated' to flowFit
+[OK] Added topic 'bioc-deprecated' to flowFitExampleData
+[NOT FOUND] Repository bioconductor-source/flowFlowJo
+[OK] Added topic 'bioc-deprecated' to flowMap
+[NOT FOUND] Repository bioconductor-source/flowPhyto
+[OK] Added topic 'bioc-deprecated' to flowQ
+[OK] Added topic 'bioc-deprecated' to flowQB
+[OK] Added topic 'bioc-deprecated' to flowQBData
+[OK] Added topic 'bioc-deprecated' to FlowRepositoryR
+[OK] Added topic 'bioc-deprecated' to flowSpy
+[OK] Added topic 'bioc-deprecated' to flowType
+[OK] Added topic 'bioc-deprecated' to flowUtils
+[OK] Added topic 'bioc-deprecated' to focalCall
+[OK] Added topic 'bioc-deprecated' to FoldGO
+[OK] Added topic 'bioc-deprecated' to FourCSeq
+[OK] Added topic 'bioc-deprecated' to FScanR
+[OK] Added topic 'bioc-deprecated' to FunChIP
+[OK] Added topic 'bioc-deprecated' to FunciSNP
+[OK] Added topic 'bioc-deprecated' to FunciSNP.data
+[OK] Added topic 'bioc-deprecated' to gaggle
+[OK] Added topic 'bioc-deprecated' to gaia
+[OK] Added topic 'bioc-deprecated' to GAPGOM
+[OK] Added topic 'bioc-deprecated' to gatingMLData
+[OK] Added topic 'bioc-deprecated' to gaucho
+[OK] Added topic 'bioc-deprecated' to gCMAP
+[OK] Added topic 'bioc-deprecated' to gCMAPWeb
+[OK] Added topic 'bioc-deprecated' to GCSConnection
+[OK] Added topic 'bioc-deprecated' to GCSFilesystem
+[OK] Added topic 'bioc-deprecated' to GCSscore
+[OK] Added topic 'bioc-deprecated' to geecc
+[OK] Added topic 'bioc-deprecated' to genbankr
+[NOT FOUND] Repository bioconductor-source/gene2pathway
+[OK] Added topic 'bioc-deprecated' to GeneAccord
+[OK] Added topic 'bioc-deprecated' to GeneAnswers
+[OK] Added topic 'bioc-deprecated' to GENE.E
+[OK] Added topic 'bioc-deprecated' to GeneGeneInteR
+[NOT FOUND] Repository bioconductor-source/GeneGroupAnalysis
+[NOT FOUND] Repository bioconductor-source/GeneR
+[NOT FOUND] Repository bioconductor-source/GeneRfold
+[OK] Added topic 'bioc-deprecated' to GeneSelector
+[NOT FOUND] Repository bioconductor-source/GeneSpring
+[NOT FOUND] Repository bioconductor-source/GeneticsBase
+[OK] Added topic 'bioc-deprecated' to GeneticsDesign
+[NOT FOUND] Repository bioconductor-source/GeneTraffic
+[NOT FOUND] Repository bioconductor-source/GeneTS
+[OK] Added topic 'bioc-deprecated' to genoCN
+[OK] Added topic 'bioc-deprecated' to GenoGAM
+[NOT FOUND] Repository bioconductor-source/GenomeBase
+[OK] Added topic 'bioc-deprecated' to GenomeGraphs
+[OK] Added topic 'bioc-deprecated' to Genominator
+[OK] Added topic 'bioc-deprecated' to genoset
+[OK] Added topic 'bioc-deprecated' to genotypeeval
+[NOT FOUND] Repository bioconductor-source/GenoView
+[OK] Added topic 'bioc-deprecated' to genphen
+[OK] Added topic 'bioc-deprecated' to GenRank
+[OK] Added topic 'bioc-deprecated' to GEOsearch
+[OK] Added topic 'bioc-deprecated' to gespeR
+[OK] Added topic 'bioc-deprecated' to geuvPack
+[NOT FOUND] Repository bioconductor-source/geuvStore
+[OK] Added topic 'bioc-deprecated' to geuvStore2
+[NOT FOUND] Repository bioconductor-source/gff3Plotter
+[OK] Added topic 'bioc-deprecated' to GGBase
+[OK] Added topic 'bioc-deprecated' to GGdata
+[OK] Added topic 'bioc-deprecated' to GGtools
+[NOT FOUND] Repository bioconductor-source/ggtut
+[OK] Added topic 'bioc-deprecated' to girafe
+[OK] Added topic 'bioc-deprecated' to GISPA
+[NOT FOUND] Repository bioconductor-source/goCluster
+[OK] Added topic 'bioc-deprecated' to GOFunction
+[OK] Added topic 'bioc-deprecated' to GoogleGenomics
+[OK] Added topic 'bioc-deprecated' to GOSim
+[OK] Added topic 'bioc-deprecated' to GOsummaries
+[OK] Added topic 'bioc-deprecated' to gpart
+[OK] Added topic 'bioc-deprecated' to gprege
+[OK] Added topic 'bioc-deprecated' to gpuMagic
+[OK] Added topic 'bioc-deprecated' to gQTLBase
+[OK] Added topic 'bioc-deprecated' to gQTLstats
+[OK] Added topic 'bioc-deprecated' to gramm4R
+[OK] Added topic 'bioc-deprecated' to GraphPAC
+[OK] Added topic 'bioc-deprecated' to GRridge
+[OK] Added topic 'bioc-deprecated' to gskb
+[OK] Added topic 'bioc-deprecated' to Harshlight
+[OK] Added topic 'bioc-deprecated' to HCABrowser
+[OK] Added topic 'bioc-deprecated' to HCAExplorer
+[OK] Added topic 'bioc-deprecated' to HCAMatrixBrowser
+[OK] Added topic 'bioc-deprecated' to HCsnip
+[NOT FOUND] Repository bioconductor-source/hexbin
+[OK] Added topic 'bioc-deprecated' to hiAnnotator
+[OK] Added topic 'bioc-deprecated' to hicrep
+[OK] Added topic 'bioc-deprecated' to hiReadsProcessor
+[OK] Added topic 'bioc-deprecated' to hmyriB36
+[OK] Added topic 'bioc-deprecated' to HPAStainR
+[OK] Added topic 'bioc-deprecated' to HTSanalyzeR
+[OK] Added topic 'bioc-deprecated' to HTSeqGenie
+[OK] Added topic 'bioc-deprecated' to htSeqTools
+[OK] Added topic 'bioc-deprecated' to HumanTranscriptomeCompendium
+[NOT FOUND] Repository bioconductor-source/ideogram
+[OK] Added topic 'bioc-deprecated' to IdMappingAnalysis
+[OK] Added topic 'bioc-deprecated' to IdMappingRetrieval
+[NOT FOUND] Repository bioconductor-source/iFlow
+[NOT FOUND] Repository bioconductor-source/IlluminaHumanMethylation450kmanifest
+[OK] Added topic 'bioc-deprecated' to imageHTS
+[OK] Added topic 'bioc-deprecated' to Imetagene
+[OK] Added topic 'bioc-deprecated' to ImmuneSpaceR
+[OK] Added topic 'bioc-deprecated' to ImpulseDE
+[OK] Added topic 'bioc-deprecated' to ImpulseDE2
+[NOT FOUND] Repository bioconductor-source/ind1KG
+[NOT FOUND] Repository bioconductor-source/inSilicoDb
+[NOT FOUND] Repository bioconductor-source/inSilicoMerging
+[OK] Added topic 'bioc-deprecated' to interactiveDisplay
+[OK] Added topic 'bioc-deprecated' to interactiveDisplayBase
+[OK] Added topic 'bioc-deprecated' to InterMineR
+[OK] Added topic 'bioc-deprecated' to IntOMICS
+[OK] Added topic 'bioc-deprecated' to inveRsion
+[OK] Added topic 'bioc-deprecated' to iontree
+[OK] Added topic 'bioc-deprecated' to iontreeData
+[OK] Added topic 'bioc-deprecated' to iPAC
+[OK] Added topic 'bioc-deprecated' to IPPD
+[OK] Added topic 'bioc-deprecated' to IRISFGM
+[OK] Added topic 'bioc-deprecated' to IrisSpatialFeatures
+[NOT FOUND] Repository bioconductor-source/iSNetwork
+[OK] Added topic 'bioc-deprecated' to IsoGeneGUI
+[NOT FOUND] Repository bioconductor-source/iSPlot
+[OK] Added topic 'bioc-deprecated' to iterClust
+[OK] Added topic 'bioc-deprecated' to iteremoval
+[OK] Added topic 'bioc-deprecated' to JctSeqData
+[NOT FOUND] Repository bioconductor-source/jmosaics
+[OK] Added topic 'bioc-deprecated' to joda
+[OK] Added topic 'bioc-deprecated' to JunctionSeq
+[NOT FOUND] Repository bioconductor-source/keggorth
+[OK] Added topic 'bioc-deprecated' to KEGGprofile
+[NOT FOUND] Repository bioconductor-source/KEGGSOAP
+[OK] Added topic 'bioc-deprecated' to kimod
+[OK] Added topic 'bioc-deprecated' to lapmix
+[OK] Added topic 'bioc-deprecated' to LINC
+[OK] Added topic 'bioc-deprecated' to LineagePulse
+[OK] Added topic 'bioc-deprecated' to LinTInd
+[OK] Added topic 'bioc-deprecated' to LMGene
+[OK] Added topic 'bioc-deprecated' to logitT
+[OK] Added topic 'bioc-deprecated' to Logolas
+[OK] Added topic 'bioc-deprecated' to lol
+[OK] Added topic 'bioc-deprecated' to LowMACA
+[OK] Added topic 'bioc-deprecated' to LPEadj
+[OK] Added topic 'bioc-deprecated' to lute
+[OK] Added topic 'bioc-deprecated' to LVSmiRNA
+[OK] Added topic 'bioc-deprecated' to M3D
+[OK] Added topic 'bioc-deprecated' to maanova
+[OK] Added topic 'bioc-deprecated' to macat
+[OK] Added topic 'bioc-deprecated' to MACPET
+[NOT FOUND] Repository bioconductor-source/maDB
+[OK] Added topic 'bioc-deprecated' to MADSEQ
+[OK] Added topic 'bioc-deprecated' to MAGeCKFlute
+[OK] Added topic 'bioc-deprecated' to maigesPack
+[NOT FOUND] Repository bioconductor-source/makePlatformDesign
+[OK] Added topic 'bioc-deprecated' to manta
+[OK] Added topic 'bioc-deprecated' to mAPKL
+[OK] Added topic 'bioc-deprecated' to mAPKLData
+[OK] Added topic 'bioc-deprecated' to MAQCsubsetAFX
+[OK] Added topic 'bioc-deprecated' to MAQCsubsetILM
+[NOT FOUND] Repository bioconductor-source/matchprobes
+[OK] Added topic 'bioc-deprecated' to MaxContrastProjection
+[OK] Added topic 'bioc-deprecated' to mbOmic
+[OK] Added topic 'bioc-deprecated' to mcaGUI
+[OK] Added topic 'bioc-deprecated' to MCRestimate
+[OK] Added topic 'bioc-deprecated' to mdgsa
+[OK] Added topic 'bioc-deprecated' to MEALData
+[OK] Added topic 'bioc-deprecated' to MergeMaid
+[OK] Added topic 'bioc-deprecated' to MeSHSim
+[OK] Added topic 'bioc-deprecated' to metaArray
+[OK] Added topic 'bioc-deprecated' to Metab
+[OK] Added topic 'bioc-deprecated' to metagene
+[OK] Added topic 'bioc-deprecated' to metagenomeFeatures
+[OK] Added topic 'bioc-deprecated' to metaseqR
+[OK] Added topic 'bioc-deprecated' to metavizr
+[OK] Added topic 'bioc-deprecated' to MetaVolcanoR
+[NOT FOUND] Repository bioconductor-source/metaX
+[OK] Added topic 'bioc-deprecated' to MethCP
+[OK] Added topic 'bioc-deprecated' to methVisual
+[OK] Added topic 'bioc-deprecated' to methyAnalysis
+[OK] Added topic 'bioc-deprecated' to methyvim
+[OK] Added topic 'bioc-deprecated' to methyvimData
+[OK] Added topic 'bioc-deprecated' to microbiomeMarker
+[OK] Added topic 'bioc-deprecated' to MIGSA
+[OK] Added topic 'bioc-deprecated' to MIGSAdata
+[OK] Added topic 'bioc-deprecated' to MIMOSA
+[OK] Added topic 'bioc-deprecated' to miRmine
+[OK] Added topic 'bioc-deprecated' to miRsponge
+[OK] Added topic 'bioc-deprecated' to Mirsynergy
+[OK] Added topic 'bioc-deprecated' to mitoODE
+[OK] Added topic 'bioc-deprecated' to mitoODEdata
+[OK] Added topic 'bioc-deprecated' to mlm4omics
+[OK] Added topic 'bioc-deprecated' to MMAPPR2
+[OK] Added topic 'bioc-deprecated' to MMAPPR2data
+[NOT FOUND] Repository bioconductor-source/MMDiff
+[NOT FOUND] Repository bioconductor-source/mmgmos
+[OK] Added topic 'bioc-deprecated' to mmnet
+[OK] Added topic 'bioc-deprecated' to MmPalateMiRNA
+[OK] Added topic 'bioc-deprecated' to MobilityTransformR
+[OK] Added topic 'bioc-deprecated' to MOFA
+[OK] Added topic 'bioc-deprecated' to MoPS
+[OK] Added topic 'bioc-deprecated' to motifRG
+[OK] Added topic 'bioc-deprecated' to MotIV
+[OK] Added topic 'bioc-deprecated' to MQmetrics
+[OK] Added topic 'bioc-deprecated' to mQTL.NMR
+[NOT FOUND] Repository bioconductor-source/msbase
+[OK] Added topic 'bioc-deprecated' to MSBdata
+[NOT FOUND] Repository bioconductor-source/mscalib
+[OK] Added topic 'bioc-deprecated' to MSEADbi
+[OK] Added topic 'bioc-deprecated' to MSGFgui
+[OK] Added topic 'bioc-deprecated' to MSGFplus
+[OK] Added topic 'bioc-deprecated' to MSstatsBioData
+[OK] Added topic 'bioc-deprecated' to MSstatsSampleSize
+[OK] Added topic 'bioc-deprecated' to MSstatsTMTPTM
+[OK] Added topic 'bioc-deprecated' to MTseeker
+[OK] Added topic 'bioc-deprecated' to MTseekerData
+[OK] Added topic 'bioc-deprecated' to Mulder2012
+[OK] Added topic 'bioc-deprecated' to multiOmicsViz
+[OK] Added topic 'bioc-deprecated' to multiSight
+[OK] Added topic 'bioc-deprecated' to mvGST
+[OK] Added topic 'bioc-deprecated' to NanoStringQCPro
+[OK] Added topic 'bioc-deprecated' to nanotatoR
+[OK] Added topic 'bioc-deprecated' to NarrowPeaks
+[OK] Added topic 'bioc-deprecated' to NBSplice
+[NOT FOUND] Repository bioconductor-source/neaGUI
+[OK] Added topic 'bioc-deprecated' to NeighborNet
+[OK] Added topic 'bioc-deprecated' to nem
+[OK] Added topic 'bioc-deprecated' to netbenchmark
+[OK] Added topic 'bioc-deprecated' to netbiov
+[OK] Added topic 'bioc-deprecated' to netboxr
+[OK] Added topic 'bioc-deprecated' to netDx
+[OK] Added topic 'bioc-deprecated' to netOmics
+[OK] Added topic 'bioc-deprecated' to netReg
+[OK] Added topic 'bioc-deprecated' to networkBMA
+[OK] Added topic 'bioc-deprecated' to NeuCA
+[OK] Added topic 'bioc-deprecated' to NGScopy
+[OK] Added topic 'bioc-deprecated' to nudge
+[OK] Added topic 'bioc-deprecated' to NxtIRFcore
+[OK] Added topic 'bioc-deprecated' to ODER
+[OK] Added topic 'bioc-deprecated' to OGSA
+[OK] Added topic 'bioc-deprecated' to OmicsLonDA
+[OK] Added topic 'bioc-deprecated' to OmicsMarkeR
+[OK] Added topic 'bioc-deprecated' to Onassis
+[OK] Added topic 'bioc-deprecated' to oneChannelGUI
+[OK] Added topic 'bioc-deprecated' to oneSENSE
+[OK] Added topic 'bioc-deprecated' to ontoCAT
+[NOT FOUND] Repository bioconductor-source/ontoTools
+[OK] Added topic 'bioc-deprecated' to openPrimeRui
+[OK] Added topic 'bioc-deprecated' to OperaMate
+[OK] Added topic 'bioc-deprecated' to oppti
+[OK] Added topic 'bioc-deprecated' to OutlierD
+[NOT FOUND] Repository bioconductor-source/pairseqsim
+[NOT FOUND] Repository bioconductor-source/pamr
+[OK] Added topic 'bioc-deprecated' to PAnnBuilder
+[OK] Added topic 'bioc-deprecated' to PanViz
+[OK] Added topic 'bioc-deprecated' to PanVizGenerator
+[OK] Added topic 'bioc-deprecated' to PAPi
+[NOT FOUND] Repository bioconductor-source/parathyroid
+[OK] Added topic 'bioc-deprecated' to parathyroidSE
+[OK] Added topic 'bioc-deprecated' to pareg
+[OK] Added topic 'bioc-deprecated' to pathprint
+[OK] Added topic 'bioc-deprecated' to pathprintGEOData
+[OK] Added topic 'bioc-deprecated' to pathVar
+[OK] Added topic 'bioc-deprecated' to PathwaySplice
+[NOT FOUND] Repository bioconductor-source/PatientGeneSets
+[OK] Added topic 'bioc-deprecated' to paxtoolsr
+[OK] Added topic 'bioc-deprecated' to Pbase
+[OK] Added topic 'bioc-deprecated' to pbcmc
+[OK] Added topic 'bioc-deprecated' to pcaGoPromoter
+[OK] Added topic 'bioc-deprecated' to pcaGoPromoter.Hs.hg19
+[OK] Added topic 'bioc-deprecated' to pcaGoPromoter.Mm.mm9
+[OK] Added topic 'bioc-deprecated' to pcaGoPromoter.Rn.rn4
+[OK] Added topic 'bioc-deprecated' to pcot2
+[OK] Added topic 'bioc-deprecated' to PCpheno
+[OK] Added topic 'bioc-deprecated' to pcxn
+[OK] Added topic 'bioc-deprecated' to pcxnData
+[OK] Added topic 'bioc-deprecated' to pdmclass
+[OK] Added topic 'bioc-deprecated' to PERFect
+[OK] Added topic 'bioc-deprecated' to perturbatr
+[OK] Added topic 'bioc-deprecated' to PFP
+[OK] Added topic 'bioc-deprecated' to PGA
+[OK] Added topic 'bioc-deprecated' to PGPC
+[OK] Added topic 'bioc-deprecated' to PGSEA
+[NOT FOUND] Repository bioconductor-source/pgUtils
+[OK] Added topic 'bioc-deprecated' to phemd
+[OK] Added topic 'bioc-deprecated' to phenoDist
+[OK] Added topic 'bioc-deprecated' to PhenStat
+[OK] Added topic 'bioc-deprecated' to Pi
+[OK] Added topic 'bioc-deprecated' to PICS
+[OK] Added topic 'bioc-deprecated' to PING
+[OK] Added topic 'bioc-deprecated' to pint
+[OK] Added topic 'bioc-deprecated' to pkgDepTools
+[OK] Added topic 'bioc-deprecated' to plasFIA
+[OK] Added topic 'bioc-deprecated' to plateCore
+[OK] Added topic 'bioc-deprecated' to plethy
+[OK] Added topic 'bioc-deprecated' to PloGO2
+[OK] Added topic 'bioc-deprecated' to plrs
+[OK] Added topic 'bioc-deprecated' to plw
+[OK] Added topic 'bioc-deprecated' to polyester
+[OK] Added topic 'bioc-deprecated' to Polyfit
+[OK] Added topic 'bioc-deprecated' to POST
+[OK] Added topic 'bioc-deprecated' to PoTRA
+[OK] Added topic 'bioc-deprecated' to PowerExplorer
+[OK] Added topic 'bioc-deprecated' to ppiData
+[OK] Added topic 'bioc-deprecated' to ppiStats
+[OK] Added topic 'bioc-deprecated' to prada
+[OK] Added topic 'bioc-deprecated' to PrecisionTrialDrawer
+[OK] Added topic 'bioc-deprecated' to predictionet
+[OK] Added topic 'bioc-deprecated' to Prize
+[OK] Added topic 'bioc-deprecated' to ProCoNA
+[OK] Added topic 'bioc-deprecated' to proFIA
+[OK] Added topic 'bioc-deprecated' to prot2D
+[OK] Added topic 'bioc-deprecated' to proteasy
+[OK] Added topic 'bioc-deprecated' to proteomics
+[OK] Added topic 'bioc-deprecated' to ProteomicsAnnotationHubData
+[OK] Added topic 'bioc-deprecated' to proteoQC
+[OK] Added topic 'bioc-deprecated' to PSEA
+[OK] Added topic 'bioc-deprecated' to PSICQUIC
+[OK] Added topic 'bioc-deprecated' to psygenet2r
+[OK] Added topic 'bioc-deprecated' to PubScore
+[OK] Added topic 'bioc-deprecated' to pulsedSilac
+[OK] Added topic 'bioc-deprecated' to pwOmics
+[OK] Added topic 'bioc-deprecated' to pwrEWAS
+[OK] Added topic 'bioc-deprecated' to pwrEWAS.data
+[OK] Added topic 'bioc-deprecated' to qckitfastq
+[OK] Added topic 'bioc-deprecated' to qrqc
+[OK] Added topic 'bioc-deprecated' to QUALIFIER
+[OK] Added topic 'bioc-deprecated' to QuartPAC
+[OK] Added topic 'bioc-deprecated' to rama
+[OK] Added topic 'bioc-deprecated' to RamiGO
+[OK] Added topic 'bioc-deprecated' to RandomWalkRestartMH
+[OK] Added topic 'bioc-deprecated' to Rariant
+[OK] Added topic 'bioc-deprecated' to RBioinf
+[OK] Added topic 'bioc-deprecated' to Rcade
+[OK] Added topic 'bioc-deprecated' to Rchemcpp
+[OK] Added topic 'bioc-deprecated' to RchyOptimyx
+[OK] Added topic 'bioc-deprecated' to RCytoscape
+[OK] Added topic 'bioc-deprecated' to RDAVIDWebService
+[NOT FOUND] Repository bioconductor-source/Rdbi
+[NOT FOUND] Repository bioconductor-source/RdbiPgSQL
+[OK] Added topic 'bioc-deprecated' to rDGIdb
+[OK] Added topic 'bioc-deprecated' to ReactomeContentService4R
+[OK] Added topic 'bioc-deprecated' to ReactomeGraph4R
+[OK] Added topic 'bioc-deprecated' to readat
+[OK] Added topic 'bioc-deprecated' to reb
+[OK] Added topic 'bioc-deprecated' to RefNet
+[OK] Added topic 'bioc-deprecated' to RefPlus
+[OK] Added topic 'bioc-deprecated' to Repitools
+[NOT FOUND] Repository bioconductor-source/reposTools
+[OK] Added topic 'bioc-deprecated' to ReQON
+[NOT FOUND] Repository bioconductor-source/Resourcerer
+[OK] Added topic 'bioc-deprecated' to restfulSE
+[OK] Added topic 'bioc-deprecated' to restfulSEData
+[NOT FOUND] Repository bioconductor-source/rfcdmin
+[NOT FOUND] Repository bioconductor-source/rflowcyt
+[OK] Added topic 'bioc-deprecated' to rGADEM
+[OK] Added topic 'bioc-deprecated' to RGalaxy
+[OK] Added topic 'bioc-deprecated' to Rgin
+[OK] Added topic 'bioc-deprecated' to RGMQL
+[OK] Added topic 'bioc-deprecated' to RGMQLlib
+[OK] Added topic 'bioc-deprecated' to rHVDM
+[OK] Added topic 'bioc-deprecated' to Ringo
+[NOT FOUND] Repository bioconductor-source/Rintact
+[OK] Added topic 'bioc-deprecated' to RIPAT
+[OK] Added topic 'bioc-deprecated' to RIPSeeker
+[OK] Added topic 'bioc-deprecated' to RIPSeekerData
+[OK] Added topic 'bioc-deprecated' to Risa
+[OK] Added topic 'bioc-deprecated' to RLHub
+[OK] Added topic 'bioc-deprecated' to RLSeq
+[NOT FOUND] Repository bioconductor-source/RMAGEML
+[NOT FOUND] Repository bioconductor-source/RMAPPER
+[OK] Added topic 'bioc-deprecated' to rMAT
+[OK] Added topic 'bioc-deprecated' to RmiR
+[OK] Added topic 'bioc-deprecated' to RNAinteract
+[OK] Added topic 'bioc-deprecated' to RNAinteractMAPK
+[OK] Added topic 'bioc-deprecated' to RNAither
+[OK] Added topic 'bioc-deprecated' to RNAprobR
+[OK] Added topic 'bioc-deprecated' to RNAprobR
+[NOT FOUND] Repository bioconductor-source/RNAseqData.HeLa.bam.chr14
+[NOT FOUND] Repository bioconductor-source/RNASeqDataSubset
+[OK] Added topic 'bioc-deprecated' to rnaSeqMap
+[OK] Added topic 'bioc-deprecated' to RNASeqR
+[OK] Added topic 'bioc-deprecated' to RNASeqRData
+[OK] Added topic 'bioc-deprecated' to RnaSeqTutorial
+[OK] Added topic 'bioc-deprecated' to Roleswitch
+[NOT FOUND] Repository bioconductor-source/Rolexa
+[OK] Added topic 'bioc-deprecated' to RpsiXML
+[OK] Added topic 'bioc-deprecated' to rRDP
+[OK] Added topic 'bioc-deprecated' to rRDPData
+[NOT FOUND] Repository bioconductor-source/Rredland
+[OK] Added topic 'bioc-deprecated' to rSFFreader
+[NOT FOUND] Repository bioconductor-source/RSNPper
+[OK] Added topic 'bioc-deprecated' to rTANDEM
+[NOT FOUND] Repository bioconductor-source/RTools4TB
+[OK] Added topic 'bioc-deprecated' to Rtreemix
+[NOT FOUND] Repository bioconductor-source/Ruuid
+[NOT FOUND] Repository bioconductor-source/RWebServices
+[NOT FOUND] Repository bioconductor-source/SAGElyzer
+[OK] Added topic 'bioc-deprecated' to SAGx
+[OK] Added topic 'bioc-deprecated' to samExploreR
+[OK] Added topic 'bioc-deprecated' to sapFinder
+[OK] Added topic 'bioc-deprecated' to saps
+[OK] Added topic 'bioc-deprecated' to SARC
+[OK] Added topic 'bioc-deprecated' to savR
+[OK] Added topic 'bioc-deprecated' to savR
+[NOT FOUND] Repository bioconductor-source/sbgr
+[OK] Added topic 'bioc-deprecated' to scAlign
+[OK] Added topic 'bioc-deprecated' to SCATE
+[OK] Added topic 'bioc-deprecated' to SCATEData
+[OK] Added topic 'bioc-deprecated' to scClassifR
+[OK] Added topic 'bioc-deprecated' to scfind
+[OK] Added topic 'bioc-deprecated' to ScISI
+[OK] Added topic 'bioc-deprecated' to scMAGeCK
+[OK] Added topic 'bioc-deprecated' to scsR
+[NOT FOUND] Repository bioconductor-source/SemSim
+[OK] Added topic 'bioc-deprecated' to SEPA
+[OK] Added topic 'bioc-deprecated' to SEPIRA
+[OK] Added topic 'bioc-deprecated' to seqArchR
+[OK] Added topic 'bioc-deprecated' to seqArchRplus
+[OK] Added topic 'bioc-deprecated' to seqbias
+[OK] Added topic 'bioc-deprecated' to seqCNA
+[OK] Added topic 'bioc-deprecated' to seqCNA.annot
+[OK] Added topic 'bioc-deprecated' to seqplots
+[OK] Added topic 'bioc-deprecated' to seqTools
+[OK] Added topic 'bioc-deprecated' to shinyTANDEM
+[OK] Added topic 'bioc-deprecated' to sigaR
+[OK] Added topic 'bioc-deprecated' to signet
+[OK] Added topic 'bioc-deprecated' to sigPathway
+[OK] Added topic 'bioc-deprecated' to SimBindProfiles
+[OK] Added topic 'bioc-deprecated' to simpleaffy
+[NOT FOUND] Repository bioconductor-source/simulatorAPMS
+[OK] Added topic 'bioc-deprecated' to simulatorZ
+[OK] Added topic 'bioc-deprecated' to single
+[OK] Added topic 'bioc-deprecated' to SISPA
+[NOT FOUND] Repository bioconductor-source/SJava
+[OK] Added topic 'bioc-deprecated' to SLGI
+[OK] Added topic 'bioc-deprecated' to slinky
+[OK] Added topic 'bioc-deprecated' to SMAP
+[OK] Added topic 'bioc-deprecated' to snapCGH
+[OK] Added topic 'bioc-deprecated' to SNPchip
+[NOT FOUND] Repository bioconductor-source/snpMatrix
+[OK] Added topic 'bioc-deprecated' to sojourner
+[NOT FOUND] Repository bioconductor-source/SomatiCA
+[OK] Added topic 'bioc-deprecated' to SpacePAC
+[NOT FOUND] Repository bioconductor-source/spade
+[NOT FOUND] Repository bioconductor-source/spade
+[OK] Added topic 'bioc-deprecated' to sparseDOSSA
+[OK] Added topic 'bioc-deprecated' to spicyWorkflow
+[OK] Added topic 'bioc-deprecated' to SpidermiR
+[OK] Added topic 'bioc-deprecated' to splicegear
+[OK] Added topic 'bioc-deprecated' to spliceR
+[OK] Added topic 'bioc-deprecated' to spliceSites
+[OK] Added topic 'bioc-deprecated' to spotSegmentation
+[OK] Added topic 'bioc-deprecated' to SQUADD
+[OK] Added topic 'bioc-deprecated' to sRAP
+[OK] Added topic 'bioc-deprecated' to SRGnet
+[OK] Added topic 'bioc-deprecated' to sscore
+[OK] Added topic 'bioc-deprecated' to SSPA
+[NOT FOUND] Repository bioconductor-source/stam
+[OK] Added topic 'bioc-deprecated' to STAN
+[OK] Added topic 'bioc-deprecated' to staRank
+[OK] Added topic 'bioc-deprecated' to StarBioTrek
+[OK] Added topic 'bioc-deprecated' to Starr
+[OK] Added topic 'bioc-deprecated' to STdeconvolve
+[OK] Added topic 'bioc-deprecated' to stepwiseCM
+[OK] Added topic 'bioc-deprecated' to stjudem
+[OK] Added topic 'bioc-deprecated' to Streamer
+[OK] Added topic 'bioc-deprecated' to STROMA4
+[OK] Added topic 'bioc-deprecated' to SummarizedBenchmark
+[OK] Added topic 'bioc-deprecated' to supraHex
+[OK] Added topic 'bioc-deprecated' to Sushi
+[OK] Added topic 'bioc-deprecated' to SVAPLSseq
+[OK] Added topic 'bioc-deprecated' to SVM2CRM
+[OK] Added topic 'bioc-deprecated' to SwimR
+[OK] Added topic 'bioc-deprecated' to synapter
+[OK] Added topic 'bioc-deprecated' to synapterdata
+[OK] Added topic 'bioc-deprecated' to TarSeqQC
+[OK] Added topic 'bioc-deprecated' to TCGAbiolinksGUI
+[OK] Added topic 'bioc-deprecated' to tcgaWGBSData.hg19
+[OK] Added topic 'bioc-deprecated' to TDARACNE
+[OK] Added topic 'bioc-deprecated' to TimeSeriesExperiment
+[OK] Added topic 'bioc-deprecated' to TimiRGeN
+[OK] Added topic 'bioc-deprecated' to TitanCNA
+[OK] Added topic 'bioc-deprecated' to TNBC.CMS
+[OK] Added topic 'bioc-deprecated' to tofsims
+[OK] Added topic 'bioc-deprecated' to ToPASeq
+[OK] Added topic 'bioc-deprecated' to TransView
+[OK] Added topic 'bioc-deprecated' to TraRe
+[OK] Added topic 'bioc-deprecated' to Travel
+[OK] Added topic 'bioc-deprecated' to traviz
+[OK] Added topic 'bioc-deprecated' to trena
+[OK] Added topic 'bioc-deprecated' to triform
+[OK] Added topic 'bioc-deprecated' to trigger
+[OK] Added topic 'bioc-deprecated' to tscR
+[OK] Added topic 'bioc-deprecated' to tspair
+[OK] Added topic 'bioc-deprecated' to TSRchitect
+[OK] Added topic 'bioc-deprecated' to TSSi
+[OK] Added topic 'bioc-deprecated' to TxRegInfra
+[OK] Added topic 'bioc-deprecated' to TypeInfo
+[OK] Added topic 'bioc-deprecated' to vasp
+[OK] Added topic 'bioc-deprecated' to Vega
+[NOT FOUND] Repository bioconductor-source/virtualArray
+[OK] Added topic 'bioc-deprecated' to waveTiling
+[OK] Added topic 'bioc-deprecated' to waveTilingData
+[NOT FOUND] Repository bioconductor-source/widgetInvoke
+[OK] Added topic 'bioc-deprecated' to XBSeq
+[OK] Added topic 'bioc-deprecated' to XCIR
+[NOT FOUND] Repository bioconductor-source/xmapcore
+[OK] Added topic 'bioc-deprecated' to XNAString
+[OK] Added topic 'bioc-deprecated' to xps
+[NOT FOUND] Repository bioconductor-source/y2hStat
+[OK] Added topic 'bioc-deprecated' to yaqcaffy
+[OK] Added topic 'bioc-deprecated' to yri1kgv
+[OK] Added topic 'bioc-deprecated' to yriMulti
+[OK] Added topic 'bioc-deprecated' to zlibbioc
