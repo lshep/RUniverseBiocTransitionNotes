@@ -30,7 +30,7 @@ curatedBreastData	large_file_error	data-experiment.txt	katie.planey@gmail.com	ye
 dsQTL	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.14
 Fletcher2013b	large_file_error	data-experiment.txt	mauro.a.castro@gmail.com	yes	Will not fix Deprecate
 MEALData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.8
-oneChannelGUI	large_file_error	software.txt	Deprecated	Deprecated	Deprected in 3.7
+oneChannelGUI	large_file_error	software.txt	Deprecated	Deprecated	Deprecated in 3.7
 proteomics	large_file_error	workflows.txt	Deprecated	Deprecated	Deprecated in 3.16
 rRDPData	large_file_error	data-experiment.txt	mhahsler@lyle.smu.edu	yes	Deprecate in 3.23 The software was deprecated already
 SCATEData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.19
