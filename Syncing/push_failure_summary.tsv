@@ -15,11 +15,11 @@ GeuvadisTranscriptExpr	large_file_error	data-experiment.txt	gosia.nowicka@uzh.ch
 hapmapsnp6	large_file_error	data-experiment.txt	Benilton.Carvalho@cancer.org.uk	yes	bounced found alternative email at benilton@unicamp.br	yes
 HD2013SGI	large_file_error	data-experiment.txt	mike.smith@embl.de	yes	email to wolfgang	yes
 Hiiragi2013	large_file_error	data-experiment.txt	wolfgang.huber@embl.org	yes		yes
-ListerEtAlBSseq	large_file_error	data-experiment.txt	mattia.furlan@iit.it	yes	bounced	yes
+ListerEtAlBSseq	large_file_error	data-experiment.txt	mattia.furlan@iit.it	yes	bounced	yes still bounced
 mammaPrintData	large_file_error	data-experiment.txt	marchion@jhu.edu			yes
 MMDiffBamSubset	large_file_error	data-experiment.txt	G.Schweikert@ed.ac.uk	yes	bounced found alternative at gschweik@staffmail.ed.ac.uk	yes both bounced
 msdata	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be  sneumann@ipb-halle.de	yes	replacement with MsDataHub will deprecate soon	yes
-msPurityData	large_file_error	data-experiment.txt	thomas.nigel.lawson@gmail.com	yes		yes
+msPurityData	large_file_error	data-experiment.txt	thomas.nigel.lawson@gmail.com	yes	branch cleaned on gi	yes
 pd.atdschip.tiling	large_file_error	data-experiment.txt	kristof.debeuf@ugent.be	yes	bounced	yes still bounced
 RforProteomics	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be			yes
 RnBeads.hg19	large_file_error	data-experiment.txt	rnbeads@mpi-inf.mpg.de		bounced but send to same email as hg38 version	yes
@@ -41,7 +41,7 @@ scafari	large_file_error	software.txt	sophie.wind@uni-muenster.de		did reach out
 singIST	large_file_error	software.txt	morunoaitor@gmail.com			yes
 SwathXtend	large_file_error	software.txt	jwu@proteome.org.au	yes	bounced	yes still bounced
 methylationArrayAnalysis	large_file_error	workflows.txt	jovana.maksimovic@petermac.org	yes		yes
-ChIPXpressData	large_file_error	data-experiment.txt	gewu@jhsph.edu	yes	bounced found alternative email  georgetwu@gmail.com	yes
+ChIPXpressData	large_file_error	data-experiment.txt	gewu@jhsph.edu	yes	bounced found alternative email  georgetwu@gmail.com	Will Deprecated
 ELMER.data	large_file_error	data-experiment.txt	tiagochst@gmail.com			yes
 scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com			yes
 scviR	secret_error	software.txt	Deprecated	Deprecated	Deprecated in 3.23	Deprecated
