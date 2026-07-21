@@ -1,55 +1,55 @@
-Package	Category	Manifest	Email	Emailed Before	Responded	Reemailed
-Affyhgu133aExpr	large_file_error	data-experiment.txt	zji4@jhu.edu	yes		yes
-Affyhgu133Plus2Expr	large_file_error	data-experiment.txt	zji4@jhu.edu	yes		yes
-Affymoe4302Expr	large_file_error	data-experiment.txt	zji4@jhu.edu	yes		yes
-ccdata	large_file_error	data-experiment.txt	alexvpickering@gmail.com	yes		yes
-ChAMPdata	large_file_error	data-experiment.txt	champ450k@gmail.com	yes		yes
-ConnectivityMap	large_file_error	data-experiment.txt	pshannon@systemsbiology.org	yes	bounced	yes still bounced
-davidTiling	large_file_error	data-experiment.txt	huber@ebi.ac.uk	yes		yes
-FlowSorted.Blood.450k	large_file_error	data-experiment.txt	andrew.jaffe@libd.org	yes	bounced	yes still bounced
-FlowSorted.CordBlood.450k	large_file_error	data-experiment.txt	sandre17@jhu.edu	yes		yes
-FlowSorted.CordBloodNorway.450k	large_file_error	data-experiment.txt	kristina.gervin@medisin.uio.no	yes		yes
-FlowSorted.DLPFC.450k	large_file_error	data-experiment.txt	andrew.jaffe@libd.org	yes	bounced	yes still bounced
-furrowSeg	large_file_error	data-experiment.txt	joseph.barry@embl.de	yes		yes
-GeuvadisTranscriptExpr	large_file_error	data-experiment.txt	gosia.nowicka@uzh.ch	yes	bounced found alternative email gosia.nowicka.uzh@gmail.com	yes
-hapmapsnp6	large_file_error	data-experiment.txt	Benilton.Carvalho@cancer.org.uk	yes	bounced found alternative email at benilton@unicamp.br	yes
-HD2013SGI	large_file_error	data-experiment.txt	mike.smith@embl.de	yes	email to wolfgang	yes
-Hiiragi2013	large_file_error	data-experiment.txt	wolfgang.huber@embl.org	yes		yes
-ListerEtAlBSseq	large_file_error	data-experiment.txt	mattia.furlan@iit.it	yes	bounced	yes still bounced
-mammaPrintData	large_file_error	data-experiment.txt	marchion@jhu.edu			yes
-MMDiffBamSubset	large_file_error	data-experiment.txt	G.Schweikert@ed.ac.uk	yes	bounced found alternative at gschweik@staffmail.ed.ac.uk	yes both bounced
-msdata	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be  sneumann@ipb-halle.de	yes	replacement with MsDataHub will deprecate soon	yes
-msPurityData	large_file_error	data-experiment.txt	thomas.nigel.lawson@gmail.com	yes	branch cleaned on gi	yes
-pd.atdschip.tiling	large_file_error	data-experiment.txt	kristof.debeuf@ugent.be	yes	bounced	yes still bounced
-RforProteomics	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be			yes
-RnBeads.hg19	large_file_error	data-experiment.txt	rnbeads@mpi-inf.mpg.de		bounced but send to same email as hg38 version	yes
-RnBeads.hg38	large_file_error	data-experiment.txt	team@rnbeads.org	yes		yes
-Single.mTEC.Transcriptomes	large_file_error	data-experiment.txt	alejandro.reyes.ds@gmail.com	yes		yes
-SVM2CRMdata	large_file_error	data-experiment.txt	guidantonio.malagolitagliazucchi@unimore.it	yes	bounced	yes still bounced
-curatedBreastData	large_file_error	data-experiment.txt	katie.planey@gmail.com	yes	Will not fix Deprecate	Will Deprecated
-dsQTL	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.14	Deprecated
-Fletcher2013b	large_file_error	data-experiment.txt	mauro.a.castro@gmail.com	yes	Will not fix Deprecate	Will Deprecated
-MEALData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.8	Deprecated
-oneChannelGUI	large_file_error	software.txt	Deprecated	Deprecated	Deprecated in 3.7	Deprecated
-proteomics	large_file_error	workflows.txt	Deprecated	Deprecated	Deprecated in 3.16	Deprecated
-rRDPData	large_file_error	data-experiment.txt	mhahsler@lyle.smu.edu	yes	Deprecate in 3.23 The software was deprecated already	Deprecated
-SCATEData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.19	Deprecated
-waveTilingData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.13	Deprecated
-yriMulti	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.13	Deprecated
-h5vc	large_file_error	software.txt	paul.theodor.pyl@gmail.com			yes
-scafari	large_file_error	software.txt	sophie.wind@uni-muenster.de		did reach out didn’t read	yes
-singIST	large_file_error	software.txt	morunoaitor@gmail.com			yes
-SwathXtend	large_file_error	software.txt	jwu@proteome.org.au	yes	bounced	yes still bounced
-methylationArrayAnalysis	large_file_error	workflows.txt	jovana.maksimovic@petermac.org	yes		yes
-ChIPXpressData	large_file_error	data-experiment.txt	gewu@jhsph.edu	yes	bounced found alternative email  georgetwu@gmail.com	Will Deprecated
-ELMER.data	large_file_error	data-experiment.txt	tiagochst@gmail.com			yes
-scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com			yes
-scviR	secret_error	software.txt	Deprecated	Deprecated	Deprecated in 3.23	Deprecated
-ChIPanalyser	secret_error	software.txt	pcnmartin@gmail.com			yes
-CoSIA	secret_error	software.txt	acrumley@uab.edu			yes
-CrcBiomeScreen	secret_error	software.txt	ngzh5554@leeds.ac.uk			yes
-Damsel	secret_error	software.txt	caitlin.page@petermac.org			yes
-iModMix	secret_error	software.txt	isis.narvaez@upr.edu			yes
-RMassBank	secret_error	software.txt	massbank@eawag.ch			yes
-sevenbridges	secret_error	software.txt	phil.webster@velsera.com		email no longer active	yes
-TSAR	secret_error	software.txt	candygao2015@outlook.com			yes
+Package	Category	Manifest	Email	Emailed Before	Responded	Reemailed	Fixed
+Affyhgu133aExpr	large_file_error	data-experiment.txt	zji4@jhu.edu	yes		yes	
+Affyhgu133Plus2Expr	large_file_error	data-experiment.txt	zji4@jhu.edu	yes		yes	
+Affymoe4302Expr	large_file_error	data-experiment.txt	zji4@jhu.edu	yes		yes	
+ccdata	large_file_error	data-experiment.txt	alexvpickering@gmail.com	yes		yes	
+ChAMPdata	large_file_error	data-experiment.txt	champ450k@gmail.com	yes		yes	
+ConnectivityMap	large_file_error	data-experiment.txt	pshannon@systemsbiology.org	yes	bounced	yes still bounced	Deprecate
+davidTiling	large_file_error	data-experiment.txt	huber@ebi.ac.uk	yes		yes	
+FlowSorted.Blood.450k	large_file_error	data-experiment.txt	andrew.jaffe@libd.org	yes	bounced	yes still bounced	Deprecate
+FlowSorted.CordBlood.450k	large_file_error	data-experiment.txt	sandre17@jhu.edu	yes		yes	
+FlowSorted.CordBloodNorway.450k	large_file_error	data-experiment.txt	kristina.gervin@medisin.uio.no	yes	responded and sent instructions 	yes	
+FlowSorted.DLPFC.450k	large_file_error	data-experiment.txt	andrew.jaffe@libd.org	yes	bounced	yes still bounced	Deprecate
+furrowSeg	large_file_error	data-experiment.txt	joseph.barry@embl.de	yes		yes	
+GeuvadisTranscriptExpr	large_file_error	data-experiment.txt	gosia.nowicka@uzh.ch	yes	bounced found alternative email gosia.nowicka.uzh@gmail.com	yes	
+hapmapsnp6	large_file_error	data-experiment.txt	Benilton.Carvalho@cancer.org.uk	yes	bounced found alternative email at benilton@unicamp.br	yes	
+HD2013SGI	large_file_error	data-experiment.txt	mike.smith@embl.de	yes	email to wolfgang	yes	
+Hiiragi2013	large_file_error	data-experiment.txt	wolfgang.huber@embl.org	yes		yes	
+ListerEtAlBSseq	large_file_error	data-experiment.txt	mattia.furlan@iit.it	yes	bounced	yes still bounced	Deprecate
+mammaPrintData	large_file_error	data-experiment.txt	marchion@jhu.edu			yes	
+MMDiffBamSubset	large_file_error	data-experiment.txt	G.Schweikert@ed.ac.uk	yes	bounced found alternative at gschweik@staffmail.ed.ac.uk	yes both bounced	Deprecate
+msdata	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be  sneumann@ipb-halle.de	yes	replacement with MsDataHub will deprecate soon	yes	
+msPurityData	large_file_error	data-experiment.txt	thomas.nigel.lawson@gmail.com	yes	branch cleaned on branch	yes	Fixed
+pd.atdschip.tiling	large_file_error	data-experiment.txt	kristof.debeuf@ugent.be	yes	bounced	yes still bounced	Deprecate
+RforProteomics	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be			yes	
+RnBeads.hg19	large_file_error	data-experiment.txt	rnbeads@mpi-inf.mpg.de		bounced but send to same email as hg38 version	yes	Fixed
+RnBeads.hg38	large_file_error	data-experiment.txt	team@rnbeads.org	yes	responded and has fixes staged	yes	Fixed
+Single.mTEC.Transcriptomes	large_file_error	data-experiment.txt	alejandro.reyes.ds@gmail.com	yes		yes	
+SVM2CRMdata	large_file_error	data-experiment.txt	guidantonio.malagolitagliazucchi@unimore.it	yes	bounced	yes still bounced	Deprecated
+curatedBreastData	large_file_error	data-experiment.txt	katie.planey@gmail.com	yes	Will not fix Deprecate	Will Deprecated	Fixed
+dsQTL	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.14	Deprecated	Deprecated
+Fletcher2013b	large_file_error	data-experiment.txt	mauro.a.castro@gmail.com	yes	Will not fix Deprecate	Will Deprecated	Will Deprecate
+MEALData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.8	Deprecated	Deprecated
+oneChannelGUI	large_file_error	software.txt	Deprecated	Deprecated	Deprecated in 3.7	Deprecated	Deprecated
+proteomics	large_file_error	workflows.txt	Deprecated	Deprecated	Deprecated in 3.16	Deprecated	Deprecated
+rRDPData	large_file_error	data-experiment.txt	mhahsler@lyle.smu.edu	yes	Deprecate in 3.23 The software was deprecated already	Deprecated	Deprecated
+SCATEData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.19	Deprecated	Deprecated
+waveTilingData	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.13	Deprecated	Deprecated
+yriMulti	large_file_error	data-experiment.txt	Deprecated	Deprecated	Deprecated in 3.13	Deprecated	Deprecated
+h5vc	large_file_error	software.txt	paul.theodor.pyl@gmail.com		responded and has fix locally 	yes	Fixed
+scafari	large_file_error	software.txt	sophie.wind@uni-muenster.de		did reach out didn’t read	yes	Fixed
+singIST	large_file_error	software.txt	morunoaitor@gmail.com		acknowledged	yes	
+SwathXtend	large_file_error	software.txt	jwu@proteome.org.au	yes	bounced	yes still bounced	Deprecate
+methylationArrayAnalysis	large_file_error	workflows.txt	jovana.maksimovic@petermac.org	yes		yes	
+ChIPXpressData	large_file_error	data-experiment.txt	gewu@jhsph.edu	yes	bounced found alternative email  georgetwu@gmail.com	Will Deprecated	Will Deprecate and software package
+ELMER.data	large_file_error	data-experiment.txt	tiagochst@gmail.com			yes	
+scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com			yes	
+scviR	secret_error	software.txt	Deprecated	Deprecated	Deprecated in 3.23	Deprecated	Deprecate
+ChIPanalyser	secret_error	software.txt	pcnmartin@gmail.com			yes	
+CoSIA	secret_error	software.txt	acrumley@uab.edu			yes	
+CrcBiomeScreen	secret_error	software.txt	ngzh5554@leeds.ac.uk		responded and fixed on personal github	yes	
+Damsel	secret_error	software.txt	caitlin.page@petermac.org			yes	
+iModMix	secret_error	software.txt	isis.narvaez@upr.edu			yes	
+RMassBank	secret_error	software.txt	massbank@eawag.ch			yes	
+sevenbridges	secret_error	software.txt	phil.webster@velsera.com		email no longer active	yes	
+TSAR	secret_error	software.txt	candygao2015@outlook.com			yes	
