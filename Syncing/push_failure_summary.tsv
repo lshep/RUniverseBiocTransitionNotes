@@ -18,7 +18,7 @@ Hiiragi2013	large_file_error	data-experiment.txt	wolfgang.huber@embl.org	yes		ye
 ListerEtAlBSseq	large_file_error	data-experiment.txt	mattia.furlan@iit.it	yes	bounced	yes still bounced	Deprecate
 mammaPrintData	large_file_error	data-experiment.txt	marchion@jhu.edu			yes	
 MMDiffBamSubset	large_file_error	data-experiment.txt	G.Schweikert@ed.ac.uk	yes	bounced found alternative at gschweik@staffmail.ed.ac.uk	yes both bounced	Deprecate
-msdata	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be  sneumann@ipb-halle.de	yes	replacement with MsDataHub will deprecate soon	yes	
+msdata	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be  sneumann@ipb-halle.de	yes	replacement with MsDataHub will deprecate soon	yes	Fixed
 msPurityData	large_file_error	data-experiment.txt	thomas.nigel.lawson@gmail.com	yes	branch cleaned on branch	yes	Fixed
 pd.atdschip.tiling	large_file_error	data-experiment.txt	kristof.debeuf@ugent.be	yes	bounced	yes still bounced	Deprecate
 RforProteomics	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be			yes	
