@@ -1,0 +1,16 @@
+BioPlex
+   all_software.txt
+*   all_data-experiment.txt
+
+SNAData
+   all_software.txt
+*   all_data-experiment.txt
+
+affydata
+   all_software.txt
+*   all_data-experiment.txt
+
+BgeeCall
+*   all_software.txt
+   all_workflows.txt
+

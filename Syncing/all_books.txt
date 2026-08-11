@@ -1,0 +1,13 @@
+OSCA.intro
+scrapbook
+OSCA.advanced
+SingleRBook
+OMA
+OHCA
+csawBook
+OSCA
+OSCA.basic
+OSCA.multisample
+OSTA
+BiocBookDemo
+OSCA.workflows
