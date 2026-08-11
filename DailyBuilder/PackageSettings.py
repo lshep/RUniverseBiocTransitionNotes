@@ -943,3 +943,49 @@ for repo in repos:
         log("  ✓ Default branch set to devel")
     else:
         log("  ✗ FAILED: set default branch devel")
+
+
+
+
+
+
+
+
+
+repo = "manifest"
+time.sleep(0.5)
+branches = get_branches(repo)
+#
+# Base protection
+#
+protect_branch(repo, "devel")
+if CURRENT_RELEASE in branches:
+    protect_branch(repo, CURRENT_RELEASE)
+ 
+disallow_release_branch(repo)
+admin_force_push_devel_and_release(repo)
+#
+# Disable Actions
+#
+disable_actions(repo)
+#
+# Freeze historical releases
+#
+frozen = []
+for branch in branches:
+    if branch.startswith("RELEASE_") and branch != CURRENT_RELEASE:
+        if freeze_branch(repo, branch):
+            frozen.append(branch)
+#
+# Disable all active workflows
+#
+workflows = get_workflows(repo)
+for wf in workflows:
+    if wf["state"] == "active":
+         disable_workflow(repo,wf["id"],wf["name"])
+#
+# Ensure devel default branch
+#
+set_default_branch_devel(repo)
+
+        

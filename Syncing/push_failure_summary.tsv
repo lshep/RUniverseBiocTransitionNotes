@@ -40,10 +40,10 @@ h5vc	large_file_error	software.txt	paul.theodor.pyl@gmail.com		responded and has
 scafari	large_file_error	software.txt	sophie.wind@uni-muenster.de		did reach out didn’t read	yes	Fixed	
 singIST	large_file_error	software.txt	morunoaitor@gmail.com		acknowledged	yes		tried but not right
 SwathXtend	large_file_error	software.txt	jwu@proteome.org.au	yes	bounced	yes still bounced	Will Deprecate	
-methylationArrayAnalysis	large_file_error	workflows.txt	jovana.maksimovic@petermac.org	yes		yes		
+methylationArrayAnalysis	large_file_error	workflows.txt	jovana.maksimovic@petermac.org	yes	responded but didn’t provide repo 	yes		tried but not right
 ChIPXpressData	large_file_error	data-experiment.txt	gewu@jhsph.edu	yes	bounced found alternative email  georgetwu@gmail.com	Will Deprecated	Will Deprecate and software package	
 ELMER.data	large_file_error	data-experiment.txt	tiagochst@gmail.com			yes		
-scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com			yes		tried but not right
+scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com		responded but didn’t provide repo 	yes		tried but not right
 scviR	secret_error	software.txt	Deprecated	Deprecated	Deprecated in 3.23	Deprecated	Deprecated	
 ChIPanalyser	secret_error	software.txt	pcnmartin@gmail.com			yes		tried but not right
 CoSIA	secret_error	software.txt	acrumley@uab.edu			yes		tried but not right
