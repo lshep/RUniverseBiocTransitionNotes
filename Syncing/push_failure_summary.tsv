@@ -21,7 +21,7 @@ MMDiffBamSubset	large_file_error	data-experiment.txt	G.Schweikert@ed.ac.uk	yes	b
 msdata	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be  sneumann@ipb-halle.de	yes	replacement with MsDataHub will deprecate soon	yes	Fixed	
 msPurityData	large_file_error	data-experiment.txt	thomas.nigel.lawson@gmail.com	yes	branch cleaned on branch	yes	Fixed	
 pd.atdschip.tiling	large_file_error	data-experiment.txt	kristof.debeuf@ugent.be	yes	bounced	yes still bounced	Will Deprecate	
-RforProteomics	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be			yes		tried but not right
+RforProteomics	large_file_error	data-experiment.txt	laurent.gatto@uclouvain.be			yes	Fixed	
 RnBeads.hg19	large_file_error	data-experiment.txt	rnbeads@mpi-inf.mpg.de		bounced but send to same email as hg38 version	yes	Fixed	
 RnBeads.hg38	large_file_error	data-experiment.txt	team@rnbeads.org	yes	responded and has fixes staged	yes	Fixed	
 Single.mTEC.Transcriptomes	large_file_error	data-experiment.txt	alejandro.reyes.ds@gmail.com	yes		yes		
@@ -43,12 +43,12 @@ SwathXtend	large_file_error	software.txt	jwu@proteome.org.au	yes	bounced	yes sti
 methylationArrayAnalysis	large_file_error	workflows.txt	jovana.maksimovic@petermac.org	yes	responded but didn’t provide repo 	yes		tried but not right
 ChIPXpressData	large_file_error	data-experiment.txt	gewu@jhsph.edu	yes	bounced found alternative email  georgetwu@gmail.com	Will Deprecated	Will Deprecate and software package	
 ELMER.data	large_file_error	data-experiment.txt	tiagochst@gmail.com			yes		
-scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com		responded but didn’t provide repo 	yes		tried but not right
+scMultiome	secret_error	data-experiment.txt	xiaosai.yao@gmail.com		responded but didn’t provide repo 	yes	Fixed	
 scviR	secret_error	software.txt	Deprecated	Deprecated	Deprecated in 3.23	Deprecated	Deprecated	
-ChIPanalyser	secret_error	software.txt	pcnmartin@gmail.com			yes		tried but not right
-CoSIA	secret_error	software.txt	acrumley@uab.edu			yes		tried but not right
+ChIPanalyser	secret_error	software.txt	pcnmartin@gmail.com			yes	Fixed	
+CoSIA	secret_error	software.txt	acrumley@uab.edu			yes	Fixed	
 CrcBiomeScreen	secret_error	software.txt	ngzh5554@leeds.ac.uk		responded and fixed on personal github	yes	Fixed	
-Damsel	secret_error	software.txt	caitlin.page@petermac.org			yes		
+Damsel	secret_error	software.txt	caitlin.page@petermac.org			yes		tried but not right
 iModMix	secret_error	software.txt	isis.narvaez@upr.edu			yes		
 RMassBank	secret_error	software.txt	massbank@eawag.ch			yes		
 sevenbridges	secret_error	software.txt	phil.webster@velsera.com		email no longer active	yes	Will Deprecate	
