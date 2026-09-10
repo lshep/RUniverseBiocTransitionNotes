@@ -48,7 +48,7 @@ scviR	secret_error	software.txt	Deprecated	Deprecated	Deprecated in 3.23	Depreca
 ChIPanalyser	secret_error	software.txt	pcnmartin@gmail.com			yes	Fixed	
 CoSIA	secret_error	software.txt	acrumley@uab.edu			yes	Fixed	
 CrcBiomeScreen	secret_error	software.txt	ngzh5554@leeds.ac.uk		responded and fixed on personal github	yes	Fixed	
-Damsel	secret_error	software.txt	caitlin.page@petermac.org			yes		tried but not right
+Damsel	secret_error	software.txt	caitlin.page@petermac.org			yes	Fixed	
 iModMix	secret_error	software.txt	isis.narvaez@upr.edu			yes		
 RMassBank	secret_error	software.txt	massbank@eawag.ch			yes		
 sevenbridges	secret_error	software.txt	phil.webster@velsera.com		email no longer active	yes	Will Deprecate	
