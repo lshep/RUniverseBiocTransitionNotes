@@ -1,67 +1,134 @@
-library(jsonlite)
-
-url <- "https://bioc.r-universe.dev/api/packages/BiocCheck"
-data <- fromJSON(url)
-
-
-wrap_dcf <- function(x, width = 78, indent = 8) {
-  if (length(x) == 0 || is.na(x)) return(NA_character_)
-  paste(
-    strwrap(x, width = width, exdent = indent),
-    collapse = "\n"
-  )
+.wrap_field <- function(x, width = 78, indent = 8) {
+    if (length(x) == 0 || is.na(x)) {
+        return(NA_character_)
+    }
+    paste(
+        strwrap(x, width = width, exdent = indent),
+        collapse = "\n"
+    )
 }
 
+.fmt_deps <- function(deps, role) {
+    x <- deps[deps$role == role, ]
+    if (!nrow(x)) {
+        return(NULL)
+    }
 
-deps <- data$`_dependencies`
-
-fmt_deps <- function(role) {
-  x <- deps[deps$role == role, ]
-  if (!nrow(x)) return(NULL)
-
-  paste(
-    ifelse(
-      is.na(x$version),
-      x$package,
-      paste0(x$package, " (", x$version, ")")
-    ),
-    collapse = ", "
-  )
+    paste(
+        ifelse(
+            is.na(x$version),
+            x$package,
+            paste0(x$package, " (", x$version, ")")
+        ),
+        collapse = ", "
+    )
 }
 
-Depends  <- fmt_deps("Depends")
-Imports  <- fmt_deps("Imports")
-Suggests <- fmt_deps("Suggests")
+.fmt_rel_paths <- function(x, field, pkg) {
+    if (length(x) == 0) {
+        return(NA_character_)
+    }
+    paste0(
+        paste0(
+            "vignettes/",
+            pkg,
+            "/inst/doc/",
+            x[[field]]
+        ),
+        collapse = ",\n\t"
+    )
+}
 
-dcf <- list(
-  Package = data$Package,
-  Version = data$Version,
-  Depends = Depends,
-  Imports = Imports,
-  Suggests = Suggests,
-  License = data$License,
-  MD5sum = data$MD5sum,
-  NeedsCompilation = data$NeedsCompilation,
-  Title = data$Title,
-  Description = wrap_dcf(data$Description),
-  biocViews = data$biocViews,
-  Author = wrap_dcf(data$Author),
-  Maintainer = data$Maintainer,
-  URL = data$URL,
-  VignetteBuilder = data$VignetteBuilder,
-  BugReports = data$BugReports,
-  git_url = data$`_upstream`,
-  git_branch = data$`_bioc`$branch[2],  # release branch
-  git_last_commit = data$RemoteSha,
-  git_last_commit_date = substr(data$`Date/Publication`, 1, 10),
-  `Date/Publication` = substr(data$`Date/Publication`, 1, 10)
-)
+.fmt_titles <- function(x) {
+    if (length(x) == 0) {
+        return(NA_character_)
+    }
+    paste0(x$title, collapse = ",\n\t")
+}
 
-dcf <- dcf[!vapply(dcf, is.null, logical(1))]
+.has <- function(x, a_file) {
+    if (length(x) == 0) {
+        return(NA_character_)
+    }
+    any(
+        grepl(
+            a_file,
+            x
+        )
+    )
+}
 
+#' Prepare package VIEW data
+#'
+#' @description Prepare the VIEW of a package. Does not include
+#' source, binary, extra doc, Rfiles, and reverse dependency fields.
+#'
+#' @param df api data
+#'
+#' @returns a list of named fields for a package VIEW entry in the VIEWS
+#' file
+#'
+#' @examples
+#' df <- getRuDf(pkg, branch)
+#' prepareView(df)
+#'
+#' @export
+prepareView <- function(df) {
+    fields <- list(
+        Package = df$Package,
+        Version = df$Version,
+        Depends = .fmt_deps(df$`_dependencies`, "Depends"),
+        Imports = .fmt_deps(df$`_dependencies`, "Imports"),
+        Suggests = .fmt_deps(df$`_dependencies`, "Suggests"),
+        LinkingTo = .fmt_deps(df$`_dependencies`, "LinkingTo"),
+        License = df$License,
+        SystemRequirements = df$SystemRequirements,
+        MD5sum = df$MD5sum,
+        NeedsCompilation = df$NeedsCompilation,
+        Archs = df$arches,
+        Title = df$Title,
+        Description = .wrap_field(df$Description),
+        biocViews = df$biocViews,
+        Author = gsub("\n|\\s+", " ", wrap_field(df$Author)),
+        Maintainer = df$Maintainer,
+        URL = df$URL,
+        VignetteBuilder = df$VignetteBuilder,
+        Video = df$Video,
+        BugReports = df$BugReports,
+        PackageStatus = df$PackageStatus, # deprecated packages removed immediately
+        git_url = df$`_upstream`,
+        git_branch = df$`_bioc`$branch[2], # release branch
+        git_last_commit = df$RemoteSha,
+        git_last_commit_date = substr(df$`Date/Publication`, 1, 10),
+        `Date/Publication` = substr(df$`Date/Publication`, 1, 10),
+        `Config/Bioconductor/UnsupportedPlatforms` = df$`UnsupportedPlatforms`,
+        vignettes = .fmt_rel_paths(df$`_vignettes`, "filename", df$Package),
+        vignetteTitles = .fmt_titles(df$`_vignettes`),
+        hasREADME = .has(df$`_assets`, "readme.md"),
+        hasNEWS = .has(df$`_assets`, "news.txt"),
+        hasLICENSE = .has(df$`_assets`, "LICENSE")
+        # Rfiles = Is this useful? (Do people use them?)
+        # hasINSTALL = how does RU handle system requirements (esp., mac, win), can it go away?
+    )
 
+    fields[!vapply(fields, is.null, logical(1))]
+}
 
+#' @examples
+#' df <- prepareView(pkg, branch)
+#' writeView(df, tempfile())
+#'
+#' @export
+writeView <- function(df, save_path, ext = c("json", "dcf")) {
+    .save_as(df, save_path, ext)
+}
 
-### This would not include the source/binary information, extra doc, reverse
-### depends
-### can we get these from other apis?
+readView <- function(package, path) {
+    jsonlite::read_json(file.path(path, paste0(package, ".json")))
+}
+
+readViews <- function(package_type, save_path, ext = c("json", "dcf")) {
+    pkgs <- getPackagesByType(package_type)
+    views <- lapply(pkgs, function(x) readView(x, save_path))
+    jsonlite::toJSON(views)
+}
