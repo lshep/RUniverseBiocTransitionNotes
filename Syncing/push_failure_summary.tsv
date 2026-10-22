@@ -11,7 +11,7 @@ FlowSorted.CordBlood.450k	large_file_error	data-experiment.txt	sandre17@jhu.edu	
 FlowSorted.CordBloodNorway.450k	large_file_error	data-experiment.txt	kristina.gervin@medisin.uio.no	yes	responded and sent instructions 	yes		
 FlowSorted.DLPFC.450k	large_file_error	data-experiment.txt	andrew.jaffe@libd.org	yes	bounced found alt email	yes still bounced	Fixed	
 furrowSeg	large_file_error	data-experiment.txt	joseph.barry@embl.de	yes		yes		
-GeuvadisTranscriptExpr	large_file_error	data-experiment.txt	gosia.nowicka@uzh.ch	yes	bounced found alternative email gosia.nowicka.uzh@gmail.com	yes		
+GeuvadisTranscriptExpr	large_file_error	data-experiment.txt	gosia.nowicka@uzh.ch	yes	bounced found alternative email gosia.nowicka.uzh@gmail.com	yes	Will Deprecate	
 hapmapsnp6	large_file_error	data-experiment.txt	Benilton.Carvalho@cancer.org.uk	yes	bounced found alternative email at benilton@unicamp.br	yes		
 HD2013SGI	large_file_error	data-experiment.txt	mike.smith@embl.de	yes	email to wolfgang	yes	Fixed	
 Hiiragi2013	large_file_error	data-experiment.txt	wolfgang.huber@embl.org	yes		yes	Fixed	
